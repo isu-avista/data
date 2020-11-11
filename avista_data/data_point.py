@@ -1,4 +1,5 @@
 from avista_data import db
+from avista_data.unit import Unit
 
 
 class DataPoint(db.Model):
@@ -6,6 +7,7 @@ class DataPoint(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     value = db.Column(db.Float, nullable=False)
+    unit = db.Column(db.Enum(Unit), nullable=False)
     sensor_id = db.Column(db.Integer, db.ForeignKey('sensor.id'))
 
     def get_value(self):

@@ -1,4 +1,6 @@
 import unittest
+
+from avista_data.security_config import SecurityConfig
 from tests.base_test import BaseTest
 from avista_data import db
 from avista_data.user import User
@@ -76,7 +78,13 @@ class MyTestCase(BaseTest):
 
     # def test_token(self):
 
-    # def test_security_config(self):
+    def test_security_config(self):
+        sc = SecurityConfig(name="SC_Test")
+        db.session.add(sc)
+        sc.add_user(self.fixture)
+        db.session.commit()
+        self.assertIn(self.fixture, sc.users, "user not added")
+        self.assertEqual(self.fixture.sec_conf_id, sc.get_id(), "id mismatch")
 
 if __name__ == '__main__':
     unittest.main()

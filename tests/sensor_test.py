@@ -1,7 +1,11 @@
 import unittest
+
+from avista_data.unit import Unit
 from tests.base_test import BaseTest
 from avista_data.sensor import Sensor
 from avista_data import db
+from avista_data.device import Device
+from avista_data.data_point import DataPoint
 
 
 class SensorTest(BaseTest):
@@ -55,9 +59,19 @@ class SensorTest(BaseTest):
         with self.assertRaises(Exception):
             self.fixture.set_description(None)
 
-    # def test_device(self):
+    def test_device(self):
+        dev = Device(name="Test Device", description="Description")
+        db.session.add(dev)
+        dev.add_sensor(self.fixture)
+        self.assertIn(self.fixture, dev.sensors, "sensor not added")
+        self.assertEqual(self.fixture.device_id, dev.get_id(), "id mismatch")
 
-    # def test_data(self):
+    def test_data(self):
+        dp = DataPoint(value=1.0, unit=Unit.KWH)
+        db.session.add(dp)
+        self.fixture.add_data_point(dp)
+        db.session.commit()
+        self.assertIn(dp, self.fixture.data, "point not contained")
 
 
 if __name__ == '__main__':

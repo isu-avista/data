@@ -21,6 +21,16 @@ class SecurityConfig(db.Model):
             raise Exception("name cannot be None or empty")
         self.name = name
 
+    def add_item(self, item):
+        if item is None or item in self.items:
+            return
+        self.items.append(item)
+
+    def add_user(self, user):
+        if user is None or user in self.users:
+            return
+        self.users.append(user)
+
     def __repr__(self):
         return "Security Config: {}".format(self.name)
 

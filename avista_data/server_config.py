@@ -20,6 +20,11 @@ class ServerConfig(db.Model):
             raise Exception("name cannot be None or empty")
         self.name = name
 
+    def add_item(self, item):
+        if item is None or item in self.items:
+            return
+        self.items.append(item)
+
     def __repr__(self):
         return "Server Config: {}".format(self.name)
 

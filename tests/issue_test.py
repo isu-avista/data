@@ -3,6 +3,7 @@ from tests.base_test import BaseTest
 from avista_data import db
 from avista_data.issue import Issue
 from avista_data.issue_type import IssueType
+from avista_data.device import Device
 
 
 class IssueTest(BaseTest):
@@ -55,7 +56,13 @@ class IssueTest(BaseTest):
         with self.assertRaises(Exception):
             self.fixture.set_type(None)
 
-    # def test_device(self):
+    def test_device(self):
+        dev = Device(name="Test Device", description="Description")
+        db.session.add(dev)
+        dev.add_issue(self.fixture)
+        self.assertIn(self.fixture, dev.issues, "issue not added")
+        self.assertEqual(self.fixture.device_id, dev.get_id(), "id mismatch")
+
 
 if __name__ == '__main__':
     unittest.main()

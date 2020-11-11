@@ -38,6 +38,11 @@ class Sensor(db.Model):
             raise Exception("value cannot be None or empty")
         self.identifier = ident
 
+    def add_data_point(self, point):
+        if point is None or point in self.data:
+            return
+        self.data.append(point)
+
     def __repr__(self):
         return "Sensor: {} = {}".format(self.name, self.identifier)
 

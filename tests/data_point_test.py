@@ -2,6 +2,7 @@ import unittest
 from tests.base_test import BaseTest
 from avista_data import db
 from avista_data.data_point import DataPoint
+from avista_data.sensor import Sensor
 
 
 class DataPointTest(BaseTest):
@@ -29,7 +30,12 @@ class DataPointTest(BaseTest):
         with self.assertRaises(Exception):
             self.fixture.set_value("Test")
 
-    # def test_parent_security_config(self):
+    def test_parent_security_config(self):
+        sens = Sensor(name="TestSensor", identifier="Sensor01")
+        db.session.add(sens)
+        sens.add_data_point(self.fixture)
+        db.session.commit()
+        self.assertEquals(self.fixture.sensor_id, sens.get_id(), "id mismatch")
 
 if __name__ == '__main__':
     unittest.main()

@@ -2,6 +2,8 @@ import unittest
 from tests.base_test import BaseTest
 from avista_data import db
 from avista_data.server_config import ServerConfig
+from avista_data.device import Device
+from avista_data.config_item import ConfigItem
 
 
 class ServerConfigTest(BaseTest):
@@ -25,9 +27,21 @@ class ServerConfigTest(BaseTest):
         with self.assertRaises(Exception):
             self.fixture.set_name(None)
 
-    # def test_device(self):
+    def test_device(self):
+        dev = Device(name="Test Device", description="Description")
+        db.session.add(dev)
+        dev.set_serv_conf(self.fixture)
+        self.assertEqual(self.fixture, dev.get_serv_conf(), "server conf not set")
 
-    # def test_items(self):
+    def test_items(self):
+        iss1 = ConfigItem(name="Issue 01", description="Desc 01", value="Value 1")
+        iss2 = ConfigItem(name="Issue 02", description="Desc 02", value="Value 2")
+        db.session.add(iss1)
+        db.session.add(iss2)
+        self.fixture.add_item(iss1)
+        self.fixture.add_item(iss2)
+        self.assertIn(iss1, self.fixture.items)
+        self.assertIn(iss2, self.fixture.items)
 
 
 if __name__ == '__main__':
