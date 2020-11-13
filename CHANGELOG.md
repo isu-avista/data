@@ -6,13 +6,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.1.1] - 2020-11-13
+## [0.1.2] - 2020-11-13
+### Added
+- Nothing
 
+### Changed
+- Updated setup.py to accurately reflect the module name and version
+
+### Removed
+- Nothing
+
+## [0.1.1] - 2020-11-13
 ### Added
 - This document
 
 ### Changed
 - README.md to be formatted according to GitHub guidelines
+
+### Removed
+- Nothing
 
 ## [0.1.0] - 2020-11-13
 ### Added
