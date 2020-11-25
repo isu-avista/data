@@ -7,7 +7,7 @@ from avista_data.user import User
 from avista_data.role import Role
 
 
-class MyTestCase(BaseTest):
+class UserTest(BaseTest):
 
     def setUp(self):
         super().setUp()

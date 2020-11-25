@@ -3,6 +3,8 @@ from tests.base_test import BaseTest
 from avista_data import db
 from avista_data.data_point import DataPoint
 from avista_data.sensor import Sensor
+from datetime import datetime
+from avista_data.unit import Unit
 
 
 class DataPointTest(BaseTest):
@@ -11,6 +13,8 @@ class DataPointTest(BaseTest):
         super().setUp()
         self.fixture = DataPoint()
         self.fixture.set_value(0.0)
+        self.fixture.set_timestamp(int(datetime.timestamp(datetime.now())))
+        self.fixture.set_unit(Unit.KWH)
 
     def test_id(self):
         db.session.add(self.fixture)
@@ -30,7 +34,7 @@ class DataPointTest(BaseTest):
         with self.assertRaises(Exception):
             self.fixture.set_value("Test")
 
-    def test_parent_security_config(self):
+    def test_parent_sensor(self):
         sens = Sensor(name="TestSensor", identifier="Sensor01")
         db.session.add(sens)
         sens.add_data_point(self.fixture)
