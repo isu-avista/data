@@ -1,4 +1,5 @@
 from avista_data import db
+from avista_data.unit import Unit
 
 
 class Sensor(db.Model):
@@ -9,6 +10,7 @@ class Sensor(db.Model):
     identifier = db.Column(db.String(128), unique=True)
     description = db.Column(db.String(1024))
     device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
+    unit = db.Column(db.Enum(Unit), nullable=False)
     data = db.relationship('DataPoint', backref='sensor', lazy='dynamic')
 
     def get_id(self):
@@ -42,6 +44,14 @@ class Sensor(db.Model):
         if point is None or point in self.data:
             return
         self.data.append(point)
+
+    def get_unit(self):
+        return self.unit
+
+    def set_unit(self, unit):
+        if unit is None:
+            raise Exception("Unit cannot be none")
+        self.unit = unit
 
     def __repr__(self):
         return "Sensor: {} = {}".format(self.name, self.identifier)

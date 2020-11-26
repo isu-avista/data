@@ -6,6 +6,7 @@ from avista_data.sensor import Sensor
 from avista_data import db
 from avista_data.device import Device
 from avista_data.data_point import DataPoint
+from datetime import datetime
 
 
 class SensorTest(BaseTest):
@@ -16,6 +17,7 @@ class SensorTest(BaseTest):
         self.fixture.set_name("Test")
         self.fixture.set_description("Test")
         self.fixture.set_identifier("Test")
+        self.fixture.set_unit(Unit.KWH)
 
     def test_id(self):
         db.session.add(self.fixture)
@@ -67,7 +69,7 @@ class SensorTest(BaseTest):
         self.assertEqual(self.fixture.device_id, dev.get_id(), "id mismatch")
 
     def test_data(self):
-        dp = DataPoint(value=1.0, unit=Unit.KWH)
+        dp = DataPoint(value=1.0, timestamp=int(datetime.timestamp(datetime.now())))
         db.session.add(dp)
         self.fixture.add_data_point(dp)
         db.session.commit()

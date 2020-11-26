@@ -14,7 +14,6 @@ class DataPointTest(BaseTest):
         self.fixture = DataPoint()
         self.fixture.set_value(0.0)
         self.fixture.set_timestamp(int(datetime.timestamp(datetime.now())))
-        self.fixture.set_unit(Unit.KWH)
 
     def test_id(self):
         db.session.add(self.fixture)
@@ -35,7 +34,7 @@ class DataPointTest(BaseTest):
             self.fixture.set_value("Test")
 
     def test_parent_sensor(self):
-        sens = Sensor(name="TestSensor", identifier="Sensor01")
+        sens = Sensor(name="TestSensor", identifier="Sensor01", unit=Unit.KWH)
         db.session.add(sens)
         sens.add_data_point(self.fixture)
         db.session.commit()
