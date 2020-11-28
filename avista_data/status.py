@@ -1,20 +1,19 @@
 from avista_data import db
 
 
-class ServerConfig(db.Model):
-    """A representation of a configuration for a given Server
+class Status(db.Model):
+    """Representation of items representing the current status of the device/service
 
     Attributes:
-        id (int): primary key of this instance
-        name (str): Name of this configuration
-        device_id (int): Device to which this configuration belongs
-        items (list): List of configuration items associated with this configuration
+        id (int): Primary key
+        name (str): Name of the status item being observed
+        value (int): Value of the item (0, 1, 2) - (Good, Warning, Danger)
+
     """
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True, nullable=False)
-    device_id = db.Column(db.Integer, db.ForeignKey("device.id"))
-    items = db.relationship('ConfigItem', backref='serv_conf', lazy='dynamic')
+    name = db.Column(db.String(128), nullable=False)
+    value = db.Column(db.Integer, nullable=False)
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -36,7 +35,8 @@ class ServerConfig(db.Model):
 
         """
         if json is not None:
-            self.name = json.get('name')
+            self.set_name(json.get('name'))
+            self.set_value(json.get('value'))
             db.session.commit()
 
     def get_id(self):
@@ -67,36 +67,50 @@ class ServerConfig(db.Model):
 
         """
         if name is None or name == "":
-            raise Exception("name cannot be None or empty")
+            raise Exception('name cannot be None or Empty')
         self.name = name
         db.session.commit()
 
-    def add_item(self, item):
-        """Adds the provided config item to this configuration
+    def get_value(self):
+        """Value associated with this instance
+
+        Returns:
+             The value of the server represented by this instance
+
+        """
+        return self.value
+
+    def set_value(self, value):
+        """Assigns the value for this instance
 
         Args:
-            item (:obj: `ConfigItem`): The item to be added
+            value (int): The new value for this instance
+
+        Raises:
+            Exception, if the value provided is None or outside the range 0 <= value <= 3
+
         """
-        if item is None or item in self.items:
-            return
-        self.items.append(item)
+        if value is None or value < 0 or value > 3:
+            raise Exception('value cannot be None or less than 0 or greater than 3')
+        self.value = value
         db.session.commit()
 
     def __repr__(self):
-        """An unambiguous representation of Configuration"""
-        return f"Server Config: {self.name}"
+        """An unambiguous representation of Server"""
+        return f"Status: {self.name} = {self.value}"
 
     def __str__(self):
-        """A readable representation of Configuration"""
-        return f"Server Config: {self.name}"
+        """A readable representation of Server"""
+        return f"Status: {self.name} = {self.value}"
 
     def to_dict(self):
-        """Constructs a dictionary representation of the configuration
+        """Constructs a dictionary representation of the Server
 
         Returns:
-            Dictionary representation of this config containing all of its attributes data.
+            Dictionary representation of this server containing all of its attributes data.
         """
         return dict(
             id=self.id,
             name=self.name,
+            value=self.value
         )
