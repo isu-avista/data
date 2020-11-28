@@ -157,6 +157,7 @@ class Sensor(db.Model):
         if unit is None:
             raise Exception("Unit cannot be none")
         self.unit = unit
+        db.session.commit()
 
     def get_class(self):
         """Returns the class used by this instance"""

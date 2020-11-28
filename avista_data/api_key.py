@@ -91,6 +91,7 @@ class ApiKey(db.Model):
         if desc is None or desc == "":
             raise Exception("description cannot be None or empty")
         self.description = desc
+        db.session.commit()
 
     def __repr__(self):
         """An unambiguous representation of Server"""
