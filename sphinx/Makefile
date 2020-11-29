@@ -7,10 +7,18 @@ SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
+DOCS          = ../docs
 
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+github:
+	@rm -rf "$(DOCS)/"*
+	@rm -rf "$(BUILDDIR)"
+	@make html
+	@mv "$(BUILDDIR)/html"/* "$(DOCS)"
+	@mv "$(BUILDDIR)/html"/.* "$(DOCS)"
 
 .PHONY: help Makefile
 
