@@ -63,7 +63,7 @@ class ApiKey(db.Model):
     def check_key(self, key):
         """Checks whether the provided key is the same as the original
 
-        Attributes:
+        Args:
             key (str): Key to be checked
 
         Returns:
