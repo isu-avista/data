@@ -16,7 +16,6 @@ class SecurityConfig(db.Model):
     name = db.Column(db.String(120), unique=True, nullable=False)
     device_id = db.Column(db.Integer, db.ForeignKey("device.id"))
     items = db.relationship('ConfigItem', backref='sec_conf', lazy='dynamic')
-    users = db.relationship('User', backref='config', lazy='dynamic')
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -82,17 +81,6 @@ class SecurityConfig(db.Model):
         if item is None or item in self.items:
             return
         self.items.append(item)
-        db.session.commit()
-
-    def add_user(self, user):
-        """Adds the provided user to this configuration
-
-        Args:
-            user (:obj: `User`): The item to be added
-        """
-        if user is None or user in self.users:
-            return
-        self.users.append(user)
         db.session.commit()
 
     def __repr__(self):

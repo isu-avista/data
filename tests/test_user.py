@@ -1,6 +1,6 @@
 import unittest
 from flask import jsonify
-from avista_data.security_config import SecurityConfig
+from avista_data.device import Device
 from tests.base_test import BaseTest
 from avista_data import db
 from avista_data.user import User
@@ -91,13 +91,13 @@ class UserTest(BaseTest):
         self.fixture.add_api_key(key)
         self.assertEqual(1, self.fixture.api_keys.count(), "counts are same")
 
-    def test_security_config(self):
-        sc = SecurityConfig(name="SC_Test")
+    def test_device(self):
+        sc = Device(name="SC_Test")
         db.session.add(sc)
         sc.add_user(self.fixture)
         db.session.commit()
         self.assertIn(self.fixture, sc.users, "user not added")
-        self.assertEqual(self.fixture.sec_conf_id, sc.get_id(), "id mismatch")
+        self.assertEqual(self.fixture.device_id, sc.get_id(), "id mismatch")
 
     def test_to_dict(self):
         expected = {

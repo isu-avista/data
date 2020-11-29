@@ -14,6 +14,7 @@ class Status(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     value = db.Column(db.Integer, nullable=False)
+    device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class

@@ -1,8 +1,8 @@
-"""initial
+"""all-domain
 
-Revision ID: 12b238e79cef
+Revision ID: 192d288b5f7c
 Revises: 
-Create Date: 2020-11-10 21:07:02.232586
+Create Date: 2020-11-28 19:13:35.897429
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '12b238e79cef'
+revision = '192d288b5f7c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -47,13 +47,22 @@ def upgrade():
     op.create_table('sensor',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=True),
-    sa.Column('identifier', sa.String(length=128), nullable=True),
-    sa.Column('description', sa.String(length=1024), nullable=True),
+    sa.Column('quantity', sa.String(length=128), nullable=True),
+    sa.Column('unit', sa.Enum('Hz', 'J', 'Db', 'F', 'C', 'kWh', name='unit'), nullable=True),
+    sa.Column('cls', sa.String(length=1024), nullable=True),
     sa.Column('device_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['device_id'], ['device.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('identifier'),
-    sa.UniqueConstraint('name')
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('server',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=128), nullable=True),
+    sa.Column('ip_address', sa.String(length=128), nullable=True),
+    sa.Column('port', sa.Integer(), nullable=True),
+    sa.Column('periodicity', sa.Integer(), nullable=True),
+    sa.Column('device_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['device_id'], ['device.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('server_config',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -62,6 +71,36 @@ def upgrade():
     sa.ForeignKeyConstraint(['device_id'], ['device.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
+    )
+    op.create_table('status',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=128), nullable=False),
+    sa.Column('value', sa.Integer(), nullable=False),
+    sa.Column('device_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['device_id'], ['device.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('user',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('first_name', sa.String(length=75), nullable=False),
+    sa.Column('last_name', sa.String(length=75), nullable=False),
+    sa.Column('email', sa.String(length=120), nullable=False),
+    sa.Column('password_hash', sa.String(length=128), nullable=False),
+    sa.Column('role', sa.Enum('USER', 'TECHNICIAN', 'MANAGER', 'ADMIN', name='role'), nullable=False),
+    sa.Column('device_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['device_id'], ['device.id'], ),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email')
+    )
+    op.create_table('api_key',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('key_hash', sa.String(length=128), nullable=False),
+    sa.Column('description', sa.String(length=1024), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('server_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['server_id'], ['server.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('config_item',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -79,33 +118,32 @@ def upgrade():
     op.create_table('data_point',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('value', sa.Float(), nullable=False),
+    sa.Column('timestamp', sa.Integer(), nullable=False),
     sa.Column('sensor_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['sensor_id'], ['sensor.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('user',
+    op.create_table('pin_out',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('first_name', sa.String(length=75), nullable=False),
-    sa.Column('last_name', sa.String(length=75), nullable=False),
-    sa.Column('email', sa.String(length=120), nullable=False),
-    sa.Column('password_hash', sa.String(length=128), nullable=False),
-    sa.Column('token', sa.String(length=32), nullable=True),
-    sa.Column('role', sa.Enum('USER', 'TECHNICIAN', 'MANAGER', 'ADMIN', name='role'), nullable=False),
-    sa.Column('sec_conf_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['sec_conf_id'], ['security_config.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email'),
-    sa.UniqueConstraint('token')
+    sa.Column('var', sa.String(length=128), nullable=False),
+    sa.Column('pin', sa.Integer(), nullable=False),
+    sa.Column('sensor_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['sensor_id'], ['sensor.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
 
 
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
-    op.drop_table('user')
+    op.drop_table('pin_out')
     op.drop_table('data_point')
     op.drop_table('config_item')
+    op.drop_table('api_key')
+    op.drop_table('user')
+    op.drop_table('status')
     op.drop_table('server_config')
+    op.drop_table('server')
     op.drop_table('sensor')
     op.drop_table('security_config')
     op.drop_table('issue')

@@ -5,6 +5,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+
+### Changed
+
+### Deleted
+
+## [0.1.5] - 2020-11-28
+### Added
+- Added github page documentation to the project
+- Modified the README to provide instructions for generating documentation
+- New migrations to ensure the db is correct
+
+### Changed
+- Modified several classes to ensure the relationships are correct according to the design
+
+### Removed
+- All old migrations
 
 ## [0.1.4] - 2020-11-28
 ### Added

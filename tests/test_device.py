@@ -8,6 +8,10 @@ from avista_data.issue import Issue
 from avista_data.issue_type import IssueType
 from avista_data.sensor import Sensor
 from avista_data.unit import Unit
+from avista_data.user import User
+from avista_data.role import Role
+from avista_data.status import Status
+from avista_data.server import Server
 from flask import jsonify
 
 
@@ -110,6 +114,62 @@ class DeviceTest(BaseTest):
         sensor = None
         self.fixture.add_sensor(sensor)
         self.assertEqual(0, self.fixture.sensors.count(), "count mismatch")
+
+    def test_status(self):
+        status1 = Status(name="Item 01", value="Value 01")
+        status2 = Status(name="Item 02", value="Value 02")
+        db.session.add(status1)
+        db.session.add(status2)
+        self.fixture.add_status(status1)
+        self.fixture.add_status(status2)
+        self.assertIn(status1, self.fixture.status)
+        self.assertIn(status2, self.fixture.status)
+
+    def test_null_status(self):
+        status = None
+        self.fixture.add_status(status)
+        self.assertEqual(0, self.fixture.status.count(), "count mismatch")
+
+    def test_servers(self):
+        server1 = Server(name="Server 01")
+        server2 = Server(name="Server 02")
+        db.session.add(server1)
+        db.session.add(server2)
+        self.fixture.add_server(server1)
+        self.fixture.add_server(server2)
+        self.assertIn(server1, self.fixture.servers)
+        self.assertIn(server2, self.fixture.servers)
+
+    def test_null_server(self):
+        server = None
+        self.fixture.add_server(server)
+        self.assertEqual(0, self.fixture.servers.count(), "count mismatch")
+
+    def test_users(self):
+        u1 = User(first_name="John", last_name="Smith", email="js@example.com", role=Role.USER)
+        u1.set_password("test")
+        u2 = User(first_name="Jane", last_name="Smith", email="janes@example.com", role=Role.USER)
+        u2.set_password("test")
+        db.session.add(u1)
+        db.session.add(u2)
+        self.fixture.add_user(u1)
+        self.fixture.add_user(u2)
+        self.assertIn(u1, self.fixture.users)
+        self.assertIn(u2, self.fixture.users)
+
+    def test_null_user(self):
+        user = None
+        self.fixture.add_user(user)
+        self.assertEqual(0, self.fixture.users.count(), "counts not same")
+
+    def test_existing_user(self):
+        user = User(first_name="John", last_name="Smith", email="js@example.com", role=Role.USER)
+        user.set_password("test")
+        db.session.add(user)
+        self.fixture.add_user(user)
+        count = self.fixture.users.count()
+        self.fixture.add_user(user)
+        self.assertEqual(count, self.fixture.users.count(), "counts not same")
 
     def test_to_dict(self):
         exp = {
