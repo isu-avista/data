@@ -57,32 +57,6 @@ class SecurityConfigTest(BaseTest):
         self.fixture.add_item(iss1)
         self.assertEqual(count, self.fixture.items.count(), "counts not same")
 
-    def test_users(self):
-        u1 = User(first_name="John", last_name="Smith", email="js@example.com", role=Role.USER)
-        u1.set_password("test")
-        u2 = User(first_name="Jane", last_name="Smith", email="janes@example.com", role=Role.USER)
-        u2.set_password("test")
-        db.session.add(u1)
-        db.session.add(u2)
-        self.fixture.add_user(u1)
-        self.fixture.add_user(u2)
-        self.assertIn(u1, self.fixture.users)
-        self.assertIn(u2, self.fixture.users)
-
-    def test_null_user(self):
-        user = None
-        self.fixture.add_user(user)
-        self.assertEqual(0, self.fixture.users.count(), "counts not same")
-
-    def test_existing_user(self):
-        user = User(first_name="John", last_name="Smith", email="js@example.com", role=Role.USER)
-        user.set_password("test")
-        db.session.add(user)
-        self.fixture.add_user(user)
-        count = self.fixture.users.count()
-        self.fixture.add_user(user)
-        self.assertEqual(count, self.fixture.users.count(), "counts not same")
-
     def test_to_dict(self):
         exp = {
             "id": 1,

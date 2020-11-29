@@ -22,6 +22,9 @@ class Device(db.Model):
     sec_conf = db.relationship('SecurityConfig', uselist=False, backref='device')
     serv_conf = db.relationship('ServerConfig', uselist=False, backref='device')
     issues = db.relationship('Issue', backref='device', lazy='dynamic')
+    users = db.relationship('User', backref='device', lazy='dynamic')
+    servers = db.relationship('Server', backref='device', lazy='dynamic')
+    status = db.relationship('Status', backref='device', lazy='dynamic')
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -192,6 +195,42 @@ class Device(db.Model):
         if sensor is None:
             return
         self.sensors.append(sensor)
+        db.session.commit()
+
+    def add_user(self, user):
+        """Adds the provided user to this instance
+
+        Args:
+            user (:obj: `User`): The new user to be added to this instance
+
+        """
+        if user is None:
+            return
+        self.users.append(user)
+        db.session.commit()
+
+    def add_status(self, status):
+        """Adds the provided status item to this instance
+
+        Args:
+            status (:obj: `status`): The new status item to be added to this instance
+
+        """
+        if status is None:
+            return
+        self.status.append(status)
+        db.session.commit()
+
+    def add_server(self, server):
+        """Adds the provided server to this instance
+
+        Args:
+            server (:obj: `Server`): The new server to be added to this instance
+
+        """
+        if server is None:
+            return
+        self.servers.append(server)
         db.session.commit()
 
     def __repr__(self):

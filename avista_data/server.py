@@ -21,6 +21,7 @@ class Server(db.Model):
     port = db.Column(db.Integer)
     periodicity = db.Column(db.Integer)
     api_keys = db.relationship('ApiKey', backref='server', lazy='dynamic')
+    device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
