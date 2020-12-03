@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [0.1.6] - 2020-12-03
+### Added
+- Added module field to Sensor
+- Added migration
+
+### Changed
+
+### Deleted
+
 ## [0.1.5] - 2020-11-28
 ### Added
 - Added github page documentation to the project
