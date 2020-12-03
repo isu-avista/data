@@ -7,28 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to avista-data’s documentation! &#8212; avista-data 0.1.4 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+    <link rel="search" title="Search" href="search.html" /> 
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">avista-data 0.1.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Welcome to avista-data’s documentation!</a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="welcome-to-avista-data-s-documentation">
@@ -362,6 +368,36 @@ issues (list): List of issues identified</p>
 <dd><p>Adds the provided sensor to this instance</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>sensor (:obj: <cite>Sensor</cite>): The new sensor to be added to this instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.device.Device.add_server">
+<code class="sig-name descname">add_server</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">server</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.add_server"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.add_server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the provided server to this instance</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>server (:obj: <cite>Server</cite>): The new server to be added to this instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.device.Device.add_status">
+<code class="sig-name descname">add_status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">status</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.add_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.add_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the provided status item to this instance</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>status (:obj: <cite>status</cite>): The new status item to be added to this instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.device.Device.add_user">
+<code class="sig-name descname">add_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.add_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.add_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the provided user to this instance</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>user (:obj: <cite>User</cite>): The new user to be added to this instance</p>
 </dd>
 </dl>
 </dd></dl>
@@ -779,16 +815,6 @@ items (list): List of users associated with this configuration</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="avista_data.security_config.SecurityConfig.add_user">
-<code class="sig-name descname">add_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/security_config.html#SecurityConfig.add_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.security_config.SecurityConfig.add_user" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the provided user to this configuration</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>user (:obj: <cite>User</cite>): The item to be added</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt id="avista_data.security_config.SecurityConfig.get_id">
 <code class="sig-name descname">get_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/security_config.html#SecurityConfig.get_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.security_config.SecurityConfig.get_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Primary key of this instance</p>
@@ -855,7 +881,8 @@ items (list): List of users associated with this configuration</p>
 name (str): The name of this sensor
 quantity (str): The measured quantity
 unit (:obj: <cite>Unit</cite>): The units of measurement
-cls (str): The fully qualified name of the sensor to be used
+module (str): The module
+cls (str): The class name of the sensor to be used
 data (list): List of data points measured by the sensor
 pinout (list): List of pinouts associated with this sensor
 device_id (int): id of the parent device to which this sensor is attached</p>
@@ -898,6 +925,12 @@ device_id (int): id of the parent device to which this sensor is attached</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="avista_data.sensor.Sensor.get_module">
+<code class="sig-name descname">get_module</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.get_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.get_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the module used by this instance</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="avista_data.sensor.Sensor.get_name">
 <code class="sig-name descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.get_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name associated with this instance</p>
@@ -933,6 +966,18 @@ device_id (int): id of the parent device to which this sensor is attached</p>
 <dd><p>Sets the class used by this instance to the string provided</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>cls (str): The class to be used</p>
+</dd>
+<dt>Raises:</dt><dd><p>Exception, if either the provided string is None or empty</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.sensor.Sensor.set_module">
+<code class="sig-name descname">set_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.set_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.set_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the module used by this instance to the string provided</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>module (str): The module to be used</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if either the provided string is None or empty</p>
 </dd>
@@ -1512,30 +1557,40 @@ role (:obj: <cite>Role</cite>): role assigned to this User</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="#">avista-data</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="#">Documentation overview</a><ul>
-  </ul></li>
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to avista-data’s documentation!</a></li>
+<li><a class="reference internal" href="#module-avista_data.api_key">avista-data api_key</a></li>
+<li><a class="reference internal" href="#module-avista_data.config_item">avista-data config_item</a></li>
+<li><a class="reference internal" href="#module-avista_data.data_point">avista-data data_point</a></li>
+<li><a class="reference internal" href="#module-avista_data.device">avista-data device</a></li>
+<li><a class="reference internal" href="#module-avista_data.issue">avista-data issue</a></li>
+<li><a class="reference internal" href="#module-avista_data.issue_type">avista-data issue_type</a></li>
+<li><a class="reference internal" href="#module-avista_data.pin_out">avista-data pin_out</a></li>
+<li><a class="reference internal" href="#module-avista_data.role">avista-data role</a></li>
+<li><a class="reference internal" href="#module-avista_data.security_config">avista-data security_config</a></li>
+<li><a class="reference internal" href="#module-avista_data.sensor">avista-data sensor</a></li>
+<li><a class="reference internal" href="#module-avista_data.server">avista-data server</a></li>
+<li><a class="reference internal" href="#module-avista_data.server_config">avista-data server_config</a></li>
+<li><a class="reference internal" href="#module-avista_data.status">avista-data status</a></li>
+<li><a class="reference internal" href="#module-avista_data.unit">avista-data unit</a></li>
+<li><a class="reference internal" href="#module-avista_data.user">avista-data user</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and Tables</a></li>
 </ul>
-</div>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -1546,32 +1601,26 @@ role (:obj: <cite>Role</cite>): role assigned to this User</p>
     </div>
 </div>
 <script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2020, ISU Empirical Software Engineering Laboratory.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/index.rst.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">avista-data 0.1.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Welcome to avista-data’s documentation!</a></li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, ISU Empirical Software Engineering Laboratory.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.1.
+    </div>
   </body>
 </html>

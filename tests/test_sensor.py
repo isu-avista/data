@@ -19,6 +19,7 @@ class SensorTest(BaseTest):
         self.fixture.set_name("Test")
         self.fixture.set_quantity("Test")
         self.fixture.set_class("Test")
+        self.fixture.set_module('test.test')
         self.fixture.set_unit(Unit.kWh)
 
         self.fixture.add_pin_out(PinOut(var="t", pin=1))
@@ -49,6 +50,17 @@ class SensorTest(BaseTest):
     def test_empty_cls(self):
         with self.assertRaises(Exception):
             self.fixture.set_class("")
+
+    def test_module(self):
+        self.assertEqual("test.test", self.fixture.get_module(), "modules do not match")
+
+    def test_null_module(self):
+        with self.assertRaises(Exception):
+            self.fixture.set_module(None)
+
+    def test_empty_module(self):
+        with self.assertRaises(Exception):
+            self.fixture.set_module("")
 
     def test_unit(self):
         self.assertEqual(Unit.kWh, self.fixture.get_unit(), "names do not match")
@@ -125,6 +137,7 @@ class SensorTest(BaseTest):
             'id': 1,
             'name': 'Test',
             'quantity': 'Test',
+            'module': 'test.test',
             'cls': 'Test',
             'unit': 'kWh',
             'pinout': [

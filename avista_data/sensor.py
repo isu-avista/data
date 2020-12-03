@@ -13,7 +13,8 @@ class Sensor(db.Model):
         name (str): The name of this sensor
         quantity (str): The measured quantity
         unit (:obj: `Unit`): The units of measurement
-        cls (str): The fully qualified name of the sensor to be used
+        module (str): The module
+        cls (str): The class name of the sensor to be used
         data (list): List of data points measured by the sensor
         pinout (list): List of pinouts associated with this sensor
         device_id (int): id of the parent device to which this sensor is attached
@@ -24,6 +25,7 @@ class Sensor(db.Model):
     name = db.Column(db.String(120))
     quantity = db.Column(db.String(128))
     unit = db.Column(db.Enum(Unit))
+    module = db.Column(db.String(1024))
     cls = db.Column(db.String(1024))
     data = db.relationship('DataPoint', backref='sensor', lazy='dynamic')
     pinout = db.relationship('PinOut', backref='sensor', lazy='dynamic')
@@ -53,6 +55,7 @@ class Sensor(db.Model):
             self.quantity = json.get('quantity')
             self.unit = Unit.from_str(json.get('unit'))
             self.cls = json.get('cls')
+            self.module = json.get('module')
             for p in json.get('pinout'):
                 self.add_pin_out(PinOut(p))
             db.session.commit()
@@ -178,6 +181,25 @@ class Sensor(db.Model):
         self.cls = cls
         db.session.commit()
 
+    def get_module(self):
+        """Returns the module used by this instance"""
+        return self.module
+
+    def set_module(self, module):
+        """Sets the module used by this instance to the string provided
+
+        Args:
+            module (str): The module to be used
+
+        Raises:
+            Exception, if either the provided string is None or empty
+
+        """
+        if module is None or module == "":
+            raise Exception("module cannot be None or empty")
+        self.module = module
+        db.session.commit()
+
     def __repr__(self):
         """An unambiguous representation of Sensor"""
         return f"Sensor: {self.name} = {self.quantity}"
@@ -200,6 +222,7 @@ class Sensor(db.Model):
             name=self.name,
             quantity=self.quantity,
             cls=self.cls,
+            module=self.module,
             unit=str(self.unit),
             pinout=pinout
         )
