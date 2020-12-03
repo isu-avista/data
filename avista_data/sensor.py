@@ -24,6 +24,7 @@ class Sensor(db.Model):
     name = db.Column(db.String(120))
     quantity = db.Column(db.String(128))
     unit = db.Column(db.Enum(Unit))
+    module = db.Column(db.String(1024))
     cls = db.Column(db.String(1024))
     data = db.relationship('DataPoint', backref='sensor', lazy='dynamic')
     pinout = db.relationship('PinOut', backref='sensor', lazy='dynamic')
