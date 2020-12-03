@@ -13,7 +13,8 @@ class Sensor(db.Model):
         name (str): The name of this sensor
         quantity (str): The measured quantity
         unit (:obj: `Unit`): The units of measurement
-        cls (str): The fully qualified name of the sensor to be used
+        module (str): The module
+        cls (str): The class name of the sensor to be used
         data (list): List of data points measured by the sensor
         pinout (list): List of pinouts associated with this sensor
         device_id (int): id of the parent device to which this sensor is attached
@@ -184,19 +185,19 @@ class Sensor(db.Model):
         """Returns the module used by this instance"""
         return self.module
 
-    def set_class(self, cls):
-        """Sets the class used by this instance to the string provided
+    def set_module(self, module):
+        """Sets the module used by this instance to the string provided
 
         Args:
-            cls (str): The class to be used
+            module (str): The module to be used
 
         Raises:
             Exception, if either the provided string is None or empty
 
         """
-        if cls is None or cls == "":
-            raise Exception("cls cannot be None or empty")
-        self.cls = cls
+        if module is None or module == "":
+            raise Exception("module cannot be None or empty")
+        self.module = module
         db.session.commit()
 
     def __repr__(self):
@@ -221,6 +222,7 @@ class Sensor(db.Model):
             name=self.name,
             quantity=self.quantity,
             cls=self.cls,
+            module=self.module,
             unit=str(self.unit),
             pinout=pinout
         )
