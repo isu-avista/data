@@ -881,7 +881,8 @@ items (list): List of users associated with this configuration</p>
 name (str): The name of this sensor
 quantity (str): The measured quantity
 unit (:obj: <cite>Unit</cite>): The units of measurement
-cls (str): The fully qualified name of the sensor to be used
+module (str): The module
+cls (str): The class name of the sensor to be used
 data (list): List of data points measured by the sensor
 pinout (list): List of pinouts associated with this sensor
 device_id (int): id of the parent device to which this sensor is attached</p>
@@ -924,6 +925,12 @@ device_id (int): id of the parent device to which this sensor is attached</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="avista_data.sensor.Sensor.get_module">
+<code class="sig-name descname">get_module</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.get_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.get_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the module used by this instance</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="avista_data.sensor.Sensor.get_name">
 <code class="sig-name descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.get_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name associated with this instance</p>
@@ -959,6 +966,18 @@ device_id (int): id of the parent device to which this sensor is attached</p>
 <dd><p>Sets the class used by this instance to the string provided</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>cls (str): The class to be used</p>
+</dd>
+<dt>Raises:</dt><dd><p>Exception, if either the provided string is None or empty</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.sensor.Sensor.set_module">
+<code class="sig-name descname">set_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.set_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.set_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the module used by this instance to the string provided</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>module (str): The module to be used</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if either the provided string is None or empty</p>
 </dd>
