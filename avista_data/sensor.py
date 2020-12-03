@@ -54,6 +54,7 @@ class Sensor(db.Model):
             self.quantity = json.get('quantity')
             self.unit = Unit.from_str(json.get('unit'))
             self.cls = json.get('cls')
+            self.module = json.get('module')
             for p in json.get('pinout'):
                 self.add_pin_out(PinOut(p))
             db.session.commit()
@@ -163,6 +164,25 @@ class Sensor(db.Model):
     def get_class(self):
         """Returns the class used by this instance"""
         return self.cls
+
+    def set_class(self, cls):
+        """Sets the class used by this instance to the string provided
+
+        Args:
+            cls (str): The class to be used
+
+        Raises:
+            Exception, if either the provided string is None or empty
+
+        """
+        if cls is None or cls == "":
+            raise Exception("cls cannot be None or empty")
+        self.cls = cls
+        db.session.commit()
+
+    def get_module(self):
+        """Returns the module used by this instance"""
+        return self.module
 
     def set_class(self, cls):
         """Sets the class used by this instance to the string provided
