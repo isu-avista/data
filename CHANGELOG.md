@@ -11,7 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
-## [0.1.6] - 2020-12-03
+## [0.1.7](https://github.com/isu-avista/data/releases/tag/v0.1.7) - 2020-12-05
+### Added
+
+### Changed
+- Updated readme to point to key project wikis
+- Added license information directly to the readme
+- Updated the changelog to link to the actual releases
+
+### Deleted
+
+## [0.1.6](https://github.com/isu-avista/data/releases/tag/v0.1.6) - 2020-12-03
 ### Added
 - Added module field to Sensor
 - Added migration
@@ -20,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
-## [0.1.5] - 2020-11-28
+## [0.1.5](https://github.com/isu-avista/data/releases/tag/v0.1.5) - 2020-11-28
 ### Added
 - Added github page documentation to the project
 - Modified the README to provide instructions for generating documentation
@@ -32,7 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - All old migrations
 
-## [0.1.4] - 2020-11-28
+## [0.1.4](https://github.com/isu-avista/data/releases/tag/v0.1.4) - 2020-11-28
 ### Added
 - New migration for the changes to Sensor and Datapoint
 - Quantity field to Sensor
@@ -56,7 +66,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Description field from Sensor
 - Identifier field from Sensor
 
-## [0.1.3] - 2020-11-25
+## [0.1.3](https://github.com/isu-avista/data/releases/tag/v0.1.3) - 2020-11-25
 ### Added
 - New migration for datapoint
 
@@ -66,7 +76,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Nothing
 
-## [0.1.2] - 2020-11-13
+## [0.1.2](https://github.com/isu-avista/data/releases/tag/v0.1.2) - 2020-11-13
 ### Added
 - Nothing
 
@@ -76,7 +86,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Nothing
 
-## [0.1.1] - 2020-11-13
+## [0.1.1](https://github.com/isu-avista/data/releases/tag/v0.1.1) - 2020-11-13
 ### Added
 - This document
 
@@ -86,7 +96,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Nothing
 
-## [0.1.0] - 2020-11-13
+## [0.1.0](https://github.com/isu-avista/data/releases/tag/v0.1.0) - 2020-11-13
 ### Added
 - Setup the basic file structure
 - Base classes forming the initial data model for the Avista Predictive Maintenance project.
