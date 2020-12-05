@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [0.1.7](https://github.com/isu-avista/data/releases/tag/v0.1.7) - 2020-12-05
+### Added
+
+### Changed
+- Updated readme to point to key project wikis
+- Added license information directly to the readme
+- Updated the changelog to link to the actual releases
+
+### Deleted
+
 ## [0.1.6](https://github.com/isu-avista/data/releases/tag/v0.1.6) - 2020-12-03
 ### Added
 - Added module field to Sensor
