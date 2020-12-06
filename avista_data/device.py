@@ -5,17 +5,17 @@ class Device(db.Model):
     """Representation of the device or service
 
     Attributes:
-        id (int): Primary key of this instance
+        **id (int)**: Primary key of this instance
 
-        name (str): Name of this instance
+        **name (str)**: Name of this instance
 
-        description (str): Description of this instance
+        **description (str)**: Description of this instance
 
-        location (str): Location of the monitored equipment
+        **location (str)**: Location of the monitored equipment
 
-        sensors (list): List of sensors attached
+        **sensors (list)**: List of sensors attached
 
-        issues (list): List of issues identified
+        **issues (list)**: List of issues identified
 
     """
 
@@ -35,11 +35,11 @@ class Device(db.Model):
         """Creates a new instance of this class
 
         Args:
-            json (:obj: `JSON`): json representing an instance of the class (optional)
+            **json (:obj: `JSON`)**: json representing an instance of the class (optional)
 
-            *args: arguments to initialize attributes of the class
+            __*args__: arguments to initialize attributes of the class
 
-            **kwargs: arguments to initialize attributes of the class
+            __**kwargs__: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)
@@ -49,7 +49,7 @@ class Device(db.Model):
         """Updates this instance using the values from the provided json data
 
         Args:
-            json (:obj: `JSON`): json data providing new values for this class
+            **json (:obj: `JSON`)**: json data providing new values for this class
 
         """
         if json is not None:
@@ -70,7 +70,7 @@ class Device(db.Model):
         """Name associated with this instance
 
         Returns:
-             The name of the server represented by this instance
+            The name of the server represented by this instance
 
         """
         return self.name
@@ -79,7 +79,7 @@ class Device(db.Model):
         """Assigns the name for this instance
 
         Args:
-            name (str): The new name for this instance
+            **name (str)**: The new name for this instance
 
         Raises:
             Exception, if the name provided is None or the empty string
@@ -94,7 +94,7 @@ class Device(db.Model):
         """Description associated with this instance
 
         Returns:
-             The description of the issue represented by this instance
+            The description of the issue represented by this instance
 
         """
         return self.description
@@ -103,7 +103,7 @@ class Device(db.Model):
         """Assigns the description for this instance
 
         Args:
-            desc (str): The new description for this instance
+            **desc (str)**: The new description for this instance
 
         Raises:
             Exception, if the description provided is None or the empty string
@@ -118,7 +118,7 @@ class Device(db.Model):
         """Location associated with this instance
 
         Returns:
-             The location of the issue represented by this instance
+            The location of the issue represented by this instance
 
         """
         return self.location
@@ -127,7 +127,7 @@ class Device(db.Model):
         """Assigns the location for this instance
 
         Args:
-            loc (str): The new location for this instance
+            **loc (str)**: The new location for this instance
 
         Raises:
             Exception, if the location provided is None or the empty string
@@ -142,7 +142,7 @@ class Device(db.Model):
         """Assigns the security config for this instance
 
         Args:
-            conf (:obj: `SecurityConfig`): The new security config for this instance
+            **conf (:obj: `SecurityConfig`)**: The new security config for this instance
 
         """
         if conf is None:
@@ -154,7 +154,7 @@ class Device(db.Model):
         """SecurityConfig associated with this instance
 
         Returns:
-             The security config of the issue represented by this instance
+            The security config of the issue represented by this instance
 
         """
         return self.sec_conf
@@ -163,7 +163,7 @@ class Device(db.Model):
         """Assigns the ServerConfig for this instance
 
         Args:
-            conf (:obj: `ServerConfig`): The new server config for this instance
+            **conf (:obj: `ServerConfig`)**: The new server config for this instance
 
         """
         if conf is None:
@@ -175,7 +175,7 @@ class Device(db.Model):
         """ServerConfig associated with this instance
 
         Returns:
-             The server config of the issue represented by this instance
+            The server config of the issue represented by this instance
 
         """
         return self.serv_conf
@@ -184,7 +184,7 @@ class Device(db.Model):
         """Adds the provided issue to this instance
 
         Args:
-            issue (:obj: `Issue`): The new issue to be added to this instance
+            **issue (:obj: `Issue`)**: The new issue to be added to this instance
 
         """
         if issue is None:
@@ -196,7 +196,7 @@ class Device(db.Model):
         """Adds the provided sensor to this instance
 
         Args:
-            sensor (:obj: `Sensor`): The new sensor to be added to this instance
+            **sensor (:obj: `Sensor`)**: The new sensor to be added to this instance
 
         """
         if sensor is None:
@@ -208,7 +208,7 @@ class Device(db.Model):
         """Adds the provided user to this instance
 
         Args:
-            user (:obj: `User`): The new user to be added to this instance
+            **user (:obj: `User`)**: The new user to be added to this instance
 
         """
         if user is None:
@@ -220,7 +220,7 @@ class Device(db.Model):
         """Adds the provided status item to this instance
 
         Args:
-            status (:obj: `status`): The new status item to be added to this instance
+            **status (:obj: `status`)**: The new status item to be added to this instance
 
         """
         if status is None:
@@ -232,7 +232,7 @@ class Device(db.Model):
         """Adds the provided server to this instance
 
         Args:
-            server (:obj: `Server`): The new server to be added to this instance
+            **server (:obj: `Server`)**: The new server to be added to this instance
 
         """
         if server is None:

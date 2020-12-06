@@ -46,17 +46,17 @@
     <span class="sd">&quot;&quot;&quot;Representation of the device or service</span>
 
 <span class="sd">    Attributes:</span>
-<span class="sd">        id (int): Primary key of this instance</span>
+<span class="sd">        **id (int)**: Primary key of this instance</span>
 
-<span class="sd">        name (str): Name of this instance</span>
+<span class="sd">        **name (str)**: Name of this instance</span>
 
-<span class="sd">        description (str): Description of this instance</span>
+<span class="sd">        **description (str)**: Description of this instance</span>
 
-<span class="sd">        location (str): Location of the monitored equipment</span>
+<span class="sd">        **location (str)**: Location of the monitored equipment</span>
 
-<span class="sd">        sensors (list): List of sensors attached</span>
+<span class="sd">        **sensors (list)**: List of sensors attached</span>
 
-<span class="sd">        issues (list): List of issues identified</span>
+<span class="sd">        **issues (list)**: List of issues identified</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -76,11 +76,11 @@
         <span class="sd">&quot;&quot;&quot;Creates a new instance of this class</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            json (:obj: `JSON`): json representing an instance of the class (optional)</span>
+<span class="sd">            **json (:obj: `JSON`)**: json representing an instance of the class (optional)</span>
 
-<span class="sd">            *args: arguments to initialize attributes of the class</span>
+<span class="sd">            __*args__: arguments to initialize attributes of the class</span>
 
-<span class="sd">            **kwargs: arguments to initialize attributes of the class</span>
+<span class="sd">            __**kwargs__: arguments to initialize attributes of the class</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -90,7 +90,7 @@
         <span class="sd">&quot;&quot;&quot;Updates this instance using the values from the provided json data</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            json (:obj: `JSON`): json data providing new values for this class</span>
+<span class="sd">            **json (:obj: `JSON`)**: json data providing new values for this class</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">json</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -111,7 +111,7 @@
         <span class="sd">&quot;&quot;&quot;Name associated with this instance</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">             The name of the server represented by this instance</span>
+<span class="sd">            The name of the server represented by this instance</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div>
@@ -120,7 +120,7 @@
         <span class="sd">&quot;&quot;&quot;Assigns the name for this instance</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            name (str): The new name for this instance</span>
+<span class="sd">            **name (str)**: The new name for this instance</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            Exception, if the name provided is None or the empty string</span>
@@ -135,7 +135,7 @@
         <span class="sd">&quot;&quot;&quot;Description associated with this instance</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">             The description of the issue represented by this instance</span>
+<span class="sd">            The description of the issue represented by this instance</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span></div>
@@ -144,7 +144,7 @@
         <span class="sd">&quot;&quot;&quot;Assigns the description for this instance</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            desc (str): The new description for this instance</span>
+<span class="sd">            **desc (str)**: The new description for this instance</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            Exception, if the description provided is None or the empty string</span>
@@ -159,7 +159,7 @@
         <span class="sd">&quot;&quot;&quot;Location associated with this instance</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">             The location of the issue represented by this instance</span>
+<span class="sd">            The location of the issue represented by this instance</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span></div>
@@ -168,7 +168,7 @@
         <span class="sd">&quot;&quot;&quot;Assigns the location for this instance</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            loc (str): The new location for this instance</span>
+<span class="sd">            **loc (str)**: The new location for this instance</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            Exception, if the location provided is None or the empty string</span>
@@ -183,7 +183,7 @@
         <span class="sd">&quot;&quot;&quot;Assigns the security config for this instance</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            conf (:obj: `SecurityConfig`): The new security config for this instance</span>
+<span class="sd">            **conf (:obj: `SecurityConfig`)**: The new security config for this instance</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">conf</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -195,7 +195,7 @@
         <span class="sd">&quot;&quot;&quot;SecurityConfig associated with this instance</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">             The security config of the issue represented by this instance</span>
+<span class="sd">            The security config of the issue represented by this instance</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sec_conf</span></div>
@@ -204,7 +204,7 @@
         <span class="sd">&quot;&quot;&quot;Assigns the ServerConfig for this instance</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            conf (:obj: `ServerConfig`): The new server config for this instance</span>
+<span class="sd">            **conf (:obj: `ServerConfig`)**: The new server config for this instance</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">conf</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -216,7 +216,7 @@
         <span class="sd">&quot;&quot;&quot;ServerConfig associated with this instance</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">             The server config of the issue represented by this instance</span>
+<span class="sd">            The server config of the issue represented by this instance</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">serv_conf</span></div>
@@ -225,7 +225,7 @@
         <span class="sd">&quot;&quot;&quot;Adds the provided issue to this instance</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            issue (:obj: `Issue`): The new issue to be added to this instance</span>
+<span class="sd">            **issue (:obj: `Issue`)**: The new issue to be added to this instance</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">issue</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -237,7 +237,7 @@
         <span class="sd">&quot;&quot;&quot;Adds the provided sensor to this instance</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            sensor (:obj: `Sensor`): The new sensor to be added to this instance</span>
+<span class="sd">            **sensor (:obj: `Sensor`)**: The new sensor to be added to this instance</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">sensor</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -249,7 +249,7 @@
         <span class="sd">&quot;&quot;&quot;Adds the provided user to this instance</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            user (:obj: `User`): The new user to be added to this instance</span>
+<span class="sd">            **user (:obj: `User`)**: The new user to be added to this instance</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">user</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -261,7 +261,7 @@
         <span class="sd">&quot;&quot;&quot;Adds the provided status item to this instance</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            status (:obj: `status`): The new status item to be added to this instance</span>
+<span class="sd">            **status (:obj: `status`)**: The new status item to be added to this instance</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">status</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -273,7 +273,7 @@
         <span class="sd">&quot;&quot;&quot;Adds the provided server to this instance</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            server (:obj: `Server`): The new server to be added to this instance</span>
+<span class="sd">            **server (:obj: `Server`)**: The new server to be added to this instance</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">server</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>

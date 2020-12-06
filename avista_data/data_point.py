@@ -5,13 +5,13 @@ class DataPoint(db.Model):
     """"Representation of a measured value from a sensor
 
     Attributes:
-        id (int): The primary key for each data point instance
+        **id (int)**: The primary key for each data point instance
 
-        value (float): The measure value
+        **value (float)**: The measure value
 
-        timestamp (int): The point at which the measurement occurred
+        **timestamp (int)**: The point at which the measurement occurred
 
-        sensor_id (int): The id of the sensor which made the measurement
+        **sensor_id (int)**: The id of the sensor which made the measurement
 
     """
 
@@ -24,11 +24,11 @@ class DataPoint(db.Model):
         """Creates a new instance of this class
 
         Args:
-            json (:obj: `JSON`): json representing an instance of the class (optional)
+            **json (:obj: `JSON`)**: json representing an instance of the class (optional)
 
-            *args: arguments to initialize attributes of the class
+            __*args__: arguments to initialize attributes of the class
 
-            **kwargs: arguments to initialize attributes of the class
+            __**kwargs__: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)
@@ -38,7 +38,7 @@ class DataPoint(db.Model):
         """Updates this instance using the values from the provided json data
 
         Args:
-            json (:obj: `JSON`): json data providing new values for this class
+            **json (:obj: `JSON`)**: json data providing new values for this class
 
         """
         if json is not None:
@@ -66,7 +66,7 @@ class DataPoint(db.Model):
         """Assigns the value for this instance
 
         Args:
-            value (float): The new value for this instance
+            **value (float)**: The new value for this instance
 
         Raises:
             Exception, if the provided value is not a float
@@ -88,7 +88,7 @@ class DataPoint(db.Model):
         """Assigns the timestamp for this instance
 
         Args:
-            ts (int): The new timestamp for this instance
+            **ts (int)**: The new timestamp for this instance
 
         Raises:
             Exception, if the provided timestamp is not an int

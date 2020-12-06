@@ -46,13 +46,13 @@
     <span class="sd">&quot;&quot;&quot;&quot;Representation of a measured value from a sensor</span>
 
 <span class="sd">    Attributes:</span>
-<span class="sd">        id (int): The primary key for each data point instance</span>
+<span class="sd">        **id (int)**: The primary key for each data point instance</span>
 
-<span class="sd">        value (float): The measure value</span>
+<span class="sd">        **value (float)**: The measure value</span>
 
-<span class="sd">        timestamp (int): The point at which the measurement occurred</span>
+<span class="sd">        **timestamp (int)**: The point at which the measurement occurred</span>
 
-<span class="sd">        sensor_id (int): The id of the sensor which made the measurement</span>
+<span class="sd">        **sensor_id (int)**: The id of the sensor which made the measurement</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -65,11 +65,11 @@
         <span class="sd">&quot;&quot;&quot;Creates a new instance of this class</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            json (:obj: `JSON`): json representing an instance of the class (optional)</span>
+<span class="sd">            **json (:obj: `JSON`)**: json representing an instance of the class (optional)</span>
 
-<span class="sd">            *args: arguments to initialize attributes of the class</span>
+<span class="sd">            __*args__: arguments to initialize attributes of the class</span>
 
-<span class="sd">            **kwargs: arguments to initialize attributes of the class</span>
+<span class="sd">            __**kwargs__: arguments to initialize attributes of the class</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -79,7 +79,7 @@
         <span class="sd">&quot;&quot;&quot;Updates this instance using the values from the provided json data</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            json (:obj: `JSON`): json data providing new values for this class</span>
+<span class="sd">            **json (:obj: `JSON`)**: json data providing new values for this class</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">json</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -107,7 +107,7 @@
         <span class="sd">&quot;&quot;&quot;Assigns the value for this instance</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            value (float): The new value for this instance</span>
+<span class="sd">            **value (float)**: The new value for this instance</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            Exception, if the provided value is not a float</span>
@@ -129,7 +129,7 @@
         <span class="sd">&quot;&quot;&quot;Assigns the timestamp for this instance</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            ts (int): The new timestamp for this instance</span>
+<span class="sd">            **ts (int)**: The new timestamp for this instance</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            Exception, if the provided timestamp is not an int</span>

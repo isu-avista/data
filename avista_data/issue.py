@@ -6,11 +6,15 @@ class Issue(db.Model):
     """Represents an issue associated with the measured equipment
 
     Attributes:
-        **id (int)**: The primary key for this issue<br/>
-        name (str): Name associated with this issue<br/>
-        description (str): Description associated with this issue<br/>
-        type (:obj: IssueType): Type associated with this issue<br/>
-        device_id (int): Primary key of the device to which this issue is associated
+        **id (int)**: The primary key for this issue
+
+        **name (str)**: Name associated with this issue
+
+        **description (str)**: Description associated with this issue
+
+        **type (:obj: IssueType)**: Type associated with this issue
+
+        **device_id (int)**: Primary key of the device to which this issue is associated
 
     """
 
@@ -24,9 +28,11 @@ class Issue(db.Model):
         """Creates a new instance of this class
 
         Args:
-            json (:obj: `JSON`): json representing an instance of the class (optional)
-            args: arguments to initialize attributes of the class
-            kwargs: arguments to initialize attributes of the class
+            **json (:obj: `JSON`)**: json representing an instance of the class (optional)
+
+            __*args__: arguments to initialize attributes of the class
+
+            __**kwargs__: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)
@@ -36,7 +42,7 @@ class Issue(db.Model):
         """Updates this instance using the values from the provided json data
 
         Args:
-            json (:obj: `JSON`): json data providing new values for this class
+            **json (:obj: `JSON`)**: json data providing new values for this class
 
         """
         if json is not None:
@@ -57,7 +63,7 @@ class Issue(db.Model):
         """Name associated with this instance
 
         Returns:
-             The name of the server represented by this instance
+            The name of the server represented by this instance
 
         """
         return self.name
@@ -66,7 +72,7 @@ class Issue(db.Model):
         """Assigns the name for this instance
 
         Args:
-            name (str): The new name for this instance
+            **name (str)**: The new name for this instance
 
         Raises:
             Exception, if the name provided is None or the empty string
@@ -81,7 +87,7 @@ class Issue(db.Model):
         """Description associated with this instance
 
         Returns:
-             The description of the issue represented by this instance
+            The description of the issue represented by this instance
 
         """
         return self.description
@@ -90,7 +96,7 @@ class Issue(db.Model):
         """Assigns the description for this instance
 
         Args:
-            desc (str): The new description for this instance
+            **desc (str)**: The new description for this instance
 
         Raises:
             Exception, if the description provided is None or the empty string
@@ -105,7 +111,7 @@ class Issue(db.Model):
         """IssueType associated with this instance
 
         Returns:
-             The type of the issue represented by this instance
+            The type of the issue represented by this instance
 
         """
         return self.type
@@ -114,7 +120,7 @@ class Issue(db.Model):
         """Assigns the IssueType for this instance
 
         Args:
-            new_type (:obj: `IssueType`): The new type for this instance
+            **new_type (:obj: `IssueType`)**: The new type for this instance
 
         Raises:
             Exception, if the issue type provided is None

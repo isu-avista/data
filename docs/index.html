@@ -49,11 +49,11 @@
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.api_key.</code><code class="sig-name descname">ApiKey</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/api_key.html#ApiKey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.api_key.ApiKey" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of an API Key for use by a user or server</p>
 <dl>
-<dt>Attributes:</dt><dd><p>id (int): Primary key of this instance</p>
-<p>key_hash (str): Hashed value of this key</p>
-<p>description (str): Description of this key</p>
-<p>user_id (int): Primary key of the parent user</p>
-<p>server_id (int): Primary key of the parent server</p>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: Primary key of this instance</p>
+<p><strong>key_hash (str)</strong>: Hashed value of this key</p>
+<p><strong>description (str)</strong>: Description of this key</p>
+<p><strong>user_id (int)</strong>: Primary key of the parent user</p>
+<p><strong>server_id (int)</strong>: Primary key of the parent server</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -61,7 +61,7 @@
 <code class="sig-name descname">check_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/api_key.html#ApiKey.check_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.api_key.ApiKey.check_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks whether the provided key is the same as the original</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>key (str): Key to be checked</p>
+<dt>Args:</dt><dd><p><strong>key (str)</strong>: Key to be checked</p>
 </dd>
 <dt>Returns:</dt><dd><p>True if the provided key is the same as the original, False otherwise</p>
 </dd>
@@ -93,7 +93,7 @@
 <code class="sig-name descname">set_description</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">desc</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/api_key.html#ApiKey.set_description"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.api_key.ApiKey.set_description" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the value of the description of this key</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>desc (str): The new description for this key</p>
+<dt>Args:</dt><dd><p><strong>desc (str)</strong>: The new description for this key</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the provided description is None or the empty string</p>
 </dd>
@@ -105,7 +105,7 @@
 <code class="sig-name descname">set_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/api_key.html#ApiKey.set_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.api_key.ApiKey.set_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the new value of this key, which is hashed and stored</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>key (str): The key to be hashed and stored</p>
+<dt>Args:</dt><dd><p><strong>key (str)</strong>: The key to be hashed and stored</p>
 </dd>
 </dl>
 </dd></dl>
@@ -125,7 +125,7 @@
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/api_key.html#ApiKey.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.api_key.ApiKey.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates this instance using the values from the provided json data</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>json (:obj: <cite>JSON</cite>): json data providing new values for this class</p>
+<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
 </dd>
 </dl>
 </dd></dl>
@@ -140,12 +140,12 @@
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.config_item.</code><code class="sig-name descname">ConfigItem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/config_item.html#ConfigItem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.config_item.ConfigItem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of a single item from a configuration</p>
 <dl>
-<dt>Attributes:</dt><dd><p>id (int): The primary key for each data point instance</p>
-<p>name (str): Name of this instance</p>
-<p>description (str): Description of this instance</p>
-<p>value (str): Config value</p>
-<p>sec_conf_id (int): primary key of containing security configuration</p>
-<p>serv_conf_id (int); primary key of containing server configuration</p>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: The primary key for each data point instance</p>
+<p><strong>name (str)</strong>: Name of this instance</p>
+<p><strong>description (str)</strong>: Description of this instance</p>
+<p><strong>value (str)</strong>: Config value</p>
+<p><strong>sec_conf_id (int)</strong>: primary key of containing security configuration</p>
+<p><strong>serv_conf_id (int)</strong>; primary key of containing server configuration</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -193,7 +193,7 @@
 <code class="sig-name descname">set_description</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">desc</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/config_item.html#ConfigItem.set_description"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.config_item.ConfigItem.set_description" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the description for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>desc (str): The new description for this instance</p>
+<dt>Args:</dt><dd><p><strong>desc (str)</strong>: The new description for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the description provided is None or the empty string</p>
 </dd>
@@ -205,7 +205,7 @@
 <code class="sig-name descname">set_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/config_item.html#ConfigItem.set_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.config_item.ConfigItem.set_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the name for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The new name for this instance</p>
+<dt>Args:</dt><dd><p><strong>name (str)</strong>: The new name for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the name provided is None or the empty string</p>
 </dd>
@@ -217,7 +217,7 @@
 <code class="sig-name descname">set_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/config_item.html#ConfigItem.set_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.config_item.ConfigItem.set_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the value for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>value (str): The new value for this instance</p>
+<dt>Args:</dt><dd><p><strong>value (str)</strong>: The new value for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the provided value is not a float</p>
 </dd>
@@ -239,7 +239,7 @@
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/config_item.html#ConfigItem.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.config_item.ConfigItem.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates this instance using the values from the provided json data</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>json (:obj: <cite>JSON</cite>): json data providing new values for this class</p>
+<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
 </dd>
 </dl>
 </dd></dl>
@@ -254,10 +254,10 @@
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.data_point.</code><code class="sig-name descname">DataPoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/data_point.html#DataPoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.data_point.DataPoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>“Representation of a measured value from a sensor</p>
 <dl>
-<dt>Attributes:</dt><dd><p>id (int): The primary key for each data point instance</p>
-<p>value (float): The measure value</p>
-<p>timestamp (int): The point at which the measurement occurred</p>
-<p>sensor_id (int): The id of the sensor which made the measurement</p>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: The primary key for each data point instance</p>
+<p><strong>value (float)</strong>: The measure value</p>
+<p><strong>timestamp (int)</strong>: The point at which the measurement occurred</p>
+<p><strong>sensor_id (int)</strong>: The id of the sensor which made the measurement</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -295,7 +295,7 @@
 <code class="sig-name descname">set_timestamp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/data_point.html#DataPoint.set_timestamp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.data_point.DataPoint.set_timestamp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the timestamp for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>ts (int): The new timestamp for this instance</p>
+<dt>Args:</dt><dd><p><strong>ts (int)</strong>: The new timestamp for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the provided timestamp is not an int</p>
 </dd>
@@ -307,7 +307,7 @@
 <code class="sig-name descname">set_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/data_point.html#DataPoint.set_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.data_point.DataPoint.set_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the value for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>value (float): The new value for this instance</p>
+<dt>Args:</dt><dd><p><strong>value (float)</strong>: The new value for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the provided value is not a float</p>
 </dd>
@@ -329,7 +329,7 @@
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/data_point.html#DataPoint.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.data_point.DataPoint.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates this instance using the values from the provided json data</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>json (:obj: <cite>JSON</cite>): json data providing new values for this class</p>
+<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
 </dd>
 </dl>
 </dd></dl>
@@ -344,12 +344,12 @@
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.device.</code><code class="sig-name descname">Device</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of the device or service</p>
 <dl>
-<dt>Attributes:</dt><dd><p>id (int): Primary key of this instance</p>
-<p>name (str): Name of this instance</p>
-<p>description (str): Description of this instance</p>
-<p>location (str): Location of the monitored equipment</p>
-<p>sensors (list): List of sensors attached</p>
-<p>issues (list): List of issues identified</p>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: Primary key of this instance</p>
+<p><strong>name (str)</strong>: Name of this instance</p>
+<p><strong>description (str)</strong>: Description of this instance</p>
+<p><strong>location (str)</strong>: Location of the monitored equipment</p>
+<p><strong>sensors (list)</strong>: List of sensors attached</p>
+<p><strong>issues (list)</strong>: List of issues identified</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -357,7 +357,7 @@
 <code class="sig-name descname">add_issue</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">issue</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.add_issue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.add_issue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the provided issue to this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>issue (:obj: <cite>Issue</cite>): The new issue to be added to this instance</p>
+<dt>Args:</dt><dd><p><strong>issue (:obj: `Issue`)</strong>: The new issue to be added to this instance</p>
 </dd>
 </dl>
 </dd></dl>
@@ -367,7 +367,7 @@
 <code class="sig-name descname">add_sensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sensor</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.add_sensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.add_sensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the provided sensor to this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>sensor (:obj: <cite>Sensor</cite>): The new sensor to be added to this instance</p>
+<dt>Args:</dt><dd><p><strong>sensor (:obj: `Sensor`)</strong>: The new sensor to be added to this instance</p>
 </dd>
 </dl>
 </dd></dl>
@@ -377,7 +377,7 @@
 <code class="sig-name descname">add_server</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">server</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.add_server"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.add_server" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the provided server to this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>server (:obj: <cite>Server</cite>): The new server to be added to this instance</p>
+<dt>Args:</dt><dd><p><strong>server (:obj: `Server`)</strong>: The new server to be added to this instance</p>
 </dd>
 </dl>
 </dd></dl>
@@ -387,7 +387,7 @@
 <code class="sig-name descname">add_status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">status</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.add_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.add_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the provided status item to this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>status (:obj: <cite>status</cite>): The new status item to be added to this instance</p>
+<dt>Args:</dt><dd><p><strong>status (:obj: `status`)</strong>: The new status item to be added to this instance</p>
 </dd>
 </dl>
 </dd></dl>
@@ -397,7 +397,7 @@
 <code class="sig-name descname">add_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.add_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.add_user" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the provided user to this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>user (:obj: <cite>User</cite>): The new user to be added to this instance</p>
+<dt>Args:</dt><dd><p><strong>user (:obj: `User`)</strong>: The new user to be added to this instance</p>
 </dd>
 </dl>
 </dd></dl>
@@ -467,7 +467,7 @@
 <code class="sig-name descname">set_description</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">desc</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.set_description"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.set_description" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the description for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>desc (str): The new description for this instance</p>
+<dt>Args:</dt><dd><p><strong>desc (str)</strong>: The new description for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the description provided is None or the empty string</p>
 </dd>
@@ -479,7 +479,7 @@
 <code class="sig-name descname">set_location</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loc</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.set_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.set_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the location for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>loc (str): The new location for this instance</p>
+<dt>Args:</dt><dd><p><strong>loc (str)</strong>: The new location for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the location provided is None or the empty string</p>
 </dd>
@@ -491,7 +491,7 @@
 <code class="sig-name descname">set_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.set_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.set_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the name for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The new name for this instance</p>
+<dt>Args:</dt><dd><p><strong>name (str)</strong>: The new name for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the name provided is None or the empty string</p>
 </dd>
@@ -503,7 +503,7 @@
 <code class="sig-name descname">set_sec_conf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">conf</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.set_sec_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.set_sec_conf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the security config for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>conf (:obj: <cite>SecurityConfig</cite>): The new security config for this instance</p>
+<dt>Args:</dt><dd><p><strong>conf (:obj: `SecurityConfig`)</strong>: The new security config for this instance</p>
 </dd>
 </dl>
 </dd></dl>
@@ -513,7 +513,7 @@
 <code class="sig-name descname">set_serv_conf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">conf</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.set_serv_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.set_serv_conf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the ServerConfig for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>conf (:obj: <cite>ServerConfig</cite>): The new server config for this instance</p>
+<dt>Args:</dt><dd><p><strong>conf (:obj: `ServerConfig`)</strong>: The new server config for this instance</p>
 </dd>
 </dl>
 </dd></dl>
@@ -533,7 +533,7 @@
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates this instance using the values from the provided json data</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>json (:obj: <cite>JSON</cite>): json data providing new values for this class</p>
+<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
 </dd>
 </dl>
 </dd></dl>
@@ -547,12 +547,12 @@
 <dt id="avista_data.issue.Issue">
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.issue.</code><code class="sig-name descname">Issue</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/issue.html#Issue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.issue.Issue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents an issue associated with the measured equipment</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: The primary key for this issue&lt;br/&gt;
-name (str): Name associated with this issue&lt;br/&gt;
-description (str): Description associated with this issue&lt;br/&gt;
-type (:obj: IssueType): Type associated with this issue&lt;br/&gt;
-device_id (int): Primary key of the device to which this issue is associated</p>
+<dl>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: The primary key for this issue</p>
+<p><strong>name (str)</strong>: Name associated with this issue</p>
+<p><strong>description (str)</strong>: Description associated with this issue</p>
+<p><strong>type (:obj: IssueType)</strong>: Type associated with this issue</p>
+<p><strong>device_id (int)</strong>: Primary key of the device to which this issue is associated</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -600,7 +600,7 @@ device_id (int): Primary key of the device to which this issue is associated</p>
 <code class="sig-name descname">set_description</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">desc</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/issue.html#Issue.set_description"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.issue.Issue.set_description" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the description for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>desc (str): The new description for this instance</p>
+<dt>Args:</dt><dd><p><strong>desc (str)</strong>: The new description for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the description provided is None or the empty string</p>
 </dd>
@@ -612,7 +612,7 @@ device_id (int): Primary key of the device to which this issue is associated</p>
 <code class="sig-name descname">set_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/issue.html#Issue.set_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.issue.Issue.set_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the name for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The new name for this instance</p>
+<dt>Args:</dt><dd><p><strong>name (str)</strong>: The new name for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the name provided is None or the empty string</p>
 </dd>
@@ -624,7 +624,7 @@ device_id (int): Primary key of the device to which this issue is associated</p>
 <code class="sig-name descname">set_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_type</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/issue.html#Issue.set_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.issue.Issue.set_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the IssueType for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>new_type (:obj: <cite>IssueType</cite>): The new type for this instance</p>
+<dt>Args:</dt><dd><p><strong>new_type (:obj: `IssueType`)</strong>: The new type for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the issue type provided is None</p>
 </dd>
@@ -646,7 +646,7 @@ device_id (int): Primary key of the device to which this issue is associated</p>
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/issue.html#Issue.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.issue.Issue.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates this instance using the values from the provided json data</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>json (:obj: <cite>JSON</cite>): json data providing new values for this class</p>
+<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
 </dd>
 </dl>
 </dd></dl>
