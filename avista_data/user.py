@@ -7,12 +7,17 @@ class User(db.Model):
     """Representation of a Service User
 
     Attributes:
-        id (int): primary key for this User
-        first_name (str): User's first name
-        last_name (str): User's last name
-        email (str): User's email address
-        password_hash (str): hash of the User's password
-        role (:obj: `Role`): role assigned to this User
+        **id (int)**: primary key for this User
+
+        **first_name (str)**: User's first name
+
+        **last_name (str)**: User's last name
+
+        **email (str)**: User's email address
+
+        **password_hash (str)**: hash of the User's password
+
+        **role (:obj: `Role`)**: role assigned to this User
     """
 
     id = db.Column(db.Integer, primary_key=True)
@@ -28,9 +33,11 @@ class User(db.Model):
         """Creates a new instance of this class
 
         Args:
-            json (:obj: `JSON`): json representing an instance of the class (optional)
-            args: arguments to initialize attributes of the class
-            kwargs: arguments to initialize attributes of the class
+            **json (:obj: `JSON`)**: json representing an instance of the class (optional)
+
+            __*args__: arguments to initialize attributes of the class
+
+            __**kwargs__: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)
@@ -40,7 +47,7 @@ class User(db.Model):
         """Updates this instance using the values from the provided json data
 
         Args:
-            json (:obj: `JSON`): json data providing new values for this class
+            **json (:obj: `JSON`)**: json data providing new values for this class
 
         """
         if json is not None:
@@ -63,7 +70,7 @@ class User(db.Model):
         """First Name associated with this instance
 
         Returns:
-             The first name of the user represented by this instance
+            The first name of the user represented by this instance
 
         """
         return self.first_name
@@ -72,7 +79,7 @@ class User(db.Model):
         """Assigns the first name for this instance
 
         Args:
-            name (str): The new first name for this instance
+            **name (str)**: The new first name for this instance
 
         Raises:
             Exception, if the first name provided is None or the empty string
@@ -87,7 +94,7 @@ class User(db.Model):
         """Last Name associated with this instance
 
         Returns:
-             The last name of the user represented by this instance
+            The last name of the user represented by this instance
 
         """
         return self.last_name
@@ -96,7 +103,7 @@ class User(db.Model):
         """Assigns the last name for this instance
 
         Args:
-            name (str): The new last name for this instance
+            **name (str)**: The new last name for this instance
 
         Raises:
             Exception, if the last name provided is None or the empty string
@@ -111,7 +118,7 @@ class User(db.Model):
         """Email associated with this instance
 
         Returns:
-             The email of the user represented by this instance
+            The email of the user represented by this instance
 
         """
         return self.email
@@ -120,7 +127,7 @@ class User(db.Model):
         """Assigns the email for this instance
 
         Args:
-            email (str): The new email for this instance
+            **email (str)**: The new email for this instance
 
         Raises:
             Exception, if the email provided is None or the empty string
@@ -135,7 +142,7 @@ class User(db.Model):
         """Role associated with this instance
 
         Returns:
-             The role of the user represented by this instance
+            The role of the user represented by this instance
 
         """
         return self.role
@@ -144,7 +151,7 @@ class User(db.Model):
         """Assigns the role for this instance
 
         Args:
-            role (:obj: `Role`): The new role for this instance
+            **role (:obj: `Role`)**: The new role for this instance
 
         Raises:
             Exception, if the role provided is None
@@ -159,7 +166,7 @@ class User(db.Model):
         """Assigns the new password for this user, which is hashed and stored
 
         Args:
-            password (str): The new password to be hashed and stored
+            **password (str)**: The new password to be hashed and stored
         """
         self.password_hash = generate_password_hash(password)
         db.session.commit()
@@ -168,7 +175,7 @@ class User(db.Model):
         """Checks whether the provided password is the same as the original
 
         Attributes:
-            password (str): Password to be checked
+            **password (str)**: Password to be checked
 
         Returns:
             True if the provided password is the same as the original, False otherwise
@@ -179,7 +186,7 @@ class User(db.Model):
         """Adds the provided key to the set of api keys for this server
 
         Args:
-            key (:obj: `ApiKey`): the ApiKey to be added
+            **key (:obj: `ApiKey`)**: the ApiKey to be added
         """
         if key is not None and key not in self.api_keys:
             self.api_keys.append(key)

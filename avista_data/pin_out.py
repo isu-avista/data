@@ -5,10 +5,13 @@ class PinOut(db.Model):
     """Represents the connection of a sensor to a RPi
 
     Attributes:
-        id (int): Primary key
-        var (str): Name of the pin to which the value will be referenced
-        pin (int): The pin to which the lead from the sensor is connected
-        sensor_id (int): primary key of the parent Sensor
+        **id (int)**: Primary key
+
+        **var (str)**: Name of the pin to which the value will be referenced
+
+        **pin (int)**: The pin to which the lead from the sensor is connected
+
+        **sensor_id (int)**: primary key of the parent Sensor
 
     """
 
@@ -21,9 +24,11 @@ class PinOut(db.Model):
         """Creates a new instance of this class
 
         Args:
-            json (:obj: `JSON`): json representing an instance of the class (optional)
-            args: arguments to initialize attributes of the class
-            kwargs: arguments to initialize attributes of the class
+            **json (:obj: `JSON`)**: json representing an instance of the class (optional)
+
+            __*args__: arguments to initialize attributes of the class
+
+            __**kwargs__: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)
@@ -33,7 +38,7 @@ class PinOut(db.Model):
         """Updates this instance using the values from the provided json data
 
         Args:
-            json (:obj: `JSON`): json data providing new values for this class
+            **json (:obj: `JSON`)**: json data providing new values for this class
 
         """
         if json is not None:
@@ -62,7 +67,7 @@ class PinOut(db.Model):
         """Assigns the current instance the provided pin name
 
         Args:
-            var (str): new var name of the pin to which the sensor is attached
+            **var (str)**: new var name of the pin to which the sensor is attached
 
         Raises:
             Exception, if var is none or empty string
@@ -85,7 +90,7 @@ class PinOut(db.Model):
         """Assigns the current instance the provided pin
 
         Args:
-            pin (int): new pin to which the sensor is attached
+            **pin (int)**: new pin to which the sensor is attached
 
         Raises:
             Exception, if pin is none or less than 1 or greater than 40

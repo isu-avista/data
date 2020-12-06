@@ -5,9 +5,11 @@ class Status(db.Model):
     """Representation of items representing the current status of the device/service
 
     Attributes:
-        id (int): Primary key
-        name (str): Name of the status item being observed
-        value (int): Value of the item (0, 1, 2) - (Good, Warning, Danger)
+        **id (int)**: Primary key
+
+        **name (str)**: Name of the status item being observed
+
+        **value (int)**: Value of the item (0, 1, 2) - (Good, Warning, Danger)
 
     """
 
@@ -20,9 +22,11 @@ class Status(db.Model):
         """Creates a new instance of this class
 
         Args:
-            json (:obj: `JSON`): json representing an instance of the class (optional)
-            args: arguments to initialize attributes of the class
-            kwargs: arguments to initialize attributes of the class
+            **json (:obj: `JSON`)**: json representing an instance of the class (optional)
+
+            __*args__: arguments to initialize attributes of the class
+
+            __**kwargs__: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)
@@ -32,7 +36,7 @@ class Status(db.Model):
         """Updates this instance using the values from the provided json data
 
         Args:
-            json (:obj: `JSON`): json data providing new values for this class
+            **json (:obj: `JSON`)**: json data providing new values for this class
 
         """
         if json is not None:
@@ -52,7 +56,7 @@ class Status(db.Model):
         """Name associated with this instance
 
         Returns:
-             The name of the server represented by this instance
+            The name of the server represented by this instance
 
         """
         return self.name
@@ -61,7 +65,7 @@ class Status(db.Model):
         """Assigns the name for this instance
 
         Args:
-            name (str): The new name for this instance
+            **name (str)**: The new name for this instance
 
         Raises:
             Exception, if the name provided is None or the empty string
@@ -76,7 +80,7 @@ class Status(db.Model):
         """Value associated with this instance
 
         Returns:
-             The value of the server represented by this instance
+            The value of the server represented by this instance
 
         """
         return self.value
@@ -85,7 +89,7 @@ class Status(db.Model):
         """Assigns the value for this instance
 
         Args:
-            value (int): The new value for this instance
+            **value (int)**: The new value for this instance
 
         Raises:
             Exception, if the value provided is None or outside the range 0 <= value <= 3

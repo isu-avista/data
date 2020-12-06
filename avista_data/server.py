@@ -6,12 +6,17 @@ class Server(db.Model):
     """A representation of servers to which the device is connected and to which data will be provided
 
     Attributes:
-        id (int): The primary key for each server connected
-        name (str): The name of the server
-        ip_address (str): The ip address of the server
-        port (int): The port of the server to which data is to be sent
-        periodicity (int): The time in milliseconds between data updates to the server
-        api_keys (list): The api keys associated with this server
+        **id (int)**: The primary key for each server connected
+
+        **name (str)**: The name of the server
+
+        **ip_address (str)**: The ip address of the server
+
+        **port (int)**: The port of the server to which data is to be sent
+
+        **periodicity (int)**: The time in milliseconds between data updates to the server
+
+        **api_keys (list)**: The api keys associated with this server
 
     """
 
@@ -27,9 +32,11 @@ class Server(db.Model):
         """Creates a new instance of this class
 
         Args:
-            json (:obj: `JSON`): json representing an instance of the class (optional)
-            args: arguments to initialize attributes of the class
-            kwargs: arguments to initialize attributes of the class
+            **json (:obj: `JSON`)**: json representing an instance of the class (optional)
+
+            __*args__: arguments to initialize attributes of the class
+
+            __**kwargs__: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)
@@ -39,7 +46,7 @@ class Server(db.Model):
         """Updates this instance using the values from the provided json data
 
         Args:
-            json (:obj: `JSON`): json data providing new values for this class
+            **json (:obj: `JSON`)**: json data providing new values for this class
 
         """
         if json is not None:
@@ -61,7 +68,7 @@ class Server(db.Model):
         """Name associated with this instance
 
         Returns:
-             The name of the server represented by this instance
+            The name of the server represented by this instance
 
         """
         return self.name
@@ -70,7 +77,7 @@ class Server(db.Model):
         """Assigns the name for this instance
 
         Args:
-            name (str): The new name for this instance
+            **name (str)**: The new name for this instance
 
         Raises:
             Exception, if the name provided is None or the empty string
@@ -93,7 +100,7 @@ class Server(db.Model):
         """Assigns the ip address for this instance
 
         Args:
-            ip (str): The new ip address for this instance
+            **ip (str)**: The new ip address for this instance
 
         Raises:
             Exception, if the ip address provide is None, the empty string, or improperly formatted
@@ -120,7 +127,7 @@ class Server(db.Model):
         """Assigns the port for this instance
 
         Args:
-            port (int): The new port for this instance
+            **port (int)**: The new port for this instance
 
         Raises:
             Exception, if the provided port is None, or outside the range 0 < port < 65536
@@ -143,7 +150,7 @@ class Server(db.Model):
         """Assigns the current instance the provided update periodicity in milliseconds
 
         Args:
-            period (int): new periodicity in milliseconds
+           ** period (int)**: new periodicity in milliseconds
 
         Raises:
             Exception, if period is none or less than or equal to 0
@@ -157,7 +164,7 @@ class Server(db.Model):
         """Adds the provided key to the set of api keys for this server
 
         Args:
-            key (:obj: `ApiKey`): the ApiKey to be added
+            **key (:obj: `ApiKey`)**: the ApiKey to be added
         """
         if key is not None and key not in self.api_keys:
             self.api_keys.append(key)

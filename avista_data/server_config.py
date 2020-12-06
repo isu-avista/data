@@ -5,10 +5,13 @@ class ServerConfig(db.Model):
     """A representation of a configuration for a given Server
 
     Attributes:
-        id (int): primary key of this instance
-        name (str): Name of this configuration
-        device_id (int): Device to which this configuration belongs
-        items (list): List of configuration items associated with this configuration
+        **id (int)**: primary key of this instance
+
+        **name (str)**: Name of this configuration
+
+        **device_id (int)**: Device to which this configuration belongs
+
+        **items (list)**: List of configuration items associated with this configuration
     """
 
     id = db.Column(db.Integer, primary_key=True)
@@ -20,9 +23,11 @@ class ServerConfig(db.Model):
         """Creates a new instance of this class
 
         Args:
-            json (:obj: `JSON`): json representing an instance of the class (optional)
-            args: arguments to initialize attributes of the class
-            kwargs: arguments to initialize attributes of the class
+            **json (:obj: `JSON`)**: json representing an instance of the class (optional)
+
+            __*args**: arguments to initialize attributes of the class
+
+            __**kwargs**: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)
@@ -32,7 +37,7 @@ class ServerConfig(db.Model):
         """Updates this instance using the values from the provided json data
 
         Args:
-            json (:obj: `JSON`): json data providing new values for this class
+            **json (:obj: `JSON`)**: json data providing new values for this class
 
         """
         if json is not None:
@@ -51,7 +56,7 @@ class ServerConfig(db.Model):
         """Name associated with this instance
 
         Returns:
-             The name of the server represented by this instance
+            The name of the server represented by this instance
 
         """
         return self.name
@@ -60,7 +65,7 @@ class ServerConfig(db.Model):
         """Assigns the name for this instance
 
         Args:
-            name (str): The new name for this instance
+            **name (str)**: The new name for this instance
 
         Raises:
             Exception, if the name provided is None or the empty string
@@ -75,7 +80,7 @@ class ServerConfig(db.Model):
         """Adds the provided config item to this configuration
 
         Args:
-            item (:obj: `ConfigItem`): The item to be added
+            **item (:obj: `ConfigItem`)**: The item to be added
         """
         if item is None or item in self.items:
             return

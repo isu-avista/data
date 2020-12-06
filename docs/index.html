@@ -665,7 +665,7 @@
 <em class="property">static </em><code class="sig-name descname">from_str</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/issue_type.html#IssueType.from_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.issue_type.IssueType.from_str" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides an instance of the IssueType for the given string.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>value (str): String representation of IssueType literal</p>
+<dt>Args:</dt><dd><p><strong>value (str)</strong>: String representation of IssueType literal</p>
 </dd>
 <dt>Returns:</dt><dd><p>IssueType: literal of issue type</p>
 </dd>
@@ -683,11 +683,11 @@
 <dt id="avista_data.pin_out.PinOut">
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.pin_out.</code><code class="sig-name descname">PinOut</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/pin_out.html#PinOut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.pin_out.PinOut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents the connection of a sensor to a RPi</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): Primary key
-var (str): Name of the pin to which the value will be referenced
-pin (int): The pin to which the lead from the sensor is connected
-sensor_id (int): primary key of the parent Sensor</p>
+<dl>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: Primary key</p>
+<p><strong>var (str)</strong>: Name of the pin to which the value will be referenced</p>
+<p><strong>pin (int)</strong>: The pin to which the lead from the sensor is connected</p>
+<p><strong>sensor_id (int)</strong>: primary key of the parent Sensor</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -725,7 +725,7 @@ sensor_id (int): primary key of the parent Sensor</p>
 <code class="sig-name descname">set_pin</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pin</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/pin_out.html#PinOut.set_pin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.pin_out.PinOut.set_pin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the current instance the provided pin</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>pin (int): new pin to which the sensor is attached</p>
+<dt>Args:</dt><dd><p><strong>pin (int)</strong>: new pin to which the sensor is attached</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if pin is none or less than 1 or greater than 40</p>
 </dd>
@@ -737,7 +737,7 @@ sensor_id (int): primary key of the parent Sensor</p>
 <code class="sig-name descname">set_var</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">var</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/pin_out.html#PinOut.set_var"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.pin_out.PinOut.set_var" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the current instance the provided pin name</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>var (str): new var name of the pin to which the sensor is attached</p>
+<dt>Args:</dt><dd><p><strong>var (str)</strong>: new var name of the pin to which the sensor is attached</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if var is none or empty string</p>
 </dd>
@@ -759,7 +759,7 @@ sensor_id (int): primary key of the parent Sensor</p>
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/pin_out.html#PinOut.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.pin_out.PinOut.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates this instance using the values from the provided json data</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>json (:obj: <cite>JSON</cite>): json data providing new values for this class</p>
+<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
 </dd>
 </dl>
 </dd></dl>
@@ -778,7 +778,7 @@ sensor_id (int): primary key of the parent Sensor</p>
 <em class="property">static </em><code class="sig-name descname">from_str</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/role.html#Role.from_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.role.Role.from_str" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides an instance of the Role for the given string.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>label (str): String representation of Role literal</p>
+<dt>Args:</dt><dd><p><strong>label (str)</strong>: String representation of Role literal</p>
 </dd>
 <dt>Returns:</dt><dd><p>Role: literal of role</p>
 </dd>
@@ -796,12 +796,12 @@ sensor_id (int): primary key of the parent Sensor</p>
 <dt id="avista_data.security_config.SecurityConfig">
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.security_config.</code><code class="sig-name descname">SecurityConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/security_config.html#SecurityConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.security_config.SecurityConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>A representation of the security configuration for a given Server</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): primary key of this instance
-name (str): Name of this configuration
-device_id (int): Device to which this configuration belongs
-items (list): List of configuration items associated with this configuration
-items (list): List of users associated with this configuration</p>
+<dl>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: primary key of this instance</p>
+<p><strong>name (str)</strong>: Name of this configuration</p>
+<p><strong>device_id (int)</strong>: Device to which this configuration belongs</p>
+<p><strong>items (list)</strong>: List of configuration items associated with this configuration</p>
+<p><strong>items (list)</strong>: List of users associated with this configuration</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -809,7 +809,7 @@ items (list): List of users associated with this configuration</p>
 <code class="sig-name descname">add_item</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/security_config.html#SecurityConfig.add_item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.security_config.SecurityConfig.add_item" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the provided config item to this configuration</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>item (:obj: <cite>ConfigItem</cite>): The item to be added</p>
+<dt>Args:</dt><dd><p><strong>item (:obj: `ConfigItem`)</strong>: The item to be added</p>
 </dd>
 </dl>
 </dd></dl>
@@ -839,7 +839,7 @@ items (list): List of users associated with this configuration</p>
 <code class="sig-name descname">set_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/security_config.html#SecurityConfig.set_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.security_config.SecurityConfig.set_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the name for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The new name for this instance</p>
+<dt>Args:</dt><dd><p><strong>name (str)</strong>: The new name for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the name provided is None or the empty string</p>
 </dd>
@@ -861,7 +861,7 @@ items (list): List of users associated with this configuration</p>
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/security_config.html#SecurityConfig.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.security_config.SecurityConfig.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates this instance using the values from the provided json data</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>json (:obj: <cite>JSON</cite>): json data providing new values for this class</p>
+<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
 </dd>
 </dl>
 </dd></dl>
@@ -876,16 +876,16 @@ items (list): List of users associated with this configuration</p>
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.sensor.</code><code class="sig-name descname">Sensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class representing an attached sensor.</p>
 <p>This allows for the dynamic construction and removal of sensors from the device</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): The primary key for this sensor
-name (str): The name of this sensor
-quantity (str): The measured quantity
-unit (:obj: <cite>Unit</cite>): The units of measurement
-module (str): The module
-cls (str): The class name of the sensor to be used
-data (list): List of data points measured by the sensor
-pinout (list): List of pinouts associated with this sensor
-device_id (int): id of the parent device to which this sensor is attached</p>
+<dl>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: The primary key for this sensor</p>
+<p><strong>name (str)</strong>: The name of this sensor</p>
+<p><strong>quantity (str)</strong>: The measured quantity</p>
+<p><strong>unit (:obj: `Unit`)</strong>: The units of measurement</p>
+<p><strong>module (str)</strong>: The module</p>
+<p><strong>cls (str)</strong>: The class name of the sensor to be used</p>
+<p><strong>data (list)</strong>: List of data points measured by the sensor</p>
+<p><strong>pinout (list)</strong>: List of pinouts associated with this sensor</p>
+<p><strong>device_id (int)</strong>: id of the parent device to which this sensor is attached</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -893,7 +893,7 @@ device_id (int): id of the parent device to which this sensor is attached</p>
 <code class="sig-name descname">add_data_point</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">point</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.add_data_point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.add_data_point" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the provided data point as a measure of this sensor</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>point (:obj: <cite>DataPoint</cite>): DataPoint measured</p>
+<dt>Args:</dt><dd><p><strong>point (:obj: `DataPoint`)</strong>: DataPoint measured</p>
 </dd>
 </dl>
 </dd></dl>
@@ -903,7 +903,7 @@ device_id (int): id of the parent device to which this sensor is attached</p>
 <code class="sig-name descname">add_pin_out</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pinout</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.add_pin_out"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.add_pin_out" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the provided pinout to this sensor</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>pinout (:obj: <cite>PinOut</cite>): PinOut to be added</p>
+<dt>Args:</dt><dd><p><strong>pinout (:obj: `PinOut`)</strong>: PinOut to be added</p>
 </dd>
 </dl>
 </dd></dl>
@@ -965,7 +965,7 @@ device_id (int): id of the parent device to which this sensor is attached</p>
 <code class="sig-name descname">set_class</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.set_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.set_class" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the class used by this instance to the string provided</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>cls (str): The class to be used</p>
+<dt>Args:</dt><dd><p><strong>cls (str)</strong>: The class to be used</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if either the provided string is None or empty</p>
 </dd>
@@ -977,7 +977,7 @@ device_id (int): id of the parent device to which this sensor is attached</p>
 <code class="sig-name descname">set_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.set_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.set_module" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the module used by this instance to the string provided</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>module (str): The module to be used</p>
+<dt>Args:</dt><dd><p><strong>module (str)</strong>: The module to be used</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if either the provided string is None or empty</p>
 </dd>
@@ -989,7 +989,7 @@ device_id (int): id of the parent device to which this sensor is attached</p>
 <code class="sig-name descname">set_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.set_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.set_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the name for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The new name for this instance</p>
+<dt>Args:</dt><dd><p><strong>name (str)</strong>: The new name for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the name provided is None or the empty string</p>
 </dd>
@@ -1001,7 +1001,7 @@ device_id (int): id of the parent device to which this sensor is attached</p>
 <code class="sig-name descname">set_quantity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">quantity</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.set_quantity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.set_quantity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the quantity to be measured by the sensor</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>quantity (str): The new quantity to be measured</p>
+<dt>Args:</dt><dd><p><strong>quantity (str)</strong>: The new quantity to be measured</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the provided quantity is None or empty</p>
 </dd>
@@ -1013,7 +1013,7 @@ device_id (int): id of the parent device to which this sensor is attached</p>
 <code class="sig-name descname">set_unit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unit</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.set_unit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.set_unit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the unit of measurement for the sensor</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>unit (:obj: <cite>Unit</cite>): New unit for the sensor</p>
+<dt>Args:</dt><dd><p><strong>unit (:obj: `Unit`)</strong>: New unit for the sensor</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception if the provided unit is None</p>
 </dd>
@@ -1035,7 +1035,7 @@ device_id (int): id of the parent device to which this sensor is attached</p>
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates this instance using the values from the provided json data</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>json (:obj: <cite>JSON</cite>): json data providing new values for this class</p>
+<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1049,13 +1049,13 @@ device_id (int): id of the parent device to which this sensor is attached</p>
 <dt id="avista_data.server.Server">
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.server.</code><code class="sig-name descname">Server</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/server.html#Server"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.server.Server" title="Permalink to this definition">¶</a></dt>
 <dd><p>A representation of servers to which the device is connected and to which data will be provided</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): The primary key for each server connected
-name (str): The name of the server
-ip_address (str): The ip address of the server
-port (int): The port of the server to which data is to be sent
-periodicity (int): The time in milliseconds between data updates to the server
-api_keys (list): The api keys associated with this server</p>
+<dl>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: The primary key for each server connected</p>
+<p><strong>name (str)</strong>: The name of the server</p>
+<p><strong>ip_address (str)</strong>: The ip address of the server</p>
+<p><strong>port (int)</strong>: The port of the server to which data is to be sent</p>
+<p><strong>periodicity (int)</strong>: The time in milliseconds between data updates to the server</p>
+<p><strong>api_keys (list)</strong>: The api keys associated with this server</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -1063,7 +1063,7 @@ api_keys (list): The api keys associated with this server</p>
 <code class="sig-name descname">add_api_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/server.html#Server.add_api_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.server.Server.add_api_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the provided key to the set of api keys for this server</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>key (:obj: <cite>ApiKey</cite>): the ApiKey to be added</p>
+<dt>Args:</dt><dd><p><strong>key (:obj: `ApiKey`)</strong>: the ApiKey to be added</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1123,7 +1123,7 @@ api_keys (list): The api keys associated with this server</p>
 <code class="sig-name descname">set_ip_address</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ip</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/server.html#Server.set_ip_address"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.server.Server.set_ip_address" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the ip address for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>ip (str): The new ip address for this instance</p>
+<dt>Args:</dt><dd><p><strong>ip (str)</strong>: The new ip address for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the ip address provide is None, the empty string, or improperly formatted</p>
 </dd>
@@ -1135,7 +1135,7 @@ api_keys (list): The api keys associated with this server</p>
 <code class="sig-name descname">set_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/server.html#Server.set_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.server.Server.set_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the name for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The new name for this instance</p>
+<dt>Args:</dt><dd><p><strong>name (str)</strong>: The new name for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the name provided is None or the empty string</p>
 </dd>
@@ -1147,7 +1147,7 @@ api_keys (list): The api keys associated with this server</p>
 <code class="sig-name descname">set_periodicity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">period</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/server.html#Server.set_periodicity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.server.Server.set_periodicity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the current instance the provided update periodicity in milliseconds</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>period (int): new periodicity in milliseconds</p>
+<dt>Args:</dt><dd><p>** period (int)**: new periodicity in milliseconds</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if period is none or less than or equal to 0</p>
 </dd>
@@ -1159,7 +1159,7 @@ api_keys (list): The api keys associated with this server</p>
 <code class="sig-name descname">set_port</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">port</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/server.html#Server.set_port"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.server.Server.set_port" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the port for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>port (int): The new port for this instance</p>
+<dt>Args:</dt><dd><p><strong>port (int)</strong>: The new port for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the provided port is None, or outside the range 0 &lt; port &lt; 65536</p>
 </dd>
@@ -1181,7 +1181,7 @@ api_keys (list): The api keys associated with this server</p>
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/server.html#Server.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.server.Server.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates this instance using the values from the provided json data</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>json (:obj: <cite>JSON</cite>): json data providing new values for this class</p>
+<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1195,11 +1195,11 @@ api_keys (list): The api keys associated with this server</p>
 <dt id="avista_data.server_config.ServerConfig">
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.server_config.</code><code class="sig-name descname">ServerConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/server_config.html#ServerConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.server_config.ServerConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>A representation of a configuration for a given Server</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): primary key of this instance
-name (str): Name of this configuration
-device_id (int): Device to which this configuration belongs
-items (list): List of configuration items associated with this configuration</p>
+<dl>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: primary key of this instance</p>
+<p><strong>name (str)</strong>: Name of this configuration</p>
+<p><strong>device_id (int)</strong>: Device to which this configuration belongs</p>
+<p><strong>items (list)</strong>: List of configuration items associated with this configuration</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -1207,7 +1207,7 @@ items (list): List of configuration items associated with this configuration</p>
 <code class="sig-name descname">add_item</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/server_config.html#ServerConfig.add_item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.server_config.ServerConfig.add_item" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the provided config item to this configuration</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>item (:obj: <cite>ConfigItem</cite>): The item to be added</p>
+<dt>Args:</dt><dd><p><strong>item (:obj: `ConfigItem`)</strong>: The item to be added</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1237,7 +1237,7 @@ items (list): List of configuration items associated with this configuration</p>
 <code class="sig-name descname">set_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/server_config.html#ServerConfig.set_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.server_config.ServerConfig.set_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the name for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The new name for this instance</p>
+<dt>Args:</dt><dd><p><strong>name (str)</strong>: The new name for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the name provided is None or the empty string</p>
 </dd>
@@ -1259,7 +1259,7 @@ items (list): List of configuration items associated with this configuration</p>
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/server_config.html#ServerConfig.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.server_config.ServerConfig.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates this instance using the values from the provided json data</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>json (:obj: <cite>JSON</cite>): json data providing new values for this class</p>
+<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1273,10 +1273,10 @@ items (list): List of configuration items associated with this configuration</p>
 <dt id="avista_data.status.Status">
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.status.</code><code class="sig-name descname">Status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/status.html#Status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.status.Status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of items representing the current status of the device/service</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): Primary key
-name (str): Name of the status item being observed
-value (int): Value of the item (0, 1, 2) - (Good, Warning, Danger)</p>
+<dl>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: Primary key</p>
+<p><strong>name (str)</strong>: Name of the status item being observed</p>
+<p><strong>value (int)</strong>: Value of the item (0, 1, 2) - (Good, Warning, Danger)</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -1314,7 +1314,7 @@ value (int): Value of the item (0, 1, 2) - (Good, Warning, Danger)</p>
 <code class="sig-name descname">set_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/status.html#Status.set_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.status.Status.set_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the name for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The new name for this instance</p>
+<dt>Args:</dt><dd><p><strong>name (str)</strong>: The new name for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the name provided is None or the empty string</p>
 </dd>
@@ -1326,7 +1326,7 @@ value (int): Value of the item (0, 1, 2) - (Good, Warning, Danger)</p>
 <code class="sig-name descname">set_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/status.html#Status.set_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.status.Status.set_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the value for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>value (int): The new value for this instance</p>
+<dt>Args:</dt><dd><p><strong>value (int)</strong>: The new value for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the value provided is None or outside the range 0 &lt;= value &lt;= 3</p>
 </dd>
@@ -1348,7 +1348,7 @@ value (int): Value of the item (0, 1, 2) - (Good, Warning, Danger)</p>
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/status.html#Status.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.status.Status.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates this instance using the values from the provided json data</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>json (:obj: <cite>JSON</cite>): json data providing new values for this class</p>
+<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1367,7 +1367,7 @@ value (int): Value of the item (0, 1, 2) - (Good, Warning, Danger)</p>
 <em class="property">static </em><code class="sig-name descname">from_str</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/unit.html#Unit.from_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.unit.Unit.from_str" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides an instance of the IssueType for the given string.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>label (str): String representation of Unit literal</p>
+<dt>Args:</dt><dd><p><strong>label (str)</strong>: String representation of Unit literal</p>
 </dd>
 <dt>Returns:</dt><dd><p>Unit: literal of unit</p>
 </dd>
@@ -1385,13 +1385,13 @@ value (int): Value of the item (0, 1, 2) - (Good, Warning, Danger)</p>
 <dt id="avista_data.user.User">
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.user.</code><code class="sig-name descname">User</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/user.html#User"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.user.User" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of a Service User</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): primary key for this User
-first_name (str): User’s first name
-last_name (str): User’s last name
-email (str): User’s email address
-password_hash (str): hash of the User’s password
-role (:obj: <cite>Role</cite>): role assigned to this User</p>
+<dl>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: primary key for this User</p>
+<p><strong>first_name (str)</strong>: User’s first name</p>
+<p><strong>last_name (str)</strong>: User’s last name</p>
+<p><strong>email (str)</strong>: User’s email address</p>
+<p><strong>password_hash (str)</strong>: hash of the User’s password</p>
+<p><strong>role (:obj: `Role`)</strong>: role assigned to this User</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -1399,7 +1399,7 @@ role (:obj: <cite>Role</cite>): role assigned to this User</p>
 <code class="sig-name descname">add_api_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/user.html#User.add_api_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.user.User.add_api_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the provided key to the set of api keys for this server</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>key (:obj: <cite>ApiKey</cite>): the ApiKey to be added</p>
+<dt>Args:</dt><dd><p><strong>key (:obj: `ApiKey`)</strong>: the ApiKey to be added</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1409,7 +1409,7 @@ role (:obj: <cite>Role</cite>): role assigned to this User</p>
 <code class="sig-name descname">check_password</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">password</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/user.html#User.check_password"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.user.User.check_password" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks whether the provided password is the same as the original</p>
 <dl class="simple">
-<dt>Attributes:</dt><dd><p>password (str): Password to be checked</p>
+<dt>Attributes:</dt><dd><p><strong>password (str)</strong>: Password to be checked</p>
 </dd>
 <dt>Returns:</dt><dd><p>True if the provided password is the same as the original, False otherwise</p>
 </dd>
@@ -1471,7 +1471,7 @@ role (:obj: <cite>Role</cite>): role assigned to this User</p>
 <code class="sig-name descname">set_email</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">email</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/user.html#User.set_email"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.user.User.set_email" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the email for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>email (str): The new email for this instance</p>
+<dt>Args:</dt><dd><p><strong>email (str)</strong>: The new email for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the email provided is None or the empty string</p>
 </dd>
@@ -1483,7 +1483,7 @@ role (:obj: <cite>Role</cite>): role assigned to this User</p>
 <code class="sig-name descname">set_first_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/user.html#User.set_first_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.user.User.set_first_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the first name for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The new first name for this instance</p>
+<dt>Args:</dt><dd><p><strong>name (str)</strong>: The new first name for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the first name provided is None or the empty string</p>
 </dd>
@@ -1495,7 +1495,7 @@ role (:obj: <cite>Role</cite>): role assigned to this User</p>
 <code class="sig-name descname">set_last_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/user.html#User.set_last_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.user.User.set_last_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the last name for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The new last name for this instance</p>
+<dt>Args:</dt><dd><p><strong>name (str)</strong>: The new last name for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the last name provided is None or the empty string</p>
 </dd>
@@ -1507,7 +1507,7 @@ role (:obj: <cite>Role</cite>): role assigned to this User</p>
 <code class="sig-name descname">set_password</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">password</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/user.html#User.set_password"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.user.User.set_password" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the new password for this user, which is hashed and stored</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>password (str): The new password to be hashed and stored</p>
+<dt>Args:</dt><dd><p><strong>password (str)</strong>: The new password to be hashed and stored</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1517,7 +1517,7 @@ role (:obj: <cite>Role</cite>): role assigned to this User</p>
 <code class="sig-name descname">set_role</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">role</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/user.html#User.set_role"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.user.User.set_role" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assigns the role for this instance</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>role (:obj: <cite>Role</cite>): The new role for this instance</p>
+<dt>Args:</dt><dd><p><strong>role (:obj: `Role`)</strong>: The new role for this instance</p>
 </dd>
 <dt>Raises:</dt><dd><p>Exception, if the role provided is None</p>
 </dd>
@@ -1539,7 +1539,7 @@ role (:obj: <cite>Role</cite>): role assigned to this User</p>
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/user.html#User.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.user.User.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates this instance using the values from the provided json data</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>json (:obj: <cite>JSON</cite>): json data providing new values for this class</p>
+<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
 </dd>
 </dl>
 </dd></dl>

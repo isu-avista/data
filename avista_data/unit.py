@@ -24,7 +24,7 @@ class Unit(Enum):
         """Provides an instance of the IssueType for the given string.
 
         Args:
-            label (str): String representation of Unit literal
+            **label (str)**: String representation of Unit literal
 
         Returns:
             Unit: literal of unit
