@@ -6,7 +6,7 @@ class Issue(db.Model):
     """Represents an issue associated with the measured equipment
 
     Attributes:
-        id (int): The primary key for this issue<br/>
+        **id (int)**: The primary key for this issue<br/>
         name (str): Name associated with this issue<br/>
         description (str): Description associated with this issue<br/>
         type (:obj: IssueType): Type associated with this issue<br/>
