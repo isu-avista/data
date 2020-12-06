@@ -47,10 +47,15 @@
 
 <span class="sd">    Attributes:</span>
 <span class="sd">        id (int): The primary key for each data point instance</span>
+
 <span class="sd">        name (str): Name of this instance</span>
+
 <span class="sd">        description (str): Description of this instance</span>
+
 <span class="sd">        value (str): Config value</span>
+
 <span class="sd">        sec_conf_id (int): primary key of containing security configuration</span>
+
 <span class="sd">        serv_conf_id (int); primary key of containing server configuration</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -66,8 +71,10 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            json (:obj: `JSON`): json representing an instance of the class (optional)</span>
-<span class="sd">            args: arguments to initialize attributes of the class</span>
-<span class="sd">            kwargs: arguments to initialize attributes of the class</span>
+
+<span class="sd">            *args: arguments to initialize attributes of the class</span>
+
+<span class="sd">            **kwargs: arguments to initialize attributes of the class</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>

@@ -7,9 +7,13 @@ class ApiKey(db.Model):
 
     Attributes:
         id (int): Primary key of this instance
+
         key_hash (str): Hashed value of this key
+
         description (str): Description of this key
+
         user_id (int): Primary key of the parent user
+
         server_id (int): Primary key of the parent server
     """
 
@@ -24,8 +28,10 @@ class ApiKey(db.Model):
 
         Args:
             json (:obj: `JSON`): json representing an instance of the class (optional)
-            args: arguments to initialize attributes of the class
-            kwargs: arguments to initialize attributes of the class
+
+            *args: arguments to initialize attributes of the class
+
+            **kwargs: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)

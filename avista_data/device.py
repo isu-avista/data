@@ -6,10 +6,15 @@ class Device(db.Model):
 
     Attributes:
         id (int): Primary key of this instance
+
         name (str): Name of this instance
+
         description (str): Description of this instance
+
         location (str): Location of the monitored equipment
+
         sensors (list): List of sensors attached
+
         issues (list): List of issues identified
 
     """
@@ -31,8 +36,10 @@ class Device(db.Model):
 
         Args:
             json (:obj: `JSON`): json representing an instance of the class (optional)
-            args: arguments to initialize attributes of the class
-            kwargs: arguments to initialize attributes of the class
+
+            *args: arguments to initialize attributes of the class
+
+            **kwargs: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)

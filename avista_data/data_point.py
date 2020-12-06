@@ -6,8 +6,11 @@ class DataPoint(db.Model):
 
     Attributes:
         id (int): The primary key for each data point instance
+
         value (float): The measure value
+
         timestamp (int): The point at which the measurement occurred
+
         sensor_id (int): The id of the sensor which made the measurement
 
     """
@@ -22,8 +25,10 @@ class DataPoint(db.Model):
 
         Args:
             json (:obj: `JSON`): json representing an instance of the class (optional)
-            args: arguments to initialize attributes of the class
-            kwargs: arguments to initialize attributes of the class
+
+            *args: arguments to initialize attributes of the class
+
+            **kwargs: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)

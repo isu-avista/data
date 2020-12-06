@@ -48,12 +48,12 @@
 <dt id="avista_data.api_key.ApiKey">
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.api_key.</code><code class="sig-name descname">ApiKey</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/api_key.html#ApiKey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.api_key.ApiKey" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of an API Key for use by a user or server</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): Primary key of this instance
-key_hash (str): Hashed value of this key
-description (str): Description of this key
-user_id (int): Primary key of the parent user
-server_id (int): Primary key of the parent server</p>
+<dl>
+<dt>Attributes:</dt><dd><p>id (int): Primary key of this instance</p>
+<p>key_hash (str): Hashed value of this key</p>
+<p>description (str): Description of this key</p>
+<p>user_id (int): Primary key of the parent user</p>
+<p>server_id (int): Primary key of the parent server</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -139,13 +139,13 @@ server_id (int): Primary key of the parent server</p>
 <dt id="avista_data.config_item.ConfigItem">
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.config_item.</code><code class="sig-name descname">ConfigItem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/config_item.html#ConfigItem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.config_item.ConfigItem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of a single item from a configuration</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): The primary key for each data point instance
-name (str): Name of this instance
-description (str): Description of this instance
-value (str): Config value
-sec_conf_id (int): primary key of containing security configuration
-serv_conf_id (int); primary key of containing server configuration</p>
+<dl>
+<dt>Attributes:</dt><dd><p>id (int): The primary key for each data point instance</p>
+<p>name (str): Name of this instance</p>
+<p>description (str): Description of this instance</p>
+<p>value (str): Config value</p>
+<p>sec_conf_id (int): primary key of containing security configuration</p>
+<p>serv_conf_id (int); primary key of containing server configuration</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -253,11 +253,11 @@ serv_conf_id (int); primary key of containing server configuration</p>
 <dt id="avista_data.data_point.DataPoint">
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.data_point.</code><code class="sig-name descname">DataPoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/data_point.html#DataPoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.data_point.DataPoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>“Representation of a measured value from a sensor</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): The primary key for each data point instance
-value (float): The measure value
-timestamp (int): The point at which the measurement occurred
-sensor_id (int): The id of the sensor which made the measurement</p>
+<dl>
+<dt>Attributes:</dt><dd><p>id (int): The primary key for each data point instance</p>
+<p>value (float): The measure value</p>
+<p>timestamp (int): The point at which the measurement occurred</p>
+<p>sensor_id (int): The id of the sensor which made the measurement</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -343,13 +343,13 @@ sensor_id (int): The id of the sensor which made the measurement</p>
 <dt id="avista_data.device.Device">
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.device.</code><code class="sig-name descname">Device</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/device.html#Device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.device.Device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of the device or service</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): Primary key of this instance
-name (str): Name of this instance
-description (str): Description of this instance
-location (str): Location of the monitored equipment
-sensors (list): List of sensors attached
-issues (list): List of issues identified</p>
+<dl>
+<dt>Attributes:</dt><dd><p>id (int): Primary key of this instance</p>
+<p>name (str): Name of this instance</p>
+<p>description (str): Description of this instance</p>
+<p>location (str): Location of the monitored equipment</p>
+<p>sensors (list): List of sensors attached</p>
+<p>issues (list): List of issues identified</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -548,10 +548,10 @@ issues (list): List of issues identified</p>
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.issue.</code><code class="sig-name descname">Issue</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/issue.html#Issue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.issue.Issue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Represents an issue associated with the measured equipment</p>
 <dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): The primary key for this issue
-name (str): Name associated with this issue
-description (str): Description associated with this issue
-type (:obj: IssueType): Type associated with this issue
+<dt>Attributes:</dt><dd><p>id (int): The primary key for this issue&lt;br/&gt;
+name (str): Name associated with this issue&lt;br/&gt;
+description (str): Description associated with this issue&lt;br/&gt;
+type (:obj: IssueType): Type associated with this issue&lt;br/&gt;
 device_id (int): Primary key of the device to which this issue is associated</p>
 </dd>
 </dl>

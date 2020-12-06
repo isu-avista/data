@@ -6,10 +6,15 @@ class ConfigItem(db.Model):
 
     Attributes:
         id (int): The primary key for each data point instance
+
         name (str): Name of this instance
+
         description (str): Description of this instance
+
         value (str): Config value
+
         sec_conf_id (int): primary key of containing security configuration
+
         serv_conf_id (int); primary key of containing server configuration
     """
 
@@ -25,8 +30,10 @@ class ConfigItem(db.Model):
 
         Args:
             json (:obj: `JSON`): json representing an instance of the class (optional)
-            args: arguments to initialize attributes of the class
-            kwargs: arguments to initialize attributes of the class
+
+            *args: arguments to initialize attributes of the class
+
+            **kwargs: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)
