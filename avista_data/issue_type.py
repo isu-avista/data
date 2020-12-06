@@ -20,7 +20,7 @@ class IssueType(Enum):
         """Provides an instance of the IssueType for the given string.
 
         Args:
-            value (str): String representation of IssueType literal
+            **value (str)**: String representation of IssueType literal
 
         Returns:
             IssueType: literal of issue type

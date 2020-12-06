@@ -6,11 +6,15 @@ class ApiKey(db.Model):
     """Representation of an API Key for use by a user or server
 
     Attributes:
-        id (int): Primary key of this instance
-        key_hash (str): Hashed value of this key
-        description (str): Description of this key
-        user_id (int): Primary key of the parent user
-        server_id (int): Primary key of the parent server
+        **id (int)**: Primary key of this instance
+
+        **key_hash (str)**: Hashed value of this key
+
+        **description (str)**: Description of this key
+
+        **user_id (int)**: Primary key of the parent user
+
+        **server_id (int)**: Primary key of the parent server
     """
 
     id = db.Column(db.Integer, primary_key=True)
@@ -23,9 +27,11 @@ class ApiKey(db.Model):
         """Creates a new instance of this class
 
         Args:
-            json (:obj: `JSON`): json representing an instance of the class (optional)
-            args: arguments to initialize attributes of the class
-            kwargs: arguments to initialize attributes of the class
+            **json (:obj: `JSON`)**: json representing an instance of the class (optional)
+
+            __*args__: arguments to initialize attributes of the class
+
+            __**kwargs__: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)
@@ -35,7 +41,7 @@ class ApiKey(db.Model):
         """Updates this instance using the values from the provided json data
 
         Args:
-            json (:obj: `JSON`): json data providing new values for this class
+            **json (:obj: `JSON`)**: json data providing new values for this class
 
         """
         if json is not None:
@@ -55,7 +61,7 @@ class ApiKey(db.Model):
         """Assigns the new value of this key, which is hashed and stored
 
         Args:
-            key (str): The key to be hashed and stored
+            **key (str)**: The key to be hashed and stored
         """
         self.key_hash = generate_password_hash(key)
         db.session.commit()
@@ -64,7 +70,7 @@ class ApiKey(db.Model):
         """Checks whether the provided key is the same as the original
 
         Args:
-            key (str): Key to be checked
+            **key (str)**: Key to be checked
 
         Returns:
             True if the provided key is the same as the original, False otherwise
@@ -83,7 +89,7 @@ class ApiKey(db.Model):
         """Assigns the value of the description of this key
 
         Args:
-            desc (str): The new description for this key
+            **desc (str)**: The new description for this key
 
         Raises:
             Exception, if the provided description is None or the empty string

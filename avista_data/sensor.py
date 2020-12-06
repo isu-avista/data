@@ -9,15 +9,23 @@ class Sensor(db.Model):
     This allows for the dynamic construction and removal of sensors from the device
 
     Attributes:
-        id (int): The primary key for this sensor
-        name (str): The name of this sensor
-        quantity (str): The measured quantity
-        unit (:obj: `Unit`): The units of measurement
-        module (str): The module
-        cls (str): The class name of the sensor to be used
-        data (list): List of data points measured by the sensor
-        pinout (list): List of pinouts associated with this sensor
-        device_id (int): id of the parent device to which this sensor is attached
+        **id (int)**: The primary key for this sensor
+
+        **name (str)**: The name of this sensor
+
+        **quantity (str)**: The measured quantity
+
+        **unit (:obj: `Unit`)**: The units of measurement
+
+        **module (str)**: The module
+
+        **cls (str)**: The class name of the sensor to be used
+
+        **data (list)**: List of data points measured by the sensor
+
+        **pinout (list)**: List of pinouts associated with this sensor
+
+        **device_id (int)**: id of the parent device to which this sensor is attached
 
     """
 
@@ -35,9 +43,11 @@ class Sensor(db.Model):
         """Creates a new instance of this class
 
         Args:
-            json (:obj: `JSON`): json representing an instance of the class (optional)
-            args: arguments to initialize attributes of the class
-            kwargs: arguments to initialize attributes of the class
+            **json (:obj: `JSON`)**: json representing an instance of the class (optional)
+
+            __*args__: arguments to initialize attributes of the class
+
+            __**kwargs__: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)
@@ -47,7 +57,7 @@ class Sensor(db.Model):
         """Updates this instance using the values from the provided json data
 
         Args:
-            json (:obj: `JSON`): json data providing new values for this class
+            **json (:obj: `JSON`)**: json data providing new values for this class
 
         """
         if json is not None:
@@ -72,7 +82,7 @@ class Sensor(db.Model):
         """Name associated with this instance
 
         Returns:
-             The name of the sensor represented by this instance
+            The name of the sensor represented by this instance
 
         """
         return self.name
@@ -81,7 +91,7 @@ class Sensor(db.Model):
         """Assigns the name for this instance
 
         Args:
-            name (str): The new name for this instance
+            **name (str)**: The new name for this instance
 
         Raises:
             Exception, if the name provided is None or the empty string
@@ -96,7 +106,7 @@ class Sensor(db.Model):
         """The quantity to be measured by this sensor
 
         Returns:
-             Current quantity measured
+            Current quantity measured
         """
         return self.quantity
 
@@ -104,7 +114,7 @@ class Sensor(db.Model):
         """Set the quantity to be measured by the sensor
 
         Args:
-            quantity (str): The new quantity to be measured
+            **quantity (str)**: The new quantity to be measured
 
         Raises:
             Exception, if the provided quantity is None or empty
@@ -118,7 +128,7 @@ class Sensor(db.Model):
         """Adds the provided data point as a measure of this sensor
 
         Args:
-            point (:obj: `DataPoint`): DataPoint measured
+            **point (:obj: `DataPoint`)**: DataPoint measured
 
         """
         if point is None or point in self.data:
@@ -130,7 +140,7 @@ class Sensor(db.Model):
         """Adds the provided pinout to this sensor
 
         Args:
-            pinout (:obj: `PinOut`): PinOut to be added
+            **pinout (:obj: `PinOut`)**: PinOut to be added
 
         """
         if pinout is None or pinout in self.pinout:
@@ -151,7 +161,7 @@ class Sensor(db.Model):
         """Sets the unit of measurement for the sensor
 
         Args:
-            unit (:obj: `Unit`): New unit for the sensor
+            **unit (:obj: `Unit`)**: New unit for the sensor
 
         Raises:
             Exception if the provided unit is None
@@ -170,7 +180,7 @@ class Sensor(db.Model):
         """Sets the class used by this instance to the string provided
 
         Args:
-            cls (str): The class to be used
+            **cls (str)**: The class to be used
 
         Raises:
             Exception, if either the provided string is None or empty
@@ -189,7 +199,7 @@ class Sensor(db.Model):
         """Sets the module used by this instance to the string provided
 
         Args:
-            module (str): The module to be used
+            **module (str)**: The module to be used
 
         Raises:
             Exception, if either the provided string is None or empty

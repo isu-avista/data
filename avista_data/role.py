@@ -22,7 +22,7 @@ class Role(Enum):
         """Provides an instance of the Role for the given string.
 
         Args:
-            label (str): String representation of Role literal
+            **label (str)**: String representation of Role literal
 
         Returns:
             Role: literal of role

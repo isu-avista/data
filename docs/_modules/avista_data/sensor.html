@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>avista_data.sensor &#8212; avista-data 0.1.4 documentation</title>
+    <title>avista_data.sensor &#8212; avista-data 0.1.8 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     
@@ -27,7 +27,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">avista-data 0.1.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">avista-data 0.1.8 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">avista_data.sensor</a></li> 
       </ul>
@@ -50,15 +50,23 @@
 <span class="sd">    This allows for the dynamic construction and removal of sensors from the device</span>
 
 <span class="sd">    Attributes:</span>
-<span class="sd">        id (int): The primary key for this sensor</span>
-<span class="sd">        name (str): The name of this sensor</span>
-<span class="sd">        quantity (str): The measured quantity</span>
-<span class="sd">        unit (:obj: `Unit`): The units of measurement</span>
-<span class="sd">        module (str): The module</span>
-<span class="sd">        cls (str): The class name of the sensor to be used</span>
-<span class="sd">        data (list): List of data points measured by the sensor</span>
-<span class="sd">        pinout (list): List of pinouts associated with this sensor</span>
-<span class="sd">        device_id (int): id of the parent device to which this sensor is attached</span>
+<span class="sd">        **id (int)**: The primary key for this sensor</span>
+
+<span class="sd">        **name (str)**: The name of this sensor</span>
+
+<span class="sd">        **quantity (str)**: The measured quantity</span>
+
+<span class="sd">        **unit (:obj: `Unit`)**: The units of measurement</span>
+
+<span class="sd">        **module (str)**: The module</span>
+
+<span class="sd">        **cls (str)**: The class name of the sensor to be used</span>
+
+<span class="sd">        **data (list)**: List of data points measured by the sensor</span>
+
+<span class="sd">        **pinout (list)**: List of pinouts associated with this sensor</span>
+
+<span class="sd">        **device_id (int)**: id of the parent device to which this sensor is attached</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -76,9 +84,11 @@
         <span class="sd">&quot;&quot;&quot;Creates a new instance of this class</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            json (:obj: `JSON`): json representing an instance of the class (optional)</span>
-<span class="sd">            args: arguments to initialize attributes of the class</span>
-<span class="sd">            kwargs: arguments to initialize attributes of the class</span>
+<span class="sd">            **json (:obj: `JSON`)**: json representing an instance of the class (optional)</span>
+
+<span class="sd">            __*args__: arguments to initialize attributes of the class</span>
+
+<span class="sd">            __**kwargs__: arguments to initialize attributes of the class</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -88,7 +98,7 @@
         <span class="sd">&quot;&quot;&quot;Updates this instance using the values from the provided json data</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            json (:obj: `JSON`): json data providing new values for this class</span>
+<span class="sd">            **json (:obj: `JSON`)**: json data providing new values for this class</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">json</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -113,7 +123,7 @@
         <span class="sd">&quot;&quot;&quot;Name associated with this instance</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">             The name of the sensor represented by this instance</span>
+<span class="sd">            The name of the sensor represented by this instance</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div>
@@ -122,7 +132,7 @@
         <span class="sd">&quot;&quot;&quot;Assigns the name for this instance</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            name (str): The new name for this instance</span>
+<span class="sd">            **name (str)**: The new name for this instance</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            Exception, if the name provided is None or the empty string</span>
@@ -137,7 +147,7 @@
         <span class="sd">&quot;&quot;&quot;The quantity to be measured by this sensor</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">             Current quantity measured</span>
+<span class="sd">            Current quantity measured</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantity</span></div>
 
@@ -145,7 +155,7 @@
         <span class="sd">&quot;&quot;&quot;Set the quantity to be measured by the sensor</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            quantity (str): The new quantity to be measured</span>
+<span class="sd">            **quantity (str)**: The new quantity to be measured</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            Exception, if the provided quantity is None or empty</span>
@@ -159,7 +169,7 @@
         <span class="sd">&quot;&quot;&quot;Adds the provided data point as a measure of this sensor</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            point (:obj: `DataPoint`): DataPoint measured</span>
+<span class="sd">            **point (:obj: `DataPoint`)**: DataPoint measured</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">point</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">point</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
@@ -171,7 +181,7 @@
         <span class="sd">&quot;&quot;&quot;Adds the provided pinout to this sensor</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            pinout (:obj: `PinOut`): PinOut to be added</span>
+<span class="sd">            **pinout (:obj: `PinOut`)**: PinOut to be added</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">pinout</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">pinout</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pinout</span><span class="p">:</span>
@@ -192,7 +202,7 @@
         <span class="sd">&quot;&quot;&quot;Sets the unit of measurement for the sensor</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            unit (:obj: `Unit`): New unit for the sensor</span>
+<span class="sd">            **unit (:obj: `Unit`)**: New unit for the sensor</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            Exception if the provided unit is None</span>
@@ -211,7 +221,7 @@
         <span class="sd">&quot;&quot;&quot;Sets the class used by this instance to the string provided</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            cls (str): The class to be used</span>
+<span class="sd">            **cls (str)**: The class to be used</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            Exception, if either the provided string is None or empty</span>
@@ -230,7 +240,7 @@
         <span class="sd">&quot;&quot;&quot;Sets the module used by this instance to the string provided</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            module (str): The module to be used</span>
+<span class="sd">            **module (str)**: The module to be used</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            Exception, if either the provided string is None or empty</span>
@@ -298,7 +308,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">avista-data 0.1.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">avista-data 0.1.8 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">avista_data.sensor</a></li> 
       </ul>

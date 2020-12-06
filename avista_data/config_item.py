@@ -5,12 +5,17 @@ class ConfigItem(db.Model):
     """Representation of a single item from a configuration
 
     Attributes:
-        id (int): The primary key for each data point instance
-        name (str): Name of this instance
-        description (str): Description of this instance
-        value (str): Config value
-        sec_conf_id (int): primary key of containing security configuration
-        serv_conf_id (int); primary key of containing server configuration
+        **id (int)**: The primary key for each data point instance
+
+        **name (str)**: Name of this instance
+
+        **description (str)**: Description of this instance
+
+        **value (str)**: Config value
+
+        **sec_conf_id (int)**: primary key of containing security configuration
+
+        **serv_conf_id (int)**; primary key of containing server configuration
     """
 
     id = db.Column(db.Integer, primary_key=True)
@@ -24,9 +29,11 @@ class ConfigItem(db.Model):
         """Creates a new instance of this class
 
         Args:
-            json (:obj: `JSON`): json representing an instance of the class (optional)
-            args: arguments to initialize attributes of the class
-            kwargs: arguments to initialize attributes of the class
+            **json (:obj: `JSON`)**: json representing an instance of the class (optional)
+
+            __*args__: arguments to initialize attributes of the class
+
+            __**kwargs__: arguments to initialize attributes of the class
 
         """
         super().__init__(*args, **kwargs)
@@ -36,7 +43,7 @@ class ConfigItem(db.Model):
         """Updates this instance using the values from the provided json data
 
         Args:
-            json (:obj: `JSON`): json data providing new values for this class
+            **json (:obj: `JSON`)**: json data providing new values for this class
 
         """
         if json is not None:
@@ -57,7 +64,7 @@ class ConfigItem(db.Model):
         """Name associated with this instance
 
         Returns:
-             The name of the config item represented by this instance
+            The name of the config item represented by this instance
 
         """
         return self.name
@@ -66,7 +73,7 @@ class ConfigItem(db.Model):
         """Assigns the name for this instance
 
         Args:
-            name (str): The new name for this instance
+            **name (str)**: The new name for this instance
 
         Raises:
             Exception, if the name provided is None or the empty string
@@ -81,7 +88,7 @@ class ConfigItem(db.Model):
         """Description associated with this instance
 
         Returns:
-             The description of the config item represented by this instance
+            The description of the config item represented by this instance
 
         """
         return self.description
@@ -90,7 +97,7 @@ class ConfigItem(db.Model):
         """Assigns the description for this instance
 
         Args:
-            desc (str): The new description for this instance
+            **desc (str)**: The new description for this instance
 
         Raises:
             Exception, if the description provided is None or the empty string
@@ -113,7 +120,7 @@ class ConfigItem(db.Model):
         """Assigns the value for this instance
 
         Args:
-            value (str): The new value for this instance
+            **value (str)**: The new value for this instance
 
         Raises:
             Exception, if the provided value is not a float

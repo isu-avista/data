@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [0.1.8](https://github.com/isu-avista/data/releases/tag/v0.1.8) - 2020-12-05
+### Added
+
+### Changed
+- Cleaned up the sphinx documentation in all classes
+
+### Deleted
+
 ## [0.1.7](https://github.com/isu-avista/data/releases/tag/v0.1.7) - 2020-12-05
 ### Added
 
