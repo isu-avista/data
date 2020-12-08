@@ -162,6 +162,19 @@ class User(db.Model):
         self.role = role
         db.session.commit()
 
+    @classmethod
+    def authenticate(cls, **kwargs):
+        email = kwargs.get('email')
+        password = kwargs.get('password')
+
+        if not email or not password:
+            return None
+        user = cls.query.filter_by(email=email).first()
+        if not user or not user.check_password(password):
+            return None
+
+        return user
+
     def set_password(self, password):
         """Assigns the new password for this user, which is hashed and stored
 

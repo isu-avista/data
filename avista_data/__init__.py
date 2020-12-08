@@ -19,6 +19,7 @@ from avista_data import pin_out
 from avista_data import server
 from avista_data import status
 from avista_data import api_key
+from avista_data import role_too_low_error
 
 
 def init(app):

@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import IntEnum
 
 
-class Role(Enum):
+class Role(IntEnum):
     """Enum representing the different roles for users"""
 
     USER = 1
