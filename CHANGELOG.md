@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [0.1.9](https://github.com/isu-avista/data/releases/tag/v0.1.9) - 2020-12-07
+### Added
+- RoleTooLowError to distinguish when a user with too low of permissions
+  attempts to access something they are not authorized to
+
+### Changed
+- Updated Role to an IntEnum to allow for comparisons
+- Updated Tests
+- Updated Documentation
+
+### Deleted
+
 ## [0.1.8](https://github.com/isu-avista/data/releases/tag/v0.1.8) - 2020-12-05
 ### Added
 
