@@ -164,14 +164,14 @@ class User(db.Model):
         self.role = role
         db.session.commit()
 
-    @classmethod
-    def authenticate(cls, json):
+    @staticmethod
+    def authenticate(json):
         email = json.get('email')
         password = json.get('password')
 
         if not email or not password:
             return None
-        user = cls.query.filter_by(email=email).first()
+        user = User.query.filter_by(email=email).first()
         if not user or not user.check_password(password):
             return None
 

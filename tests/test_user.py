@@ -22,7 +22,7 @@ class UserTest(BaseTest):
         db.session.commit()
 
     def test_id(self):
-        self.assertEqual(self.fixture.get_id(), 1, "id's do not match")
+        self.assertEqual(self.fixture.get_id(), 2, "id's do not match")
 
     def test_first_name(self):
         self.assertEqual(self.fixture.get_first_name(), "First", "names do not match")
@@ -101,7 +101,7 @@ class UserTest(BaseTest):
 
     def test_to_dict(self):
         expected = {
-            "id": 1,
+            "id": 2,
             "first_name": "First",
             "last_name": "Last",
             "email": "email",
@@ -126,7 +126,6 @@ class UserTest(BaseTest):
         self.assertEqual(Role.from_str(expected["role"]), self.fixture.get_role())
         self.assertTrue(self.fixture.check_password(expected['password']))
 
-
     def test_create_from_json(self):
         expected = {
             "id": 2,
@@ -149,6 +148,36 @@ class UserTest(BaseTest):
 
     def test_str(self):
         self.assertEqual("User: email", str(self.fixture), "string representation not same")
+
+    def test_authenticate(self):
+        data = dict(email="admin", password="admin")
+        json = jsonify(data).get_json()
+        result = User.authenticate(json)
+        self.assertIsNotNone(result)
+
+    def test_authenticate_none_email(self):
+        data = dict(email=None, password="admin")
+        json = jsonify(data).get_json()
+        result = User.authenticate(json)
+        self.assertIsNone(result)
+
+    def test_authenticate_none_pass(self):
+        data = dict(email="admin", password=None)
+        json = jsonify(data).get_json()
+        result = User.authenticate(json)
+        self.assertIsNone(result)
+
+    def test_authenticate_unknown_user(self):
+        data = dict(email="bob", password="admin")
+        json = jsonify(data).get_json()
+        result = User.authenticate(json)
+        self.assertIsNone(result)
+
+    def test_authenticate_basd_pass(self):
+        data = dict(email="admin", password="test")
+        json = jsonify(data).get_json()
+        result = User.authenticate(json)
+        self.assertIsNone(result)
 
 
 if __name__ == '__main__':

@@ -7,8 +7,8 @@ import os
 
 def create_app(config):
     app = Flask("Test")
-    app.config.from_object(config)
     avista_data.init(app)
+    app.config.from_object(config)
     return app
 
 
@@ -16,6 +16,7 @@ class TestConfig(object):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'test.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRETE_KEY = "TEST_KEY"
 
 
 class BaseTest(unittest.TestCase):
@@ -24,6 +25,7 @@ class BaseTest(unittest.TestCase):
         self.app_context = self.app.app_context()
         self.app_context.push()
         avista_data.db.create_all()
+        avista_data.populate_initial_data(self.app)
 
     def tearDown(self):
         avista_data.db.session.remove()

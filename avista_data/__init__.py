@@ -34,13 +34,18 @@ def init(app):
     db.init_app(app)
     migrate.init_app(app, db=db, render_as_batch=True)
 
+
+def populate_initial_data(app):
     with app.app_context():
-        if User.query.count() == 0:
-            admin = User()
-            admin.set_first_name("System")
-            admin.set_last_name("Administrator")
-            admin.email = "admin"
-            admin.set_role(Role.ADMIN)
-            admin.set_password("admin")
-            db.session.add(admin)
-            db.session.commit()
+        # try:
+            if User.query.count() == 0:
+                admin = User()
+                admin.set_first_name("System")
+                admin.set_last_name("Administrator")
+                admin.email = "admin"
+                admin.set_role(Role.ADMIN)
+                admin.set_password("admin")
+                db.session.add(admin)
+                db.session.commit()
+        # except:
+        #     pass
