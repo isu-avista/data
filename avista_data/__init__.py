@@ -21,6 +21,9 @@ from avista_data import status
 from avista_data import api_key
 from avista_data import role_too_low_error
 
+from avista_data.role import Role
+from avista_data.user import User
+
 
 def init(app):
     """Initializes the module with the provided Flask App
@@ -30,3 +33,14 @@ def init(app):
     """
     db.init_app(app)
     migrate.init_app(app, db=db, render_as_batch=True)
+
+    with app.app_context():
+        if User.query.count() == 0:
+            admin = User()
+            admin.set_first_name("System")
+            admin.set_last_name("Administrator")
+            admin.email = "admin"
+            admin.set_role(Role.ADMIN)
+            admin.set_password("admin")
+            db.session.add(admin)
+            db.session.commit()

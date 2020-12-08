@@ -1,4 +1,7 @@
+from avista_data.role import Role
+
 from flask import Flask
+
 from avista_data import db
 import avista_data
 import os

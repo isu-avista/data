@@ -1,3 +1,5 @@
+from sqlalchemy import event
+
 from avista_data import db
 from avista_data.role import Role
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -226,3 +228,4 @@ class User(db.Model):
             email=self.email,
             role=str(self.role)
         )
+
