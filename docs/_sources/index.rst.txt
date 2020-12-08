@@ -54,6 +54,12 @@ avista-data role
    :members:
 
 
+avista-data role_too_low_error
+==============================
+.. automodule:: avista_data.role_too_low_error
+   :members:
+
+
 avista-data security_config
 ===========================
 .. automodule:: avista_data.security_config
