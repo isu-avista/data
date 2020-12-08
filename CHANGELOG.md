@@ -11,6 +11,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [0.1.11](https://github.com/isu-avista/data/releases/tag/v0.1.11) - 2020-12-08
+### Added
+
+### Changed
+- Added tests to ensure authenticate() method works.
+
+### Deleted
+
+## [0.1.11](https://github.com/isu-avista/data/releases/tag/v0.1.11) - 2020-12-08
+### Added
+
+### Changed
+- Modified parameters to User.authenticate() method
+
+### Deleted
+
 ## [0.1.10](https://github.com/isu-avista/data/releases/tag/v0.1.10) - 2020-12-08
 ### Added
 
