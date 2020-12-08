@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>avista_data.user &#8212; avista-data 0.1.9 documentation</title>
+    <title>avista_data.user &#8212; avista-data 0.1.10 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     
@@ -27,7 +27,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">avista-data 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">avista-data 0.1.10 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">avista_data.user</a></li> 
       </ul>
@@ -39,7 +39,9 @@
           <div class="body" role="main">
             
   <h1>Source code for avista_data.user</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">avista_data</span> <span class="kn">import</span> <span class="n">db</span>
+<span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">event</span>
+
+<span class="kn">from</span> <span class="nn">avista_data</span> <span class="kn">import</span> <span class="n">db</span>
 <span class="kn">from</span> <span class="nn">avista_data.role</span> <span class="kn">import</span> <span class="n">Role</span>
 <span class="kn">from</span> <span class="nn">werkzeug.security</span> <span class="kn">import</span> <span class="n">generate_password_hash</span><span class="p">,</span> <span class="n">check_password_hash</span>
 
@@ -267,6 +269,7 @@
             <span class="n">email</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
             <span class="n">role</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">role</span><span class="p">)</span>
         <span class="p">)</span></div></div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -298,7 +301,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">avista-data 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">avista-data 0.1.10 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">avista_data.user</a></li> 
       </ul>

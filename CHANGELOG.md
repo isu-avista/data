@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [0.1.10](https://github.com/isu-avista/data/releases/tag/v0.1.10) - 2020-12-08
+### Added
+
+### Changed
+- Added code to create admin user if none exist
+- Update documentation
+
+### Deleted
+
 ## [0.1.9](https://github.com/isu-avista/data/releases/tag/v0.1.9) - 2020-12-07
 ### Added
 - RoleTooLowError to distinguish when a user with too low of permissions
