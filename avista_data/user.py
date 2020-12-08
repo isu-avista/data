@@ -165,9 +165,9 @@ class User(db.Model):
         db.session.commit()
 
     @classmethod
-    def authenticate(cls, **kwargs):
-        email = kwargs.get('email')
-        password = kwargs.get('password')
+    def authenticate(cls, json):
+        email = json.get('email')
+        password = json.get('password')
 
         if not email or not password:
             return None
