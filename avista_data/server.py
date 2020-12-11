@@ -52,8 +52,8 @@ class Server(db.Model):
         if json is not None:
             self.set_name(json.get('name'))
             self.set_ip_address(json.get('ip_address'))
-            self.set_port(json.get('port'))
-            self.set_periodicity(json.get('periodicity'))
+            self.set_port(int(json.get('port')))
+            self.set_periodicity(int(json.get('periodicity')))
             db.session.commit()
 
     def get_id(self):
