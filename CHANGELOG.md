@@ -11,7 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
-## [0.1.13](https://github.com/isu-avista/data/releases/tag/v0.1.13) - 2020-12-08
+## [0.1.16](https://github.com/isu-avista/data/releases/tag/v0.1.16) - 2020-12-13
+### Added
+
+### Changed
+* Updated Changelog
+
+### Deleted
+
+## [0.1.15](https://github.com/isu-avista/data/releases/tag/v0.1.15) - 2020-12-13
 ### Added
 * New class to better manage integration with flask via flask constructs
 
@@ -21,6 +29,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Updated user test to include tests for the new methods 
 * Updated base test to use the new data manager
 * Updated the User class to allow initialization of data in the database
+
+### Deleted
+
+## [0.1.14](https://github.com/isu-avista/data/releases/tag/v0.1.14) - 2020-12-08
+### Added
+
+### Changed
+* Updated documentation
 
 ### Deleted
 
