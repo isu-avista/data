@@ -1,9 +1,5 @@
-from avista_data.role import Role
-
 from flask import Flask
 
-from avista_data import db
-import avista_data
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -16,10 +12,15 @@ class Config(object):
 
 
 app = Flask("tests")
+app.app_context().push() # don't forget to push the app context
 app.config.from_object(Config)
-avista_data.init(app)
+
+import avista_data
+from avista_data import data_manager
+
+data_manager.init()
 
 
 @app.shell_context_processor
 def make_shell_context():
-    return {'db': db}
+    return {'db': data_manager.get_db()}

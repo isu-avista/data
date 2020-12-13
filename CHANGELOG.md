@@ -13,9 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.13](https://github.com/isu-avista/data/releases/tag/v0.1.13) - 2020-12-08
 ### Added
+* New class to better manage integration with flask via flask constructs
 
 ### Changed
 * Updated documentation
+* Added method to User to reset the admin user
+* Updated user test to include tests for the new methods 
+* Updated base test to use the new data manager
+* Updated the User class to allow initialization of data in the database
 
 ### Deleted
 

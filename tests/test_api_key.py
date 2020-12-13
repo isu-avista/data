@@ -1,7 +1,6 @@
 import unittest
-from avista_data.api_key import ApiKey
 from tests.base_test import BaseTest
-from avista_data import db
+from avista_data.api_key import ApiKey
 from avista_data.user import User
 from avista_data.role import Role
 from avista_data.server import Server
@@ -15,8 +14,8 @@ class ApiKeyTest(BaseTest):
         self.fixture = ApiKey()
         self.fixture.set_key("testkey")
         self.fixture.set_description("Test Key")
-        db.session.add(self.fixture)
-        db.session.commit()
+        self.db.session.add(self.fixture)
+        self.db.session.commit()
 
     def test_id(self):
         self.assertEqual(1, self.fixture.get_id(), "id's do not match")
@@ -44,8 +43,8 @@ class ApiKeyTest(BaseTest):
         user.set_email("email")
         user.set_password("password")
         user.set_role(Role.USER)
-        db.session.add(user)
-        db.session.commit()
+        self.db.session.add(user)
+        self.db.session.commit()
         user.add_api_key(self.fixture)
         self.assertEqual(user, self.fixture.user, "users are not the same")
 
@@ -55,8 +54,8 @@ class ApiKeyTest(BaseTest):
         server.set_ip_address("127.0.0.1")
         server.set_port(5000)
         server.set_periodicity(5000)
-        db.session.add(server)
-        db.session.commit()
+        self.db.session.add(server)
+        self.db.session.commit()
         server.add_api_key(self.fixture)
         self.assertEqual(server, self.fixture.server, "servers are not the same")
 

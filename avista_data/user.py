@@ -3,6 +3,7 @@ from sqlalchemy import event
 from avista_data import db
 from avista_data.role import Role
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import current_app
 
 
 class User(db.Model):
@@ -23,11 +24,11 @@ class User(db.Model):
     """
 
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(75), nullable=False)
-    last_name = db.Column(db.String(75), nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128), nullable=False)
-    role = db.Column(db.Enum(Role), nullable=False)
+    first_name = db.Column(db.String(75))
+    last_name = db.Column(db.String(75))
+    email = db.Column(db.String(120), unique=True)
+    password_hash = db.Column(db.String(128))
+    role = db.Column(db.Enum(Role))
     device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
     api_keys = db.relationship('ApiKey', backref='user', lazy='dynamic')
 
@@ -171,11 +172,17 @@ class User(db.Model):
 
         if not email or not password:
             return None
-        user = User.query.filter_by(email=email).first()
+        user = User.find_user(email)
         if not user or not user.check_password(password):
             return None
 
         return user
+
+    @staticmethod
+    def find_user(email):
+        if email is None or email == "":
+            raise Exception("email cannot be none or empty")
+        return User.query.filter_by(email=email).first()
 
     def set_password(self, password):
         """Assigns the new password for this user, which is hashed and stored
@@ -229,3 +236,27 @@ class User(db.Model):
             role=str(self.role)
         )
 
+    @staticmethod
+    def reset_admin_account():
+        """Resets the admin account back to it's default settings"""
+        with current_app.app_context():
+            if User.query.filter_by(email="admin").count() < 1:
+                admin = User()
+                admin.email = "admin"
+                db.session.add(admin)
+                db.session.commit()
+            else:
+                admin = User.find_user("admin")
+
+            if User.query.filter_by(email="admin").count() > 0:
+                User.admin_account_details(admin)
+                db.session.commit()
+
+    @staticmethod
+    def admin_account_details(admin):
+        """sets the admin account to default settings"""
+        admin.set_first_name("System")
+        admin.set_last_name("Administrator")
+        admin.email = "admin"
+        admin.set_role(Role.ADMIN)
+        admin.set_password("admin")
