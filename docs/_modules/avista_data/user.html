@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>avista_data.user &#8212; avista-data 0.1.14 documentation</title>
+    <title>avista_data.user &#8212; avista-data 0.1.15 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     
@@ -27,7 +27,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">avista-data 0.1.14 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">avista-data 0.1.15 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">avista_data.user</a></li> 
       </ul>
@@ -44,6 +44,7 @@
 <span class="kn">from</span> <span class="nn">avista_data</span> <span class="kn">import</span> <span class="n">db</span>
 <span class="kn">from</span> <span class="nn">avista_data.role</span> <span class="kn">import</span> <span class="n">Role</span>
 <span class="kn">from</span> <span class="nn">werkzeug.security</span> <span class="kn">import</span> <span class="n">generate_password_hash</span><span class="p">,</span> <span class="n">check_password_hash</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">current_app</span>
 
 
 <div class="viewcode-block" id="User"><a class="viewcode-back" href="../../index.html#avista_data.user.User">[docs]</a><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -64,11 +65,11 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">first_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">75</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">last_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">75</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">email</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">120</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">password_hash</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">role</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Enum</span><span class="p">(</span><span class="n">Role</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">75</span><span class="p">))</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">75</span><span class="p">))</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">120</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">password_hash</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">128</span><span class="p">))</span>
+    <span class="n">role</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Enum</span><span class="p">(</span><span class="n">Role</span><span class="p">))</span>
     <span class="n">device_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;device.id&#39;</span><span class="p">))</span>
     <span class="n">api_keys</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s1">&#39;ApiKey&#39;</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="s1">&#39;dynamic&#39;</span><span class="p">)</span>
 
@@ -212,11 +213,17 @@
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">email</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">password</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
-        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">find_user</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">check_password</span><span class="p">(</span><span class="n">password</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">None</span>
 
         <span class="k">return</span> <span class="n">user</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">find_user</span><span class="p">(</span><span class="n">email</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">email</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">email</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;email cannot be none or empty&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 
 <div class="viewcode-block" id="User.set_password"><a class="viewcode-back" href="../../index.html#avista_data.user.User.set_password">[docs]</a>    <span class="k">def</span> <span class="nf">set_password</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Assigns the new password for this user, which is hashed and stored</span>
@@ -268,8 +275,32 @@
             <span class="n">last_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">last_name</span><span class="p">,</span>
             <span class="n">email</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
             <span class="n">role</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">role</span><span class="p">)</span>
-        <span class="p">)</span></div></div>
+        <span class="p">)</span></div>
 
+<div class="viewcode-block" id="User.reset_admin_account"><a class="viewcode-back" href="../../index.html#avista_data.user.User.reset_admin_account">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">reset_admin_account</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Resets the admin account back to it&#39;s default settings&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">current_app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">admin</span> <span class="o">=</span> <span class="n">User</span><span class="p">()</span>
+                <span class="n">admin</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;admin&quot;</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">admin</span><span class="p">)</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">admin</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">find_user</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">User</span><span class="o">.</span><span class="n">admin_account_details</span><span class="p">(</span><span class="n">admin</span><span class="p">)</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="User.admin_account_details"><a class="viewcode-back" href="../../index.html#avista_data.user.User.admin_account_details">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">admin_account_details</span><span class="p">(</span><span class="n">admin</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;sets the admin account to default settings&quot;&quot;&quot;</span>
+        <span class="n">admin</span><span class="o">.</span><span class="n">set_first_name</span><span class="p">(</span><span class="s2">&quot;System&quot;</span><span class="p">)</span>
+        <span class="n">admin</span><span class="o">.</span><span class="n">set_last_name</span><span class="p">(</span><span class="s2">&quot;Administrator&quot;</span><span class="p">)</span>
+        <span class="n">admin</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;admin&quot;</span>
+        <span class="n">admin</span><span class="o">.</span><span class="n">set_role</span><span class="p">(</span><span class="n">Role</span><span class="o">.</span><span class="n">ADMIN</span><span class="p">)</span>
+        <span class="n">admin</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span></div></div>
 </pre></div>
 
             <div class="clearer"></div>
@@ -301,7 +332,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">avista-data 0.1.14 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">avista-data 0.1.15 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">avista_data.user</a></li> 
       </ul>
