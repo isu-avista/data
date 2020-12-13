@@ -179,6 +179,39 @@ class UserTest(BaseTest):
         result = User.authenticate(json)
         self.assertIsNone(result)
 
+    def test_find_user(self):
+        email = "admin"
+        result = User.find_user(email)
+        self.assertTrue(result)
+
+    def test_find_user_unknown(self):
+        email = "bob@isu.edu"
+        result = User.find_user(email)
+        self.assertFalse(result)
+
+    def test_find_user_none(self):
+        with self.assertRaises(Exception):
+            User.find_user(None)
+
+    def test_find_user_empty(self):
+        with self.assertRaises(Exception):
+            User.find_user("")
+
+    def test_reset_admin_exists(self):
+        admin = User.find_user("admin")
+        fname = "new name"
+        admin.set_first_name(fname)
+        self.assertEqual(fname, admin.get_first_name())
+        User.reset_admin_account()
+        self.assertNotEqual(fname, admin.get_first_name())
+
+    def test_rest_admin_nonexists(self):
+        admin = User.find_user("admin")
+        db.session.delete(admin)
+        db.session.commit()
+        User.reset_admin_account()
+        self.assertTrue(User.query.count() == 2)
+        self.assertIsNotNone(User.find_user("admin"))
 
 if __name__ == '__main__':
     unittest.main()

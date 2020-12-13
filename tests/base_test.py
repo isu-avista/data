@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 import unittest
 from flask import Flask
-import avista_data
+import avista_data.data_manager
 import os
 
 
 def create_app(config):
     app = Flask("Test")
-    avista_data.init(app)
+    app.app_context().push()
     app.config.from_object(config)
+    avista_data.data_manager.init()
     return app
 
 
@@ -24,8 +25,9 @@ class BaseTest(unittest.TestCase):
         self.app = create_app(TestConfig)
         self.app_context = self.app.app_context()
         self.app_context.push()
-        avista_data.db.create_all()
-        avista_data.populate_initial_data(self.app)
+        self.db = avista_data.data_manager.get_db()
+        self.db.create_all()
+        avista_data.populate_initial_data()
 
     def tearDown(self):
         avista_data.db.session.remove()

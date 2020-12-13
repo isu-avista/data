@@ -54,9 +54,9 @@ Once you have the database setup you will need a flask app in order to initializ
 The code for this would look something like...
 
 ```python
-import os
-import avista_data
 from flask import Flask
+
+import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -67,14 +67,25 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
-app = Flask(__name__)
+app = Flask("tests")
+app.app_context().push() # don't forget to push the app context
 app.config.from_object(Config)
-avista_data.init(app)
+
+import avista_data
+from avista_data import data_manager
+
+data_manager.init()
+
+
+@app.shell_context_processor
+def make_shell_context():
+    return {'db': data_manager.get_db()}
+
 ```
 
 The idea here is that you need some form of database configuration, provided through a configuration object
 or environment variables. You can then create the flask app (i.e., `app = Flask(__name__)`). Finally, you can
-then initialize the `avista_data` module using `avista_data.init(app)`. (Note: don't forget the imports)
+then initialize the `avista_data` module using `avista_data.data_manager.init()`. (Note: don't forget the imports)
 
 ### Using the classes
 
