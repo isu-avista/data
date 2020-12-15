@@ -29,6 +29,7 @@ from avista_data.user import User
 def populate_initial_data():
     with current_app.app_context():
         db = data_manager.get_db()
+        data_manager.get_db().create_all()
 
         if db is not None and User.query.count() == 0:
             admin = User()

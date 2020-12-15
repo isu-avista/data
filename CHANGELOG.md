@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [0.1.17](https://github.com/isu-avista/data/releases/tag/v0.1.17) - 2020-12-15
+### Added
+
+### Changed
+* Refactored db.create_all() to be in proper place in `populate_initial_data()`
+
+### Deleted
+
 ## [0.1.16](https://github.com/isu-avista/data/releases/tag/v0.1.16) - 2020-12-13
 ### Added
 
