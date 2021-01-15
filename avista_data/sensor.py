@@ -1,6 +1,5 @@
 from avista_data import db
 from avista_data.unit import Unit
-from avista_data.pin_out import PinOut
 
 
 class Sensor(db.Model):
@@ -23,7 +22,7 @@ class Sensor(db.Model):
 
         **data (list)**: List of data points measured by the sensor
 
-        **pinout (list)**: List of pinouts associated with this sensor
+        **channel (int)**: The ADC channel that the sensor is on
 
         **device_id (int)**: id of the parent device to which this sensor is attached
 
@@ -36,7 +35,7 @@ class Sensor(db.Model):
     module = db.Column(db.String(1024))
     cls = db.Column(db.String(1024))
     data = db.relationship('DataPoint', backref='sensor', lazy='dynamic')
-    pinout = db.relationship('PinOut', backref='sensor', lazy='dynamic')
+    channel = db.Column(db.Integer())
     device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
 
     def __init__(self, json=None, *args, **kwargs):
@@ -66,8 +65,7 @@ class Sensor(db.Model):
             self.unit = Unit.from_str(json.get('unit'))
             self.cls = json.get('cls')
             self.module = json.get('module')
-            for p in json.get('pinout'):
-                self.add_pin_out(PinOut(p))
+
             db.session.commit()
 
     def get_id(self):
@@ -136,16 +134,30 @@ class Sensor(db.Model):
         self.data.append(point)
         db.session.commit()
 
-    def add_pin_out(self, pinout):
-        """Adds the provided pinout to this sensor
+    def get_channel(self):
+        """Gets the ADC channel that this sensor is on
 
-        Args:
-            **pinout (:obj: `PinOut`)**: PinOut to be added
+        Returns:
+            The ADC channel of this sensor
 
         """
-        if pinout is None or pinout in self.pinout:
-            return
-        self.pinout.append(pinout)
+        return self.channel
+
+    def set_channel(self, channel):
+        """Sets the ADC channel for this sensor
+
+        Args:
+           **channel (int)**: The channel to set for the sensor
+
+        Returns:
+            Exception if the provided channel is None
+
+        """
+        if channel is None:
+            raise Exception("Channel cannot be none")
+        elif channel < 0 or channel > 7:
+            raise Exception("Channel must be 0 through 7")
+        self.channel = channel
         db.session.commit()
 
     def get_unit(self):
@@ -224,9 +236,6 @@ class Sensor(db.Model):
         Returns:
             Dictionary representation of this sensor containing all of its attributes data.
         """
-        pinout = []
-        for p in PinOut.query.with_parent(self).all():
-            pinout.append(p.to_dict())
         return dict(
             id=self.id,
             name=self.name,
@@ -234,5 +243,4 @@ class Sensor(db.Model):
             cls=self.cls,
             module=self.module,
             unit=str(self.unit),
-            pinout=pinout
         )
