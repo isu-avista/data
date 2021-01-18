@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to avista-data’s documentation! &#8212; avista-data 0.1.17 documentation</title>
+    <title>Welcome to avista-data’s documentation! &#8212; avista-data 1.0.0 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     
@@ -27,7 +27,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">avista-data 0.1.17 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="#">avista-data 1.0.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Welcome to avista-data’s documentation!</a></li> 
       </ul>
     </div>  
@@ -677,96 +677,6 @@
 </dd></dl>
 
 </div>
-<div class="section" id="module-avista_data.pin_out">
-<span id="avista-data-pin-out"></span><h1>avista-data pin_out<a class="headerlink" href="#module-avista_data.pin_out" title="Permalink to this headline">¶</a></h1>
-<dl class="py class">
-<dt id="avista_data.pin_out.PinOut">
-<em class="property">class </em><code class="sig-prename descclassname">avista_data.pin_out.</code><code class="sig-name descname">PinOut</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/pin_out.html#PinOut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.pin_out.PinOut" title="Permalink to this definition">¶</a></dt>
-<dd><p>Represents the connection of a sensor to a RPi</p>
-<dl>
-<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: Primary key</p>
-<p><strong>var (str)</strong>: Name of the pin to which the value will be referenced</p>
-<p><strong>pin (int)</strong>: The pin to which the lead from the sensor is connected</p>
-<p><strong>sensor_id (int)</strong>: primary key of the parent Sensor</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt id="avista_data.pin_out.PinOut.get_id">
-<code class="sig-name descname">get_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/pin_out.html#PinOut.get_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.pin_out.PinOut.get_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Primary key of this instance</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>the primary key id of this instance</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="avista_data.pin_out.PinOut.get_pin">
-<code class="sig-name descname">get_pin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/pin_out.html#PinOut.get_pin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.pin_out.PinOut.get_pin" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the current pin of the current instance</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>the instance’s current pin</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="avista_data.pin_out.PinOut.get_var">
-<code class="sig-name descname">get_var</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/pin_out.html#PinOut.get_var"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.pin_out.PinOut.get_var" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the current var name of the current instance</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>the instance’s current var name</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="avista_data.pin_out.PinOut.set_pin">
-<code class="sig-name descname">set_pin</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pin</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/pin_out.html#PinOut.set_pin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.pin_out.PinOut.set_pin" title="Permalink to this definition">¶</a></dt>
-<dd><p>Assigns the current instance the provided pin</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p><strong>pin (int)</strong>: new pin to which the sensor is attached</p>
-</dd>
-<dt>Raises:</dt><dd><p>Exception, if pin is none or less than 1 or greater than 40</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="avista_data.pin_out.PinOut.set_var">
-<code class="sig-name descname">set_var</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">var</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/pin_out.html#PinOut.set_var"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.pin_out.PinOut.set_var" title="Permalink to this definition">¶</a></dt>
-<dd><p>Assigns the current instance the provided pin name</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p><strong>var (str)</strong>: new var name of the pin to which the sensor is attached</p>
-</dd>
-<dt>Raises:</dt><dd><p>Exception, if var is none or empty string</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="avista_data.pin_out.PinOut.to_dict">
-<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/pin_out.html#PinOut.to_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.pin_out.PinOut.to_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs a dictionary representation of the pinout</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>Dictionary representation of this pinout containing all of its attributes data.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="avista_data.pin_out.PinOut.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/pin_out.html#PinOut.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.pin_out.PinOut.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Updates this instance using the values from the provided json data</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</div>
 <div class="section" id="module-avista_data.role">
 <span id="avista-data-role"></span><h1>avista-data role<a class="headerlink" href="#module-avista_data.role" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
@@ -893,7 +803,7 @@
 <p><strong>module (str)</strong>: The module</p>
 <p><strong>cls (str)</strong>: The class name of the sensor to be used</p>
 <p><strong>data (list)</strong>: List of data points measured by the sensor</p>
-<p><strong>pinout (list)</strong>: List of pinouts associated with this sensor</p>
+<p><strong>channel (int)</strong>: The ADC channel that the sensor is on</p>
 <p><strong>device_id (int)</strong>: id of the parent device to which this sensor is attached</p>
 </dd>
 </dl>
@@ -908,11 +818,11 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="avista_data.sensor.Sensor.add_pin_out">
-<code class="sig-name descname">add_pin_out</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pinout</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.add_pin_out"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.add_pin_out" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the provided pinout to this sensor</p>
+<dt id="avista_data.sensor.Sensor.get_channel">
+<code class="sig-name descname">get_channel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.get_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.get_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the ADC channel that this sensor is on</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p><strong>pinout (:obj: `PinOut`)</strong>: PinOut to be added</p>
+<dt>Returns:</dt><dd><p>The ADC channel of this sensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -965,6 +875,18 @@
 <dd><p>Returns the unit of measure associated with this sensor</p>
 <dl class="simple">
 <dt>Returns:</dt><dd><p>The unit of measure of this sensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.sensor.Sensor.set_channel">
+<code class="sig-name descname">set_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">channel</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.set_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.set_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the ADC channel for this sensor</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p><strong>channel (int)</strong>: The channel to set for the sensor</p>
+</dd>
+<dt>Returns:</dt><dd><p>Exception if the provided channel is None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1593,7 +1515,6 @@
 <li><a class="reference internal" href="#module-avista_data.device">avista-data device</a></li>
 <li><a class="reference internal" href="#module-avista_data.issue">avista-data issue</a></li>
 <li><a class="reference internal" href="#module-avista_data.issue_type">avista-data issue_type</a></li>
-<li><a class="reference internal" href="#module-avista_data.pin_out">avista-data pin_out</a></li>
 <li><a class="reference internal" href="#module-avista_data.role">avista-data role</a></li>
 <li><a class="reference internal" href="#module-avista_data.role_too_low_error">avista-data role_too_low_error</a></li>
 <li><a class="reference internal" href="#module-avista_data.security_config">avista-data security_config</a></li>
@@ -1636,7 +1557,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">avista-data 0.1.17 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="#">avista-data 1.0.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Welcome to avista-data’s documentation!</a></li> 
       </ul>
     </div>
