@@ -213,5 +213,6 @@ class UserTest(BaseTest):
         self.assertTrue(User.query.count() == 2)
         self.assertIsNotNone(User.find_user("admin"))
 
+
 if __name__ == '__main__':
     unittest.main()

@@ -17,7 +17,6 @@ from avista_data import security_config
 from avista_data import server_config
 from avista_data import sensor
 from avista_data import user
-from avista_data import pin_out
 from avista_data import server
 from avista_data import status
 from avista_data import api_key

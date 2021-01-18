@@ -42,12 +42,6 @@ avista-data issue_type
    :members:
 
 
-avista-data pin_out
-===================
-.. automodule:: avista_data.pin_out
-   :members:
-
-
 avista-data role
 ================
 .. automodule:: avista_data.role

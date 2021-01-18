@@ -6,7 +6,6 @@ from avista_data.sensor import Sensor
 from avista_data import db
 from avista_data.device import Device
 from avista_data.data_point import DataPoint
-from avista_data.pin_out import PinOut
 from datetime import datetime
 from flask import jsonify
 
@@ -22,7 +21,7 @@ class SensorTest(BaseTest):
         self.fixture.set_module('test.test')
         self.fixture.set_unit(Unit.kWh)
 
-        self.fixture.add_pin_out(PinOut(var="t", pin=1))
+        self.fixture.set_channel(4)
         db.session.add(self.fixture)
         db.session.commit()
 
@@ -116,21 +115,20 @@ class SensorTest(BaseTest):
         self.fixture.add_data_point(dp)
         self.assertEqual(count, self.fixture.data.count(), "counts are not the same")
 
-    def test_pin_out(self):
-        po = PinOut(var="test", pin=2)
-        db.session.add(po)
-        self.fixture.add_pin_out(po)
-        self.assertEqual(2, self.fixture.pinout.count(), "size changed")
+    def test_channel(self):
+        self.assertEqual(4, self.fixture.get_channel(), "channels are not the same")
 
-    def test_null_pin_out(self):
-        po = None
-        self.fixture.add_pin_out(po)
-        self.assertEqual(1, self.fixture.pinout.count(), "size changed")
+    def test_channel_none(self):
+        with self.assertRaises(Exception):
+            self.fixture.set_channel(None)
 
-    def test_existing_pin_out(self):
-        po = self.fixture.pinout[0]
-        self.fixture.add_pin_out(po)
-        self.assertEqual(1, self.fixture.pinout.count(), "size changed")
+    def test_channel_bounds_upper(self):
+        with self.assertRaises(Exception):
+            self.fixture.set_channel(8)
+
+    def test_channel_bounds_lower(self):
+        with self.assertRaises(Exception):
+            self.fixture.set_channel(-1)
 
     def test_to_dict(self):
         exp = {
@@ -139,14 +137,7 @@ class SensorTest(BaseTest):
             'quantity': 'Test',
             'module': 'test.test',
             'cls': 'Test',
-            'unit': 'kWh',
-            'pinout': [
-                {
-                    'id': 1,
-                    'var': 't',
-                    'pin': 1
-                }
-            ]
+            'unit': 'kWh'
         }
         self.assertDictEqual(exp, self.fixture.to_dict(), "dicts are not equal")
 

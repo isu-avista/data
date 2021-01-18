@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [1.0.0](https://github.com/isu-avista/data/releases/tag/v1.0.0) - 2021-01-17
+### Added
+* Added channel attribute to the sensor class
+
+### Changed
+
+### Deleted
+* Removed the pinout class and pinout associations inside the sensor class
+
 ## [0.1.17](https://github.com/isu-avista/data/releases/tag/v0.1.17) - 2020-12-15
 ### Added
 
