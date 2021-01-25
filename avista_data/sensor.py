@@ -1,5 +1,6 @@
 from avista_data import db
 from avista_data.unit import Unit
+from avista_data.parameter import Parameter
 
 
 class Sensor(db.Model):
@@ -22,7 +23,7 @@ class Sensor(db.Model):
 
         **data (list)**: List of data points measured by the sensor
 
-        **channel (int)**: The ADC channel that the sensor is on
+        **parameters (list)**: List of parameters used by the sensor
 
         **device_id (int)**: id of the parent device to which this sensor is attached
 
@@ -35,7 +36,7 @@ class Sensor(db.Model):
     module = db.Column(db.String(1024))
     cls = db.Column(db.String(1024))
     data = db.relationship('DataPoint', backref='sensor', lazy='dynamic')
-    channel = db.Column(db.Integer())
+    parameters = db.relationship('Parameter', backref='sensor', lazy='dynamic')
     device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
 
     def __init__(self, json=None, *args, **kwargs):
@@ -65,7 +66,8 @@ class Sensor(db.Model):
             self.unit = Unit.from_str(json.get('unit'))
             self.cls = json.get('cls')
             self.module = json.get('module')
-
+            for p in json.get('parameters'):
+                self.add_parameter(Parameter(p))
             db.session.commit()
 
     def get_id(self):
@@ -134,30 +136,16 @@ class Sensor(db.Model):
         self.data.append(point)
         db.session.commit()
 
-    def get_channel(self):
-        """Gets the ADC channel that this sensor is on
-
-        Returns:
-            The ADC channel of this sensor
-
-        """
-        return self.channel
-
-    def set_channel(self, channel):
-        """Sets the ADC channel for this sensor
+    def add_parameter(self, parameter):
+        """Adds the provided parameter to this sensor
 
         Args:
-           **channel (int)**: The channel to set for the sensor
-
-        Returns:
-            Exception if the provided channel is None
+            **parameter (:obj: `Parameter`)**: Parameter to be added
 
         """
-        if channel is None:
-            raise Exception("Channel cannot be none")
-        elif channel < 0 or channel > 7:
-            raise Exception("Channel must be 0 through 7")
-        self.channel = channel
+        if parameter is None or parameter in self.parameters:
+            return
+        self.parameters.append(parameter)
         db.session.commit()
 
     def get_unit(self):
@@ -235,12 +223,17 @@ class Sensor(db.Model):
 
         Returns:
             Dictionary representation of this sensor containing all of its attributes data.
+
         """
+        parameters = []
+        for p in Parameter.query.with_parent(self).all():
+            parameters.append(p.to_dict())
         return dict(
             id=self.id,
             name=self.name,
             quantity=self.quantity,
             cls=self.cls,
             module=self.module,
+            parameters=parameters,
             unit=str(self.unit),
         )

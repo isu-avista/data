@@ -97,6 +97,7 @@ Currently the data model is quite small and comprised of the following classes:
 * **Device** - Represents the device hosting the service
 * **Issue** - Represents an issue affecting monitored equipment
 * **IssueType** - Enum representing the type of issue
+* **Parameter** - Key/Value parameters for use with Sensors 
 * **Role** - Enum defining roles for users
 * **SecurityConfig** - Security Configuration of a service 
 * **Sensor** - Sensor connected to an IoT device

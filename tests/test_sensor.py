@@ -6,6 +6,7 @@ from avista_data.sensor import Sensor
 from avista_data import db
 from avista_data.device import Device
 from avista_data.data_point import DataPoint
+from avista_data.parameter import Parameter
 from datetime import datetime
 from flask import jsonify
 
@@ -21,7 +22,7 @@ class SensorTest(BaseTest):
         self.fixture.set_module('test.test')
         self.fixture.set_unit(Unit.kWh)
 
-        self.fixture.set_channel(4)
+        self.fixture.add_parameter(Parameter(key="TestKey", value="TestValue"))
         db.session.add(self.fixture)
         db.session.commit()
 
@@ -116,19 +117,19 @@ class SensorTest(BaseTest):
         self.assertEqual(count, self.fixture.data.count(), "counts are not the same")
 
     def test_channel(self):
-        self.assertEqual(4, self.fixture.get_channel(), "channels are not the same")
+        param = Parameter(key="TestKey2", value="TestValue2")
+        db.session.add(param)
+        self.fixture.add_parameter(param)
+        self.assertEqual(2, self.fixture.parameters.count(), "size changed")
 
-    def test_channel_none(self):
-        with self.assertRaises(Exception):
-            self.fixture.set_channel(None)
+    def test_null_parameter(self):
+        self.fixture.add_parameter(None)
+        self.assertEqual(1, self.fixture.parameters.count(), "size changed")
 
-    def test_channel_bounds_upper(self):
-        with self.assertRaises(Exception):
-            self.fixture.set_channel(8)
-
-    def test_channel_bounds_lower(self):
-        with self.assertRaises(Exception):
-            self.fixture.set_channel(-1)
+    def test_existing_parameter(self):
+        param = self.fixture.parameters[0]
+        self.fixture.add_parameter(param)
+        self.assertEqual(1, self.fixture.parameters.count(), "size changed")
 
     def test_to_dict(self):
         exp = {
@@ -137,8 +138,17 @@ class SensorTest(BaseTest):
             'quantity': 'Test',
             'module': 'test.test',
             'cls': 'Test',
-            'unit': 'kWh'
+            'unit': 'kWh',
+            'parameters': [
+                {
+                    'id': 1,
+                    'key': 'TestKey',
+                    'value': 'TestValue'
+                }
+            ]
         }
+        print(exp)
+        print(self.fixture.to_dict())
         self.assertDictEqual(exp, self.fixture.to_dict(), "dicts are not equal")
 
     def test_repr(self):
