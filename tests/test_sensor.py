@@ -147,8 +147,6 @@ class SensorTest(BaseTest):
                 }
             ]
         }
-        print(exp)
-        print(self.fixture.to_dict())
         self.assertDictEqual(exp, self.fixture.to_dict(), "dicts are not equal")
 
     def test_repr(self):
