@@ -42,6 +42,12 @@ avista-data issue_type
    :members:
 
 
+avista-data parameter
+=====================
+.. automodule:: avista_data.parameter
+   :members:
+
+
 avista-data role
 ================
 .. automodule:: avista_data.role

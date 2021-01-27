@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to avista-data’s documentation! &#8212; avista-data 1.0.0 documentation</title>
+    <title>Welcome to avista-data’s documentation! &#8212; avista-data 1.1.0 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     
@@ -27,7 +27,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">avista-data 1.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="#">avista-data 1.1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Welcome to avista-data’s documentation!</a></li> 
       </ul>
     </div>  
@@ -677,6 +677,96 @@
 </dd></dl>
 
 </div>
+<div class="section" id="module-avista_data.parameter">
+<span id="avista-data-parameter"></span><h1>avista-data parameter<a class="headerlink" href="#module-avista_data.parameter" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="avista_data.parameter.Parameter">
+<em class="property">class </em><code class="sig-prename descclassname">avista_data.parameter.</code><code class="sig-name descname">Parameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/parameter.html#Parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.parameter.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents parameters that can be used by Sensors</p>
+<dl>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: Primary key</p>
+<p><strong>key (str)</strong>: The parameter key</p>
+<p><strong>value (str)</strong>: The parameter value</p>
+<p><strong>sensor_id (int)</strong>: Primary key of the parent Sensor</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="avista_data.parameter.Parameter.get_id">
+<code class="sig-name descname">get_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/parameter.html#Parameter.get_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.parameter.Parameter.get_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the primary key of this instance</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>the primary key id of this instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.parameter.Parameter.get_key">
+<code class="sig-name descname">get_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/parameter.html#Parameter.get_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.parameter.Parameter.get_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the key of this instance</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>the key of this instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.parameter.Parameter.get_value">
+<code class="sig-name descname">get_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/parameter.html#Parameter.get_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.parameter.Parameter.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the value of this instance</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>the value of this instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.parameter.Parameter.set_key">
+<code class="sig-name descname">set_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/parameter.html#Parameter.set_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.parameter.Parameter.set_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns the current instance the provided key</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p><strong>key (str)</strong>: the new key for this instance</p>
+</dd>
+<dt>Raises:</dt><dd><p>Exception, if key is None or Empty</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.parameter.Parameter.set_value">
+<code class="sig-name descname">set_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/parameter.html#Parameter.set_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.parameter.Parameter.set_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns the current instance the provided value</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p><strong>value (str)</strong>: the new value for this instance</p>
+</dd>
+<dt>Raises:</dt><dd><p>Exception, if value is None or Empty</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.parameter.Parameter.to_dict">
+<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/parameter.html#Parameter.to_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.parameter.Parameter.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a dictionary representation of the current Parameter</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>dictionary representation of this Parameter containing all of its attributes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.parameter.Parameter.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/parameter.html#Parameter.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.parameter.Parameter.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates this instance using the values from the provided json data</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p><strong>json (:obj: `JSON`)</strong>: json data providing new values for this class</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-avista_data.role">
 <span id="avista-data-role"></span><h1>avista-data role<a class="headerlink" href="#module-avista_data.role" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
@@ -803,7 +893,7 @@
 <p><strong>module (str)</strong>: The module</p>
 <p><strong>cls (str)</strong>: The class name of the sensor to be used</p>
 <p><strong>data (list)</strong>: List of data points measured by the sensor</p>
-<p><strong>channel (int)</strong>: The ADC channel that the sensor is on</p>
+<p><strong>parameters (list)</strong>: List of parameters used by the sensor</p>
 <p><strong>device_id (int)</strong>: id of the parent device to which this sensor is attached</p>
 </dd>
 </dl>
@@ -818,11 +908,11 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="avista_data.sensor.Sensor.get_channel">
-<code class="sig-name descname">get_channel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.get_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.get_channel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the ADC channel that this sensor is on</p>
+<dt id="avista_data.sensor.Sensor.add_parameter">
+<code class="sig-name descname">add_parameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parameter</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.add_parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.add_parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the provided parameter to this sensor</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>The ADC channel of this sensor</p>
+<dt>Args:</dt><dd><p><strong>parameter (:obj: `Parameter`)</strong>: Parameter to be added</p>
 </dd>
 </dl>
 </dd></dl>
@@ -875,18 +965,6 @@
 <dd><p>Returns the unit of measure associated with this sensor</p>
 <dl class="simple">
 <dt>Returns:</dt><dd><p>The unit of measure of this sensor</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="avista_data.sensor.Sensor.set_channel">
-<code class="sig-name descname">set_channel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">channel</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/sensor.html#Sensor.set_channel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.sensor.Sensor.set_channel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the ADC channel for this sensor</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p><strong>channel (int)</strong>: The channel to set for the sensor</p>
-</dd>
-<dt>Returns:</dt><dd><p>Exception if the provided channel is None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1515,6 +1593,7 @@
 <li><a class="reference internal" href="#module-avista_data.device">avista-data device</a></li>
 <li><a class="reference internal" href="#module-avista_data.issue">avista-data issue</a></li>
 <li><a class="reference internal" href="#module-avista_data.issue_type">avista-data issue_type</a></li>
+<li><a class="reference internal" href="#module-avista_data.parameter">avista-data parameter</a></li>
 <li><a class="reference internal" href="#module-avista_data.role">avista-data role</a></li>
 <li><a class="reference internal" href="#module-avista_data.role_too_low_error">avista-data role_too_low_error</a></li>
 <li><a class="reference internal" href="#module-avista_data.security_config">avista-data security_config</a></li>
@@ -1557,7 +1636,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">avista-data 1.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="#">avista-data 1.1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Welcome to avista-data’s documentation!</a></li> 
       </ul>
     </div>
