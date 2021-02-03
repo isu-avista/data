@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to avista-data’s documentation! &#8212; avista-data 1.1.0 documentation</title>
+    <title>Welcome to avista-data’s documentation! &#8212; avista-data 1.2.0 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     
@@ -13,7 +13,6 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -27,7 +26,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">avista-data 1.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="#">avista-data 1.2.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Welcome to avista-data’s documentation!</a></li> 
       </ul>
     </div>  
@@ -140,7 +139,7 @@
 <em class="property">class </em><code class="sig-prename descclassname">avista_data.config_item.</code><code class="sig-name descname">ConfigItem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/config_item.html#ConfigItem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.config_item.ConfigItem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Representation of a single item from a configuration</p>
 <dl>
-<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: The primary key for each data point instance</p>
+<dt>Attributes:</dt><dd><p><strong>id (int)</strong>: The primary key for each config item instance</p>
 <p><strong>name (str)</strong>: Name of this instance</p>
 <p><strong>description (str)</strong>: Description of this instance</p>
 <p><strong>value (str)</strong>: Config value</p>
@@ -227,9 +226,9 @@
 <dl class="py method">
 <dt id="avista_data.config_item.ConfigItem.to_dict">
 <code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/config_item.html#ConfigItem.to_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.config_item.ConfigItem.to_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructs a dictionary representation of the DataPoint</p>
+<dd><p>Constructs a dictionary representation of the ConfigItem</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>Dictionary representation of this data point containing all of its attributes data.</p>
+<dt>Returns:</dt><dd><p>Dictionary representation of this config item containing all of its attributes data.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -256,6 +255,7 @@
 <dl>
 <dt>Attributes:</dt><dd><p><strong>id (int)</strong>: The primary key for each data point instance</p>
 <p><strong>value (float)</strong>: The measure value</p>
+<p><strong>name (str)</strong>: The name of the datapoint</p>
 <p><strong>timestamp (int)</strong>: The point at which the measurement occurred</p>
 <p><strong>sensor_id (int)</strong>: The id of the sensor which made the measurement</p>
 </dd>
@@ -266,6 +266,16 @@
 <dd><p>Primary key of this instance</p>
 <dl class="simple">
 <dt>Returns:</dt><dd><p>the primary key id of this instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.data_point.DataPoint.get_name">
+<code class="sig-name descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/data_point.html#DataPoint.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.data_point.DataPoint.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current name of this instance</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>name of the instance</p>
 </dd>
 </dl>
 </dd></dl>
@@ -286,6 +296,18 @@
 <dd><p>Returns the current value of this instance</p>
 <dl class="simple">
 <dt>Returns:</dt><dd><p>value of the instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_data.data_point.DataPoint.set_name">
+<code class="sig-name descname">set_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_data/data_point.html#DataPoint.set_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_data.data_point.DataPoint.set_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns the name for this instance</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p><strong>name (str)</strong>: The new name for this instance</p>
+</dd>
+<dt>Raises:</dt><dd><p>Exception, if the provided name is not a string</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1636,13 +1658,13 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">avista-data 1.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="#">avista-data 1.2.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Welcome to avista-data’s documentation!</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, ISU Empirical Software Engineering Laboratory.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
     </div>
   </body>
 </html>
