@@ -5,7 +5,7 @@ class ConfigItem(db.Model):
     """Representation of a single item from a configuration
 
     Attributes:
-        **id (int)**: The primary key for each data point instance
+        **id (int)**: The primary key for each config item instance
 
         **name (str)**: Name of this instance
 
@@ -131,18 +131,18 @@ class ConfigItem(db.Model):
         db.session.commit()
 
     def __repr__(self):
-        """An unambiguous representation of DataPoint"""
+        """An unambiguous representation of ConfigItem"""
         return f"Config Item: {self.name}={self.value}"
 
     def __str__(self):
-        """A readable representation of DataPoint"""
+        """A readable representation of ConfigItem"""
         return f"Config Item: {self.name}={self.value}"
 
     def to_dict(self):
-        """Constructs a dictionary representation of the DataPoint
+        """Constructs a dictionary representation of the ConfigItem
 
         Returns:
-            Dictionary representation of this data point containing all of its attributes data.
+            Dictionary representation of this config item containing all of its attributes data.
         """
         return dict(
             id=self.id,
