@@ -98,7 +98,7 @@ class SensorTest(BaseTest):
         self.assertEqual("Vibration", self.fixture.get_quantity(), "new quantity not the same")
 
     def test_data(self):
-        dp = DataPoint(value=1.0, timestamp=int(datetime.timestamp(datetime.now())))
+        dp = DataPoint(name="datapoint", value=1.0, timestamp=int(datetime.timestamp(datetime.now())))
         db.session.add(dp)
         self.fixture.add_data_point(dp)
         self.assertIn(dp, self.fixture.data, "point not contained")
@@ -109,7 +109,7 @@ class SensorTest(BaseTest):
         self.assertEqual(count, self.fixture.data.count(), "counts are not the same")
 
     def test_know_data_point(self):
-        dp = DataPoint(value=1.0, timestamp=int(datetime.timestamp(datetime.now())))
+        dp = DataPoint(name="datapoint", value=1.0, timestamp=int(datetime.timestamp(datetime.now())))
         db.session.add(dp)
         self.fixture.add_data_point(dp)
         count = self.fixture.data.count()

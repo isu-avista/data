@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [1.2.0](https://github.com/isu-avista/data/releases/tag/v1.2.0) - 2021-02-02
+### Added
+* Added a name field to the DataPoint class - some sensors collect multiple datapoint values
+
+### Changed
+
+### Deleted
+
 ## [1.1.0](https://github.com/isu-avista/data/releases/tag/v1.1.0) - 2021-01-27
 ### Added
 * Added a parameter class to store parameters for use with sensors at runtime

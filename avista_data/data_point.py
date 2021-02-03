@@ -9,6 +9,8 @@ class DataPoint(db.Model):
 
         **value (float)**: The measure value
 
+        **name (str)**: The name of the datapoint
+
         **timestamp (int)**: The point at which the measurement occurred
 
         **sensor_id (int)**: The id of the sensor which made the measurement
@@ -16,6 +18,7 @@ class DataPoint(db.Model):
     """
 
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128), nullable=False)
     value = db.Column(db.Float, nullable=False)
     timestamp = db.Column(db.Integer, nullable=False)
     sensor_id = db.Column(db.Integer, db.ForeignKey('sensor.id'))
@@ -42,6 +45,7 @@ class DataPoint(db.Model):
 
         """
         if json is not None:
+            self.name = json.get('name')
             self.value = json.get('value')
             self.timestamp = json.get('timestamp')
             db.session.commit()
@@ -53,6 +57,28 @@ class DataPoint(db.Model):
             the primary key id of this instance
         """
         return self.id
+
+    def get_name(self):
+        """Returns the current name of this instance
+
+        Returns:
+            name of the instance
+        """
+        return self.name
+
+    def set_name(self, name):
+        """Assigns the name for this instance
+
+        Args:
+            **name (str)**: The new name for this instance
+
+        Raises:
+            Exception, if the provided name is not a string
+        """
+        if not isinstance(name, str):
+            raise Exception("name is not a string")
+        self.name = name
+        db.session.commit()
 
     def get_value(self):
         """Returns the current value of this instance
@@ -114,6 +140,7 @@ class DataPoint(db.Model):
         """
         return dict(
             id=self.id,
+            name=self.name,
             value=self.value,
             timestamp=self.timestamp
         )

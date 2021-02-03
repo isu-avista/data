@@ -13,6 +13,7 @@ class DataPointTest(BaseTest):
     def setUp(self):
         super().setUp()
         self.fixture = DataPoint()
+        self.fixture.set_name("datapoint")
         self.fixture.set_value(0.0)
         self.fixture.set_timestamp(int(datetime.timestamp(datetime.now())))
         db.session.add(self.fixture)
@@ -20,6 +21,17 @@ class DataPointTest(BaseTest):
 
     def test_id(self):
         self.assertEqual(self.fixture.get_id(), 1, "id's do not match")
+
+    def test_name(self):
+        self.assertEqual(self.fixture.get_name(), "datapoint")
+
+    def test_null_name(self):
+        with self.assertRaises(Exception):
+            self.fixture.set_name(None)
+
+    def test_nonstring_name(self):
+        with self.assertRaises(Exception):
+            self.fxiture.set_name(3)
 
     def test_value(self):
         self.assertAlmostEqual(self.fixture.get_value(), 0, 3, "values do not match")
@@ -59,6 +71,7 @@ class DataPointTest(BaseTest):
     def test_to_dict(self):
         exp = {
             "id": 1,
+            "name": "datapoint",
             "value": 0.0,
             "timestamp": int(datetime.timestamp(datetime.now()))
         }
@@ -67,23 +80,27 @@ class DataPointTest(BaseTest):
     def test_update(self):
         exp = {
             "id": 1,
+            "name": "updated_datapoint",
             "value": 2.0,
             "timestamp": 10
         }
         json = jsonify(exp).get_json()
         self.fixture.update(json)
         self.assertEqual(exp['id'], self.fixture.get_id())
+        self.assertEqual(exp['name'], self.fixture.get_name())
         self.assertAlmostEqual(exp['value'], self.fixture.get_value(), 3)
         self.assertEqual(exp['timestamp'], self.fixture.get_timestamp())
 
     def test_create_from_json(self):
         exp = {
             "id": 2,
+            "name": "datapoint",
             "value": 2.0,
             "timestamp": 10
         }
         json = jsonify(exp).get_json()
         self.fixture = DataPoint(json)
+        self.assertEqual(exp['name'], self.fixture.get_name())
         self.assertAlmostEqual(exp['value'], self.fixture.get_value(), 3)
         self.assertEqual(exp['timestamp'], self.fixture.get_timestamp())
 
