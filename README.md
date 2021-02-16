@@ -20,7 +20,7 @@ and this [project's wiki](https://github.com/isu-avista/data/wiki).
 To install this use the following command.
 
 ```
-pip3 install git+ssh://git@github.com/isu-avista/data.git
+pip3 install git+git://github.com/isu-avista/data.git
 ```
 
 ## Usage

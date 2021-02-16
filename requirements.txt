@@ -9,3 +9,6 @@ setuptools>=50.3.2
 alembic>=1.4.3
 sphinx>=3.3.1
 rinohtype>=0.4.2
+pytest>=6.2.2
+codecov>=2.1.11
+pytest-cov>=2.11.1
