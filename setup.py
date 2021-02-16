@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="avista-data",
-    version="1.2.1",
+    version="1.2.2",
     author="Isaac Griffith",
     author_email="grifisaa@isu.edu",
     description="",
