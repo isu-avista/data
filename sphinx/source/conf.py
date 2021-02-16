@@ -23,7 +23,7 @@ copyright = '2020, ISU Empirical Software Engineering Laboratory'
 author = 'Isaac Griffith'
 
 # The full version, including alpha/beta/rc tags
-release = '1.2.2'
+release = '1.2.3'
 
 
 # -- General configuration ---------------------------------------------------

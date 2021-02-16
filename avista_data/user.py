@@ -90,7 +90,7 @@ class User(db.Model):
         """
         if name is None or name == "":
             raise Exception("first name cannot be None or empty")
-        if self.first_name == "System" and self.last_name == "Administrator":
+        if self.first_name == "System":
             return
         self.first_name = name
         db.session.commit()
@@ -116,7 +116,7 @@ class User(db.Model):
         """
         if name is None or name == "":
             raise Exception("last name cannot be None or empty")
-        if self.first_name == "System" and self.last_name == "Administrator":
+        if self.last_name == "Administrator":
             return
         self.last_name = name
         db.session.commit()
@@ -142,7 +142,7 @@ class User(db.Model):
         """
         if email is None or email == "":
             raise Exception("email cannot be None or empty")
-        if self.first_name == "System" and self.last_name == "Administrator":
+        if email == "admin":
             return
         self.email = email
         db.session.commit()
