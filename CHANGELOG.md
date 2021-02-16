@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [1.2.1](https://github.com/isu-avista/data/releases/tag/v1.2.0) - 2021-02-15
+### Added
+
+### Changed
+* Updated Travis-CI specification
+* Updated requirements.txt
+
+### Deleted
+* Admin reset method in User and its associated tests
+
 ## [1.2.0](https://github.com/isu-avista/data/releases/tag/v1.2.0) - 2021-02-02
 ### Added
 * Added a name field to the DataPoint class - some sensors collect multiple datapoint values
