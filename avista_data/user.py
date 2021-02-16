@@ -90,6 +90,8 @@ class User(db.Model):
         """
         if name is None or name == "":
             raise Exception("first name cannot be None or empty")
+        if self.first_name == "System" and self.last_name == "Administrator":
+            return
         self.first_name = name
         db.session.commit()
 
@@ -114,6 +116,8 @@ class User(db.Model):
         """
         if name is None or name == "":
             raise Exception("last name cannot be None or empty")
+        if self.first_name == "System" and self.last_name == "Administrator":
+            return
         self.last_name = name
         db.session.commit()
 
@@ -138,6 +142,8 @@ class User(db.Model):
         """
         if email is None or email == "":
             raise Exception("email cannot be None or empty")
+        if self.first_name == "System" and self.last_name == "Administrator":
+            return
         self.email = email
         db.session.commit()
 
@@ -162,6 +168,8 @@ class User(db.Model):
         """
         if role is None:
             raise Exception("role cannot be none")
+        if self.first_name == "System" and self.last_name == "Administrator":
+            return
         self.role = role
         db.session.commit()
 
@@ -235,22 +243,6 @@ class User(db.Model):
             email=self.email,
             role=str(self.role)
         )
-
-    @staticmethod
-    def reset_admin_account():
-        """Resets the admin account back to it's default settings"""
-        with current_app.app_context():
-            if User.query.filter_by(email="admin").count() < 1:
-                admin = User()
-                admin.email = "admin"
-                db.session.add(admin)
-                db.session.commit()
-            else:
-                admin = User.find_user("admin")
-
-            if User.query.filter_by(email="admin").count() > 0:
-                User.admin_account_details(admin)
-                db.session.commit()
 
     @staticmethod
     def admin_account_details(admin):
