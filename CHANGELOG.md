@@ -11,7 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
-## [1.2.1](https://github.com/isu-avista/data/releases/tag/v1.2.0) - 2021-02-15
+## [1.2.3](https://github.com/isu-avista/data/releases/tag/v1.2.3) - 2021-02-15
+### Added
+
+### Changed
+* Fixed minor error in the modification of the administrator details setup
+* updated documentation
+
+### Deleted
+
+## [1.2.2](https://github.com/isu-avista/data/releases/tag/v1.2.2) - 2021-02-15
 ### Added
 
 ### Changed
@@ -19,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
-## [1.2.1](https://github.com/isu-avista/data/releases/tag/v1.2.0) - 2021-02-15
+## [1.2.1](https://github.com/isu-avista/data/releases/tag/v1.2.1) - 2021-02-15
 ### Added
 
 ### Changed
