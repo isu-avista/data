@@ -15,6 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Changed
+* Fixed minor error in the travis ci to ensure that it works correctly
+
+### Deleted
+
+## [1.2.1](https://github.com/isu-avista/data/releases/tag/v1.2.0) - 2021-02-15
+### Added
+
+### Changed
 * Updated Travis-CI specification
 * Updated requirements.txt
 
