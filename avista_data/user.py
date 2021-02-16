@@ -168,8 +168,6 @@ class User(db.Model):
         """
         if role is None:
             raise Exception("role cannot be none")
-        if self.first_name == "System" and self.last_name == "Administrator":
-            return
         self.role = role
         db.session.commit()
 
