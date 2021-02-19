@@ -20,7 +20,7 @@ def init(uri):
     global engine
     global SessionLocal
     global metadata
-    engine = create_engine(uri, connect_args={"check_same_thread": False})
+    engine = create_engine(uri)
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     metadata.create_all(bind=engine)
     db = SessionLocal()
