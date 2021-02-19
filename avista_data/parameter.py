@@ -1,7 +1,8 @@
-from avista_data import db
+from .database import Base
+from sqlalchemy import Column, Integer, String, ForeignKey
 
 
-class Parameter(db.Model):
+class Parameter(Base):
     """Represents parameters that can be used by Sensors
 
     Attributes:
@@ -15,10 +16,11 @@ class Parameter(db.Model):
 
     """
 
-    id = db.Column(db.Integer, primary_key=True)
-    key = db.Column(db.String(128), nullable=False)
-    value = db.Column(db.String(128), nullable=False)
-    sensor_id = db.Column(db.Integer, db.ForeignKey('sensor.id'))
+    __tablename__ = "Parameters"
+    id = Column(Integer, primary_key=True)
+    key = Column(String(128), nullable=False)
+    value = Column(String(128), nullable=False)
+    sensor_id = Column(Integer, ForeignKey('Sensors.id'))
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -43,7 +45,6 @@ class Parameter(db.Model):
         if json is not None:
             self.key = json.get('key')
             self.value = json.get('value')
-            db.session.commit()
 
     def get_id(self):
         """Gets the primary key of this instance
@@ -76,7 +77,6 @@ class Parameter(db.Model):
         if key is None or key == "":
             raise Exception('key cannot be None or Empty')
         self.key = key
-        db.session.commit()
 
     def get_value(self):
         """Gets the value of this instance
@@ -100,7 +100,6 @@ class Parameter(db.Model):
         if value is None or value == "":
             raise Exception('value cannot be None or Empty')
         self.value = value
-        db.session.commit()
 
     def __repr__(self):
         """An unambiguous representation of a Parameter"""

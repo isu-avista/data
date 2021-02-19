@@ -1,9 +1,7 @@
 import unittest
-from avista_data import db
 from avista_data.server import Server
 from avista_data.api_key import ApiKey
 from tests.base_test import BaseTest
-from flask import jsonify
 
 
 class ServerTest(BaseTest):
@@ -15,8 +13,8 @@ class ServerTest(BaseTest):
         self.fixture.set_ip_address("127.0.0.1")
         self.fixture.set_port(5000)
         self.fixture.set_periodicity(5000)
-        db.session.add(self.fixture)
-        db.session.commit()
+        self.db.add(self.fixture)
+        self.db.commit()
 
     def test_id(self):
         self.assertEqual(1, self.fixture.get_id(), "id's do not match")
@@ -89,8 +87,9 @@ class ServerTest(BaseTest):
         key = ApiKey()
         key.set_key("testkey")
         key.set_description("Test Key")
-        db.session.add(key)
+        self.db.add(key)
         self.fixture.add_api_key(key)
+        self.db.commit()
         self.assertEqual(1, self.fixture.api_keys.count(), "counts are same")
         self.assertIn(key, self.fixture.api_keys, "key not found")
 
@@ -102,9 +101,10 @@ class ServerTest(BaseTest):
         key = ApiKey()
         key.set_key("testkey")
         key.set_description("Test Key")
-        db.session.add(key)
+        self.db.add(key)
         self.fixture.add_api_key(key)
         self.fixture.add_api_key(key)
+        self.db.commit()
         self.assertEqual(1, self.fixture.api_keys.count(), "counts are same")
 
     def test_to_dict(self):
@@ -124,8 +124,7 @@ class ServerTest(BaseTest):
             'port': 5000,
             'periodicity': 5000
         }
-        json = jsonify(exp).get_json()
-        self.fixture.update(json)
+        self.fixture.update(exp)
         self.assertEqual("Test2", self.fixture.get_name(), "names are not the same")
         self.assertEqual("127.0.1.1", self.fixture.get_ip_address(), "ips are not the same")
 
@@ -136,8 +135,7 @@ class ServerTest(BaseTest):
             'port': 5000,
             'periodicity': 5000
         }
-        json = jsonify(exp).get_json()
-        self.fixture = Server(json)
+        self.fixture = Server(exp)
         self.assertEqual("Test2", self.fixture.get_name(), "names are not the same")
         self.assertEqual("127.0.1.1", self.fixture.get_ip_address(), "ips are not the same")
 

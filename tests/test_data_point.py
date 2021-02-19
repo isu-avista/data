@@ -1,11 +1,9 @@
 import unittest
 from tests.base_test import BaseTest
-from avista_data import db
 from avista_data.data_point import DataPoint
 from avista_data.sensor import Sensor
 from datetime import datetime
 from avista_data.unit import Unit
-from flask import jsonify
 
 
 class DataPointTest(BaseTest):
@@ -16,8 +14,8 @@ class DataPointTest(BaseTest):
         self.fixture.set_name("datapoint")
         self.fixture.set_value(0.0)
         self.fixture.set_timestamp(int(datetime.timestamp(datetime.now())))
-        db.session.add(self.fixture)
-        db.session.commit()
+        self.db.add(self.fixture)
+        self.db.commit()
 
     def test_id(self):
         self.assertEqual(self.fixture.get_id(), 1, "id's do not match")
@@ -31,7 +29,7 @@ class DataPointTest(BaseTest):
 
     def test_nonstring_name(self):
         with self.assertRaises(Exception):
-            self.fxiture.set_name(3)
+            self.fixture.set_name(3)
 
     def test_value(self):
         self.assertAlmostEqual(self.fixture.get_value(), 0, 3, "values do not match")
@@ -46,9 +44,9 @@ class DataPointTest(BaseTest):
 
     def test_parent_sensor(self):
         sens = Sensor(name="TestSensor", quantity="Power", unit=Unit.kWh)
-        db.session.add(sens)
+        self.db.add(sens)
         sens.add_data_point(self.fixture)
-        db.session.commit()
+        self.db.commit()
         self.assertEqual(self.fixture.sensor_id, sens.get_id(), "id mismatch")
 
     def test_timestamp(self):
@@ -84,8 +82,7 @@ class DataPointTest(BaseTest):
             "value": 2.0,
             "timestamp": 10
         }
-        json = jsonify(exp).get_json()
-        self.fixture.update(json)
+        self.fixture.update(exp)
         self.assertEqual(exp['id'], self.fixture.get_id())
         self.assertEqual(exp['name'], self.fixture.get_name())
         self.assertAlmostEqual(exp['value'], self.fixture.get_value(), 3)
@@ -98,8 +95,7 @@ class DataPointTest(BaseTest):
             "value": 2.0,
             "timestamp": 10
         }
-        json = jsonify(exp).get_json()
-        self.fixture = DataPoint(json)
+        self.fixture = DataPoint(exp)
         self.assertEqual(exp['name'], self.fixture.get_name())
         self.assertAlmostEqual(exp['value'], self.fixture.get_value(), 3)
         self.assertEqual(exp['timestamp'], self.fixture.get_timestamp())

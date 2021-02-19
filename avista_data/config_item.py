@@ -1,7 +1,8 @@
-from avista_data import db
+from .database import Base
+from sqlalchemy import Column, Integer, String, ForeignKey
 
 
-class ConfigItem(db.Model):
+class ConfigItem(Base):
     """Representation of a single item from a configuration
 
     Attributes:
@@ -18,12 +19,13 @@ class ConfigItem(db.Model):
         **serv_conf_id (int)**; primary key of containing server configuration
     """
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(256), unique=True, nullable=False)
-    description = db.Column(db.String(2048), unique=True, nullable=False)
-    value = db.Column(db.String(1024), nullable=False)
-    sec_conf_id = db.Column(db.Integer, db.ForeignKey('security_config.id'))
-    serv_conf_id = db.Column(db.Integer, db.ForeignKey('server_config.id'))
+    __tablename__ = "ConfigItems"
+    id = Column(Integer, primary_key=True)
+    name = Column(String(256), unique=True, nullable=False)
+    description = Column(String(2048), unique=True, nullable=False)
+    value = Column(String(1024), nullable=False)
+    sec_conf_id = Column(Integer, ForeignKey('SecurityConfigs.id'))
+    serv_conf_id = Column(Integer, ForeignKey('ServerConfigs.id'))
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -50,7 +52,6 @@ class ConfigItem(db.Model):
             self.name = json.get('name')
             self.description = json.get('description')
             self.value = (json.get('value'))
-            db.session.commit()
 
     def get_id(self):
         """Primary key of this instance
@@ -82,7 +83,6 @@ class ConfigItem(db.Model):
         if name is None or name == "":
             raise Exception("name cannot be None or empty")
         self.name = name
-        db.session.commit()
 
     def get_description(self):
         """Description associated with this instance
@@ -106,7 +106,6 @@ class ConfigItem(db.Model):
         if desc is None or desc == "":
             raise Exception("description cannot be None or empty")
         self.description = desc
-        db.session.commit()
 
     def get_value(self):
         """Returns the current value of this instance
@@ -128,7 +127,6 @@ class ConfigItem(db.Model):
         if value is None or value == "":
             raise Exception("value cannot be None or empty")
         self.value = value
-        db.session.commit()
 
     def __repr__(self):
         """An unambiguous representation of ConfigItem"""

@@ -1,8 +1,12 @@
 import re
-from avista_data import db
+
+import avista_data
+from .database import Base
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 
 
-class Server(db.Model):
+class Server(Base):
     """A representation of servers to which the device is connected and to which data will be provided
 
     Attributes:
@@ -20,13 +24,14 @@ class Server(db.Model):
 
     """
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128))
-    ip_address = db.Column(db.String(128))
-    port = db.Column(db.Integer)
-    periodicity = db.Column(db.Integer)
-    api_keys = db.relationship('ApiKey', backref='server', lazy='dynamic')
-    device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
+    __tablename__ = "Servers"
+    id = Column(Integer, primary_key=True)
+    name = Column(String(128))
+    ip_address = Column(String(128))
+    port = Column(Integer)
+    periodicity = Column(Integer)
+    api_keys = relationship('ApiKey', backref='server', lazy='dynamic')
+    device_id = Column(Integer, ForeignKey('Devices.id'))
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -40,6 +45,8 @@ class Server(db.Model):
 
         """
         super().__init__(*args, **kwargs)
+        self.db = avista_data.database.db
+        self.db.add(self)
         self.update(json)
 
     def update(self, json):
@@ -54,7 +61,7 @@ class Server(db.Model):
             self.set_ip_address(json.get('ip_address'))
             self.set_port(int(json.get('port')))
             self.set_periodicity(int(json.get('periodicity')))
-            db.session.commit()
+            self.db.commit()
 
     def get_id(self):
         """Primary key of this instance
@@ -86,7 +93,7 @@ class Server(db.Model):
         if name is None or name == "":
             raise Exception("name cannot be None or empty")
         self.name = name
-        db.session.commit()
+        # self.db.commit()
 
     def get_ip_address(self):
         """Returns the current ip address of this instance
@@ -113,7 +120,7 @@ class Server(db.Model):
         if match is None:
             raise Exception("ip is not properly formatted")
         self.ip_address = ip
-        db.session.commit()
+        # self.db.commit()
 
     def get_port(self):
         """Returns the current port of this instance
@@ -135,7 +142,7 @@ class Server(db.Model):
         if port is None or port < 1 or port > 65535:
             raise Exception("port cannot be None or less than 1 or greater than 65535")
         self.port = port
-        db.session.commit()
+        # self.db.commit()
 
     def get_periodicity(self):
         """Returns the current periodicity of the current instance
@@ -158,7 +165,7 @@ class Server(db.Model):
         if period is None or period <= 0:
             raise Exception("periodicity cannot be None or less than 1")
         self.periodicity = period
-        db.session.commit()
+        # self.db.commit()
 
     def add_api_key(self, key):
         """Adds the provided key to the set of api keys for this server
@@ -168,7 +175,7 @@ class Server(db.Model):
         """
         if key is not None and key not in self.api_keys:
             self.api_keys.append(key)
-            db.session.commit()
+            # self.db.commit()
 
     def __repr__(self):
         """An unambiguous representation of Server"""

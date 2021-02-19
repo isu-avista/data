@@ -1,9 +1,11 @@
-from avista_data import db
 from avista_data.unit import Unit
 from avista_data.parameter import Parameter
+from .database import Base
+from sqlalchemy import Column, Integer, String, ForeignKey, Enum
+from sqlalchemy.orm import relationship
 
 
-class Sensor(db.Model):
+class Sensor(Base):
     """Class representing an attached sensor.
 
     This allows for the dynamic construction and removal of sensors from the device
@@ -29,15 +31,16 @@ class Sensor(db.Model):
 
     """
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120))
-    quantity = db.Column(db.String(128))
-    unit = db.Column(db.Enum(Unit))
-    module = db.Column(db.String(1024))
-    cls = db.Column(db.String(1024))
-    data = db.relationship('DataPoint', backref='sensor', lazy='dynamic')
-    parameters = db.relationship('Parameter', backref='sensor', lazy='dynamic')
-    device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
+    __tablename__ = "Sensors"
+    id = Column(Integer, primary_key=True)
+    name = Column(String(120))
+    quantity = Column(String(128))
+    unit = Column(Enum(Unit))
+    module = Column(String(1024))
+    cls = Column(String(1024))
+    data = relationship('DataPoint', backref='sensor', lazy='dynamic')
+    parameters = relationship('Parameter', backref='sensor', lazy='dynamic')
+    device_id = Column(Integer, ForeignKey('Devices.id'))
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -68,7 +71,6 @@ class Sensor(db.Model):
             self.module = json.get('module')
             for p in json.get('parameters'):
                 self.add_parameter(Parameter(p))
-            db.session.commit()
 
     def get_id(self):
         """Primary key of this instance
@@ -100,7 +102,6 @@ class Sensor(db.Model):
         if name is None or name == "":
             raise Exception("name cannot be None or empty")
         self.name = name
-        db.session.commit()
 
     def get_quantity(self):
         """The quantity to be measured by this sensor
@@ -122,7 +123,6 @@ class Sensor(db.Model):
         if quantity is None or quantity == "":
             raise Exception("quantity cannot be None or empty")
         self.quantity = quantity
-        db.session.commit()
 
     def add_data_point(self, point):
         """Adds the provided data point as a measure of this sensor
@@ -134,7 +134,6 @@ class Sensor(db.Model):
         if point is None or point in self.data:
             return
         self.data.append(point)
-        db.session.commit()
 
     def add_parameter(self, parameter):
         """Adds the provided parameter to this sensor
@@ -146,7 +145,6 @@ class Sensor(db.Model):
         if parameter is None or parameter in self.parameters:
             return
         self.parameters.append(parameter)
-        db.session.commit()
 
     def get_unit(self):
         """Returns the unit of measure associated with this sensor
@@ -170,7 +168,6 @@ class Sensor(db.Model):
         if unit is None:
             raise Exception("Unit cannot be none")
         self.unit = unit
-        db.session.commit()
 
     def get_class(self):
         """Returns the class used by this instance"""
@@ -189,7 +186,6 @@ class Sensor(db.Model):
         if cls is None or cls == "":
             raise Exception("cls cannot be None or empty")
         self.cls = cls
-        db.session.commit()
 
     def get_module(self):
         """Returns the module used by this instance"""
@@ -208,7 +204,6 @@ class Sensor(db.Model):
         if module is None or module == "":
             raise Exception("module cannot be None or empty")
         self.module = module
-        db.session.commit()
 
     def __repr__(self):
         """An unambiguous representation of Sensor"""
@@ -225,15 +220,15 @@ class Sensor(db.Model):
             Dictionary representation of this sensor containing all of its attributes data.
 
         """
-        parameters = []
-        for p in Parameter.query.with_parent(self).all():
-            parameters.append(p.to_dict())
+        params = []
+        for p in self.parameters:
+            params.append(p.to_dict())
         return dict(
             id=self.id,
             name=self.name,
             quantity=self.quantity,
             cls=self.cls,
             module=self.module,
-            parameters=parameters,
+            parameters=params,
             unit=str(self.unit),
         )

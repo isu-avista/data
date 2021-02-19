@@ -1,8 +1,9 @@
-from avista_data import db
 from avista_data.issue_type import IssueType
+from .database import Base
+from sqlalchemy import Column, Integer, String, ForeignKey, Enum
 
 
-class Issue(db.Model):
+class Issue(Base):
     """Represents an issue associated with the measured equipment
 
     Attributes:
@@ -18,11 +19,12 @@ class Issue(db.Model):
 
     """
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(256), nullable=False)
-    description = db.Column(db.String(1024), nullable=False)
-    type = db.Column(db.Enum(IssueType), nullable=False)
-    device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
+    __tablename__ = "Issues"
+    id = Column(Integer, primary_key=True)
+    name = Column(String(256), nullable=False)
+    description = Column(String(1024), nullable=False)
+    type = Column(Enum(IssueType), nullable=False)
+    device_id = Column(Integer, ForeignKey('Devices.id'))
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -49,7 +51,6 @@ class Issue(db.Model):
             self.name = json.get('name')
             self.description = json.get('description')
             self.type = IssueType.from_str(json.get('type'))
-            db.session.commit()
 
     def get_id(self):
         """Primary key of this instance
@@ -81,7 +82,6 @@ class Issue(db.Model):
         if name is None or name == "":
             raise Exception("name cannot be None or empty")
         self.name = name
-        db.session.commit()
 
     def get_description(self):
         """Description associated with this instance
@@ -105,7 +105,6 @@ class Issue(db.Model):
         if desc is None or desc == "":
             raise Exception("value cannot be None or empty")
         self.description = desc
-        db.session.commit()
 
     def get_type(self):
         """IssueType associated with this instance
@@ -129,7 +128,6 @@ class Issue(db.Model):
         if new_type is None:
             raise Exception("value cannot be None or empty")
         self.type = new_type
-        db.session.commit()
 
     def __repr__(self):
         """An unambiguous representation of this Issue"""

@@ -1,8 +1,6 @@
 import unittest
-from flask import jsonify
 from avista_data.device import Device
 from tests.base_test import BaseTest
-from avista_data import db
 from avista_data.user import User
 from avista_data.role import Role
 from avista_data.api_key import ApiKey
@@ -18,8 +16,8 @@ class UserTest(BaseTest):
         self.fixture.set_email("email")
         self.fixture.set_password("password")
         self.fixture.set_role(Role.USER)
-        db.session.add(self.fixture)
-        db.session.commit()
+        self.db.add(self.fixture)
+        self.db.commit()
 
     def test_id(self):
         self.assertEqual(self.fixture.get_id(), 2, "id's do not match")
@@ -73,8 +71,9 @@ class UserTest(BaseTest):
         key = ApiKey()
         key.set_key("testkey")
         key.set_description("Test Key")
-        db.session.add(key)
+        self.db.add(key)
         self.fixture.add_api_key(key)
+        self.db.commit()
         self.assertEqual(1, self.fixture.api_keys.count(), "counts are same")
         self.assertIn(key, self.fixture.api_keys, "key not found")
 
@@ -86,16 +85,17 @@ class UserTest(BaseTest):
         key = ApiKey()
         key.set_key("testkey")
         key.set_description("Test Key")
-        db.session.add(key)
+        self.db.add(key)
         self.fixture.add_api_key(key)
         self.fixture.add_api_key(key)
+        self.db.commit()
         self.assertEqual(1, self.fixture.api_keys.count(), "counts are same")
 
     def test_device(self):
         sc = Device(name="SC_Test")
-        db.session.add(sc)
+        self.db.add(sc)
         sc.add_user(self.fixture)
-        db.session.commit()
+        self.db.commit()
         self.assertIn(self.fixture, sc.users, "user not added")
         self.assertEqual(self.fixture.device_id, sc.get_id(), "id mismatch")
 
@@ -118,8 +118,7 @@ class UserTest(BaseTest):
             "password": "password2",
             "role": str(Role.ADMIN)
         }
-        json = jsonify(expected).get_json()
-        self.fixture.update(json)
+        self.fixture.update(expected)
         self.assertEqual(expected["first_name"], self.fixture.get_first_name())
         self.assertEqual(expected["last_name"], self.fixture.get_last_name())
         self.assertEqual(expected["email"], self.fixture.get_email())
@@ -131,12 +130,12 @@ class UserTest(BaseTest):
             "id": 2,
             "first_name": "First",
             "last_name": "Last",
-            "email": "email",
+            "email": "other",
             "password": "password",
             "role": str(Role.USER)
         }
-        json = jsonify(expected).get_json()
-        self.fixture = User(json)
+        self.fixture = User(expected)
+        self.db.commit()
         self.assertEqual(expected["first_name"], self.fixture.get_first_name())
         self.assertEqual(expected["last_name"], self.fixture.get_last_name())
         self.assertEqual(expected["email"], self.fixture.get_email())
@@ -151,32 +150,27 @@ class UserTest(BaseTest):
 
     def test_authenticate(self):
         data = dict(email="admin", password="admin")
-        json = jsonify(data).get_json()
-        result = User.authenticate(json)
+        result = User.authenticate(data)
         self.assertIsNotNone(result)
 
     def test_authenticate_none_email(self):
         data = dict(email=None, password="admin")
-        json = jsonify(data).get_json()
-        result = User.authenticate(json)
+        result = User.authenticate(data)
         self.assertIsNone(result)
 
     def test_authenticate_none_pass(self):
         data = dict(email="admin", password=None)
-        json = jsonify(data).get_json()
-        result = User.authenticate(json)
+        result = User.authenticate(data)
         self.assertIsNone(result)
 
     def test_authenticate_unknown_user(self):
         data = dict(email="bob", password="admin")
-        json = jsonify(data).get_json()
-        result = User.authenticate(json)
+        result = User.authenticate(data)
         self.assertIsNone(result)
 
     def test_authenticate_basd_pass(self):
         data = dict(email="admin", password="test")
-        json = jsonify(data).get_json()
-        result = User.authenticate(json)
+        result = User.authenticate(data)
         self.assertIsNone(result)
 
     def test_find_user(self):

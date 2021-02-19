@@ -3,12 +3,10 @@ import unittest
 from avista_data.unit import Unit
 from tests.base_test import BaseTest
 from avista_data.sensor import Sensor
-from avista_data import db
 from avista_data.device import Device
 from avista_data.data_point import DataPoint
 from avista_data.parameter import Parameter
 from datetime import datetime
-from flask import jsonify
 
 
 class SensorTest(BaseTest):
@@ -23,8 +21,8 @@ class SensorTest(BaseTest):
         self.fixture.set_unit(Unit.kWh)
 
         self.fixture.add_parameter(Parameter(key="TestKey", value="TestValue"))
-        db.session.add(self.fixture)
-        db.session.commit()
+        self.db.add(self.fixture)
+        self.db.commit()
 
     def test_id(self):
         self.assertEqual(1, self.fixture.get_id(), "id's do not match")
@@ -83,9 +81,10 @@ class SensorTest(BaseTest):
 
     def test_device(self):
         dev = Device(name="Test Device", description="Description")
-        db.session.add(dev)
-        db.session.commit()
+        self.db.add(dev)
+        self.db.commit()
         dev.add_sensor(self.fixture)
+        self.db.commit()
         self.assertIn(self.fixture, dev.sensors, "sensor not added")
         self.assertEqual(dev.get_id(), self.fixture.device_id, "id mismatch")
 
@@ -93,14 +92,15 @@ class SensorTest(BaseTest):
         d = self.fixture.to_dict()
         d['name'] = "Test2"
         d['quantity'] = "Vibration"
-        self.fixture.update(jsonify(d).get_json())
+        self.fixture.update(d)
         self.assertEqual("Test2", self.fixture.get_name(), "new names are not same")
         self.assertEqual("Vibration", self.fixture.get_quantity(), "new quantity not the same")
 
     def test_data(self):
         dp = DataPoint(name="datapoint", value=1.0, timestamp=int(datetime.timestamp(datetime.now())))
-        db.session.add(dp)
+        self.db.add(dp)
         self.fixture.add_data_point(dp)
+        self.db.commit()
         self.assertIn(dp, self.fixture.data, "point not contained")
 
     def test_null_data(self):
@@ -110,7 +110,7 @@ class SensorTest(BaseTest):
 
     def test_know_data_point(self):
         dp = DataPoint(name="datapoint", value=1.0, timestamp=int(datetime.timestamp(datetime.now())))
-        db.session.add(dp)
+        self.db.add(dp)
         self.fixture.add_data_point(dp)
         count = self.fixture.data.count()
         self.fixture.add_data_point(dp)
@@ -118,8 +118,9 @@ class SensorTest(BaseTest):
 
     def test_channel(self):
         param = Parameter(key="TestKey2", value="TestValue2")
-        db.session.add(param)
+        self.db.add(param)
         self.fixture.add_parameter(param)
+        self.db.commit()
         self.assertEqual(2, self.fixture.parameters.count(), "size changed")
 
     def test_null_parameter(self):

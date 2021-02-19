@@ -1,12 +1,12 @@
-from sqlalchemy import event
-
-from avista_data import db
+import avista_data
 from avista_data.role import Role
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask import current_app
+from .database import Base
+from sqlalchemy import Column, Integer, String, ForeignKey, Enum
+from sqlalchemy.orm import relationship
 
 
-class User(db.Model):
+class User(Base):
     """Representation of a Service User
 
     Attributes:
@@ -23,14 +23,15 @@ class User(db.Model):
         **role (:obj: `Role`)**: role assigned to this User
     """
 
-    id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(75))
-    last_name = db.Column(db.String(75))
-    email = db.Column(db.String(120), unique=True)
-    password_hash = db.Column(db.String(128))
-    role = db.Column(db.Enum(Role))
-    device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
-    api_keys = db.relationship('ApiKey', backref='user', lazy='dynamic')
+    __tablename__ = "Users"
+    id = Column(Integer, primary_key=True)
+    first_name = Column(String(75))
+    last_name = Column(String(75))
+    email = Column(String(120), unique=True)
+    password_hash = Column(String(128))
+    role = Column(Enum(Role))
+    device_id = Column(Integer, ForeignKey('Devices.id'))
+    api_keys = relationship('ApiKey', backref='user', lazy='dynamic')
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -44,7 +45,8 @@ class User(db.Model):
 
         """
         super().__init__(*args, **kwargs)
-        db.session.add(self)
+        self.db = avista_data.database.db
+        self.db.add(self)
         self.update(json)
 
     def update(self, json):
@@ -60,7 +62,7 @@ class User(db.Model):
             self.set_email(json.get('email'))
             self.set_password(json.get('password'))
             self.set_role(Role.from_str(json.get('role')))
-            db.session.commit()
+            self.db.commit()
 
     def get_id(self):
         """Primary key of this instance
@@ -94,7 +96,7 @@ class User(db.Model):
         if self.first_name == "System":
             return
         self.first_name = name
-        db.session.commit()
+        # db.commit()
 
     def get_last_name(self):
         """Last Name associated with this instance
@@ -120,7 +122,7 @@ class User(db.Model):
         if self.last_name == "Administrator":
             return
         self.last_name = name
-        db.session.commit()
+        # db.commit()
 
     def get_email(self):
         """Email associated with this instance
@@ -146,7 +148,7 @@ class User(db.Model):
         if email == "admin":
             return
         self.email = email
-        db.session.commit()
+        # db.commit()
 
     def get_role(self):
         """Role associated with this instance
@@ -170,7 +172,7 @@ class User(db.Model):
         if role is None:
             raise Exception("role cannot be none")
         self.role = role
-        db.session.commit()
+        # db.commit()
 
     @staticmethod
     def authenticate(json):
@@ -180,6 +182,7 @@ class User(db.Model):
         if not email or not password:
             return None
         user = User.find_user(email)
+        print("User:", user)
         if not user or not user.check_password(password):
             return None
 
@@ -189,7 +192,8 @@ class User(db.Model):
     def find_user(email):
         if email is None or email == "":
             raise Exception("email cannot be none or empty")
-        return User.query.filter_by(email=email).first()
+        print("DB:", avista_data.database.db)
+        return avista_data.database.db.query(User).filter_by(email=email).first()
 
     def set_password(self, password):
         """Assigns the new password for this user, which is hashed and stored
@@ -198,7 +202,7 @@ class User(db.Model):
             **password (str)**: The new password to be hashed and stored
         """
         self.password_hash = generate_password_hash(password)
-        db.session.commit()
+        # db.session.commit()
 
     def check_password(self, password):
         """Checks whether the provided password is the same as the original
@@ -219,7 +223,7 @@ class User(db.Model):
         """
         if key is not None and key not in self.api_keys:
             self.api_keys.append(key)
-            db.session.commit()
+            # db.commit()
 
     def __repr__(self):
         """An unambiguous representation of Server"""
