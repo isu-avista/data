@@ -1,6 +1,5 @@
 """The ISU Avista Data Module which contains the basic classes used to interface between the system and the database.
 """
-from avista_data import data_manager
 from avista_data import config_item
 from avista_data import data_point
 from avista_data import device

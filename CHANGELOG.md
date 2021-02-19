@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [2.0.0](https://github.com/isu-avista/data/releases/tag/v2.0.0) - 2021-02-19
+### Added
+* initial database management class
+
+### Changed
+
+### Deleted
+* Dependency on Flask-SQLAlchemy
+* Dependency on Flask
+* Test app and all of the required files for that
+* Updated all of the tests to correspond to these changes
+* Updated all of the classes to correspond to these changes
+* Reinstated alembic and setup the new migration
+
 ## [1.2.3](https://github.com/isu-avista/data/releases/tag/v1.2.3) - 2021-02-15
 ### Added
 

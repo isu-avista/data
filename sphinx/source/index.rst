@@ -5,6 +5,10 @@ Welcome to avista-data's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+avista-data database
+====================
+.. automodule:: avista_data.database
+   :members:
 
 avista-data api_key
 ===================
