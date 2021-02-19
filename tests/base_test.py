@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import unittest
-import avista_data.data_manager
+import avista_data
 import os
 
 
