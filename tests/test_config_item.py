@@ -1,10 +1,8 @@
 import unittest
-from avista_data import db
 from tests.base_test import BaseTest
 from avista_data.config_item import ConfigItem
 from avista_data.security_config import SecurityConfig
 from avista_data.server_config import ServerConfig
-from flask import jsonify
 
 
 class ConfigItemTest(BaseTest):
@@ -15,8 +13,8 @@ class ConfigItemTest(BaseTest):
         self.fixture.set_name("Test")
         self.fixture.set_description("Test")
         self.fixture.set_value("Test")
-        db.session.add(self.fixture)
-        db.session.commit()
+        self.db.add(self.fixture)
+        self.db.commit()
 
     def test_id(self):
         self.assertEqual(self.fixture.get_id(), 1, "id's do not match")
@@ -57,14 +55,14 @@ class ConfigItemTest(BaseTest):
 
     def test_parent_security_config(self):
         sc = SecurityConfig(name="SC_Test")
-        db.session.add(sc)
+        self.db.add(sc)
         sc.add_item(self.fixture)
         self.assertIn(self.fixture, sc.items, "not contained")
         self.assertEqual(sc.get_id(), self.fixture.sec_conf_id, "id mismatch")
 
     def test_parent_server_config(self):
         sc = ServerConfig(name="SC_Test")
-        db.session.add(sc)
+        self.db.add(sc)
         sc.add_item(self.fixture)
         self.assertIn(self.fixture, sc.items, "not contained")
         self.assertEqual(sc.get_id(), self.fixture.serv_conf_id, "id mismatch")
@@ -85,8 +83,7 @@ class ConfigItemTest(BaseTest):
             "description": "Test2",
             "value": "Test2"
         }
-        json = jsonify(exp).get_json()
-        self.fixture.update(json)
+        self.fixture.update(exp)
         self.assertEqual(exp['name'], self.fixture.get_name(), "name not same")
         self.assertEqual(exp['description'], self.fixture.get_description(), "desc not same")
         self.assertEqual(exp['value'], self.fixture.get_value(), "value not same")
@@ -98,8 +95,7 @@ class ConfigItemTest(BaseTest):
             "description": "Test2",
             "value": "Test2"
         }
-        json = jsonify(exp).get_json()
-        self.fixture = ConfigItem(json)
+        self.fixture = ConfigItem(exp)
         self.assertEqual(exp['name'], self.fixture.get_name(), "name not same")
         self.assertEqual(exp['description'], self.fixture.get_description(), "desc not same")
         self.assertEqual(exp['value'], self.fixture.get_value(), "value not same")

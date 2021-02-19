@@ -1,8 +1,6 @@
 import unittest
-from avista_data import db
 from avista_data.status import Status
 from tests.base_test import BaseTest
-from flask import jsonify
 
 
 class StatusTest(BaseTest):
@@ -12,8 +10,8 @@ class StatusTest(BaseTest):
         self.fixture = Status()
         self.fixture.set_name("Test")
         self.fixture.set_value(1)
-        db.session.add(self.fixture)
-        db.session.commit()
+        self.db.add(self.fixture)
+        self.db.commit()
 
     def test_id(self):
         self.assertEqual(1, self.fixture.get_id(), "id's do not match")
@@ -57,8 +55,7 @@ class StatusTest(BaseTest):
             'name': 'Test2',
             'value': 2,
         }
-        json = jsonify(exp).get_json()
-        self.fixture.update(json)
+        self.fixture.update(exp)
         self.assertEqual(exp['name'], self.fixture.get_name(), "names are not the same")
         self.assertEqual(exp['value'], self.fixture.get_value(), "values are not the same")
 
@@ -67,8 +64,7 @@ class StatusTest(BaseTest):
             'name': 'Test2',
             'value': 2,
         }
-        json = jsonify(exp).get_json()
-        self.fixture = Status(json)
+        self.fixture = Status(exp)
         self.assertEqual(exp['name'], self.fixture.get_name(), "names are not the same")
         self.assertEqual(exp['value'], self.fixture.get_value(), "values are not the same")
 

@@ -1,7 +1,9 @@
-from avista_data import db
+from .database import Base
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 
 
-class Device(db.Model):
+class Device(Base):
     """Representation of the device or service
 
     Attributes:
@@ -18,18 +20,18 @@ class Device(db.Model):
         **issues (list)**: List of issues identified
 
     """
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(256), unique=True)
-    description = db.Column(db.String(2048), unique=True)
-    location = db.Column(db.String(1024))
-    sensors = db.relationship('Sensor', backref='device', lazy='dynamic')
-    sec_conf = db.relationship('SecurityConfig', uselist=False, backref='device')
-    serv_conf = db.relationship('ServerConfig', uselist=False, backref='device')
-    issues = db.relationship('Issue', backref='device', lazy='dynamic')
-    users = db.relationship('User', backref='device', lazy='dynamic')
-    servers = db.relationship('Server', backref='device', lazy='dynamic')
-    status = db.relationship('Status', backref='device', lazy='dynamic')
+    __tablename__ = "Devices"
+    id = Column(Integer, primary_key=True)
+    name = Column(String(256), unique=True)
+    description = Column(String(2048), unique=True)
+    location = Column(String(1024))
+    sensors = relationship('Sensor', backref='device', lazy='dynamic')
+    sec_conf = relationship('SecurityConfig', uselist=False, backref='device')
+    serv_conf = relationship('ServerConfig', uselist=False, backref='device')
+    issues = relationship('Issue', backref='device', lazy='dynamic')
+    users = relationship('User', backref='device', lazy='dynamic')
+    servers = relationship('Server', backref='device', lazy='dynamic')
+    status = relationship('Status', backref='device', lazy='dynamic')
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -56,7 +58,6 @@ class Device(db.Model):
             self.name = json.get('name')
             self.description = json.get('description')
             self.location = json.get('location')
-            db.session.commit()
 
     def get_id(self):
         """Primary key of this instance
@@ -88,7 +89,6 @@ class Device(db.Model):
         if name is None or name == "":
             raise Exception("name cannot be None or empty")
         self.name = name
-        db.session.commit()
 
     def get_description(self):
         """Description associated with this instance
@@ -112,7 +112,6 @@ class Device(db.Model):
         if desc is None or desc == "":
             raise Exception("description cannot be None or empty")
         self.description = desc
-        db.session.commit()
 
     def get_location(self):
         """Location associated with this instance
@@ -136,7 +135,6 @@ class Device(db.Model):
         if loc is None or loc == "":
             raise Exception("location cannot be None or empty")
         self.location = loc
-        db.session.commit()
 
     def set_sec_conf(self, conf):
         """Assigns the security config for this instance
@@ -148,7 +146,6 @@ class Device(db.Model):
         if conf is None:
             return
         self.sec_conf = conf
-        db.session.commit()
 
     def get_sec_conf(self):
         """SecurityConfig associated with this instance
@@ -169,7 +166,6 @@ class Device(db.Model):
         if conf is None:
             return
         self.serv_conf = conf
-        db.session.commit()
 
     def get_serv_conf(self):
         """ServerConfig associated with this instance
@@ -190,7 +186,6 @@ class Device(db.Model):
         if issue is None:
             return
         self.issues.append(issue)
-        db.session.commit()
 
     def add_sensor(self, sensor):
         """Adds the provided sensor to this instance
@@ -202,7 +197,6 @@ class Device(db.Model):
         if sensor is None:
             return
         self.sensors.append(sensor)
-        db.session.commit()
 
     def add_user(self, user):
         """Adds the provided user to this instance
@@ -214,7 +208,6 @@ class Device(db.Model):
         if user is None:
             return
         self.users.append(user)
-        db.session.commit()
 
     def add_status(self, status):
         """Adds the provided status item to this instance
@@ -226,7 +219,6 @@ class Device(db.Model):
         if status is None:
             return
         self.status.append(status)
-        db.session.commit()
 
     def add_server(self, server):
         """Adds the provided server to this instance
@@ -238,7 +230,6 @@ class Device(db.Model):
         if server is None:
             return
         self.servers.append(server)
-        db.session.commit()
 
     def __repr__(self):
         """An unambiguous representation of Device"""

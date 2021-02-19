@@ -1,7 +1,8 @@
-from avista_data import db
+from .database import Base
+from sqlalchemy import Column, Integer, String, ForeignKey, Float
 
 
-class DataPoint(db.Model):
+class DataPoint(Base):
     """"Representation of a measured value from a sensor
 
     Attributes:
@@ -16,12 +17,12 @@ class DataPoint(db.Model):
         **sensor_id (int)**: The id of the sensor which made the measurement
 
     """
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), nullable=False)
-    value = db.Column(db.Float, nullable=False)
-    timestamp = db.Column(db.Integer, nullable=False)
-    sensor_id = db.Column(db.Integer, db.ForeignKey('sensor.id'))
+    __tablename__ = "DataPoints"
+    id = Column(Integer, primary_key=True)
+    name = Column(String(128), nullable=False)
+    value = Column(Float, nullable=False)
+    timestamp = Column(Integer, nullable=False)
+    sensor_id = Column(Integer, ForeignKey('Sensors.id'))
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -48,7 +49,6 @@ class DataPoint(db.Model):
             self.name = json.get('name')
             self.value = json.get('value')
             self.timestamp = json.get('timestamp')
-            db.session.commit()
 
     def get_id(self):
         """Primary key of this instance
@@ -78,7 +78,6 @@ class DataPoint(db.Model):
         if not isinstance(name, str):
             raise Exception("name is not a string")
         self.name = name
-        db.session.commit()
 
     def get_value(self):
         """Returns the current value of this instance
@@ -100,7 +99,6 @@ class DataPoint(db.Model):
         if not isinstance(value, float):
             raise Exception("value is not a float")
         self.value = value
-        db.session.commit()
 
     def get_timestamp(self):
         """Returns the current timestamp of this instance
@@ -122,7 +120,6 @@ class DataPoint(db.Model):
         if not isinstance(ts, int):
             raise Exception("timestamp is not an int")
         self.timestamp = ts
-        db.session.commit()
 
     def __repr__(self):
         """An unambiguous representation of DataPoint"""

@@ -1,8 +1,9 @@
-from avista_data import db
 from werkzeug.security import generate_password_hash, check_password_hash
+from .database import Base
+from sqlalchemy import Column, Integer, String, ForeignKey
 
 
-class ApiKey(db.Model):
+class ApiKey(Base):
     """Representation of an API Key for use by a user or server
 
     Attributes:
@@ -17,11 +18,12 @@ class ApiKey(db.Model):
         **server_id (int)**: Primary key of the parent server
     """
 
-    id = db.Column(db.Integer, primary_key=True)
-    key_hash = db.Column(db.String(128), nullable=False)
-    description = db.Column(db.String(1024), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    server_id = db.Column(db.Integer, db.ForeignKey('server.id'))
+    __tablename__ = "ApiKeys"
+    id = Column(Integer, primary_key=True)
+    key_hash = Column(String(128), nullable=False)
+    description = Column(String(1024), nullable=False)
+    user_id = Column(Integer, ForeignKey('Users.id'))
+    server_id = Column(Integer, ForeignKey('Servers.id'))
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -47,7 +49,6 @@ class ApiKey(db.Model):
         if json is not None:
             self.set_key(json.get('key'))
             self.description = json.get('description')
-            db.session.commit()
 
     def get_id(self):
         """Primary key of this instance
@@ -64,7 +65,7 @@ class ApiKey(db.Model):
             **key (str)**: The key to be hashed and stored
         """
         self.key_hash = generate_password_hash(key)
-        db.session.commit()
+        # self.db.commit()
 
     def check_key(self, key):
         """Checks whether the provided key is the same as the original
@@ -97,7 +98,6 @@ class ApiKey(db.Model):
         if desc is None or desc == "":
             raise Exception("description cannot be None or empty")
         self.description = desc
-        db.session.commit()
 
     def __repr__(self):
         """An unambiguous representation of Server"""

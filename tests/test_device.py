@@ -1,6 +1,5 @@
 import unittest
 from tests.base_test import BaseTest
-from avista_data import db
 from avista_data.device import Device
 from avista_data.security_config import SecurityConfig
 from avista_data.server_config import ServerConfig
@@ -12,7 +11,6 @@ from avista_data.user import User
 from avista_data.role import Role
 from avista_data.status import Status
 from avista_data.server import Server
-from flask import jsonify
 
 
 class DeviceTest(BaseTest):
@@ -23,8 +21,8 @@ class DeviceTest(BaseTest):
         self.fixture.set_name("Test")
         self.fixture.set_description("Test")
         self.fixture.set_location("Test")
-        db.session.add(self.fixture)
-        db.session.commit()
+        self.db.add(self.fixture)
+        self.db.commit()
 
     def test_id(self):
         self.assertEqual(self.fixture.get_id(), 1, "id's do not match")
@@ -65,7 +63,7 @@ class DeviceTest(BaseTest):
 
     def test_sec_conf(self):
         sc = SecurityConfig(name="SC_Test")
-        db.session.add(sc)
+        self.db.add(sc)
         self.fixture.set_sec_conf(sc)
         self.assertEqual(sc, self.fixture.get_sec_conf(), "sec_conf mismatch")
 
@@ -76,7 +74,7 @@ class DeviceTest(BaseTest):
 
     def test_serv_conf(self):
         sc = ServerConfig(name="SC_Test")
-        db.session.add(sc)
+        self.db.add(sc)
         self.fixture.set_serv_conf(sc)
         self.assertEqual(sc, self.fixture.get_serv_conf(), "serv_conf mismatch")
 
@@ -88,10 +86,11 @@ class DeviceTest(BaseTest):
     def test_issues(self):
         iss1 = Issue(name="Issue 01", description="Desc 01", type=IssueType.EQUIP_DAMAGED)
         iss2 = Issue(name="Issue 02", description="Desc 02", type=IssueType.EQUIP_DAMAGED)
-        db.session.add(iss1)
-        db.session.add(iss2)
+        self.db.add(iss1)
+        self.db.add(iss2)
         self.fixture.add_issue(iss1)
         self.fixture.add_issue(iss2)
+        self.db.commit()
         self.assertIn(iss1, self.fixture.issues)
         self.assertIn(iss2, self.fixture.issues)
 
@@ -103,10 +102,11 @@ class DeviceTest(BaseTest):
     def test_sensors(self):
         sens1 = Sensor(name="Sensor 01", quantity="Quantity 01", cls="class1", unit=Unit.C)
         sens2 = Sensor(name="Sensor 02", quantity="Quantity 02", cls="class2", unit=Unit.kWh)
-        db.session.add(sens1)
-        db.session.add(sens2)
+        self.db.add(sens1)
+        self.db.add(sens2)
         self.fixture.add_sensor(sens1)
         self.fixture.add_sensor(sens2)
+        self.db.commit()
         self.assertIn(sens1, self.fixture.sensors)
         self.assertIn(sens2, self.fixture.sensors)
 
@@ -118,10 +118,11 @@ class DeviceTest(BaseTest):
     def test_status(self):
         status1 = Status(name="Item 01", value="Value 01")
         status2 = Status(name="Item 02", value="Value 02")
-        db.session.add(status1)
-        db.session.add(status2)
+        self.db.add(status1)
+        self.db.add(status2)
         self.fixture.add_status(status1)
         self.fixture.add_status(status2)
+        self.db.commit()
         self.assertIn(status1, self.fixture.status)
         self.assertIn(status2, self.fixture.status)
 
@@ -133,10 +134,11 @@ class DeviceTest(BaseTest):
     def test_servers(self):
         server1 = Server(name="Server 01")
         server2 = Server(name="Server 02")
-        db.session.add(server1)
-        db.session.add(server2)
+        self.db.add(server1)
+        self.db.add(server2)
         self.fixture.add_server(server1)
         self.fixture.add_server(server2)
+        self.db.commit()
         self.assertIn(server1, self.fixture.servers)
         self.assertIn(server2, self.fixture.servers)
 
@@ -150,10 +152,11 @@ class DeviceTest(BaseTest):
         u1.set_password("test")
         u2 = User(first_name="Jane", last_name="Smith", email="janes@example.com", role=Role.USER)
         u2.set_password("test")
-        db.session.add(u1)
-        db.session.add(u2)
+        self.db.add(u1)
+        self.db.add(u2)
         self.fixture.add_user(u1)
         self.fixture.add_user(u2)
+        self.db.commit()
         self.assertIn(u1, self.fixture.users)
         self.assertIn(u2, self.fixture.users)
 
@@ -165,7 +168,7 @@ class DeviceTest(BaseTest):
     def test_existing_user(self):
         user = User(first_name="John", last_name="Smith", email="js@example.com", role=Role.USER)
         user.set_password("test")
-        db.session.add(user)
+        self.db.add(user)
         self.fixture.add_user(user)
         count = self.fixture.users.count()
         self.fixture.add_user(user)
@@ -187,8 +190,7 @@ class DeviceTest(BaseTest):
             "description": "description",
             "location": "location"
         }
-        json = jsonify(exp).get_json()
-        self.fixture.update(json)
+        self.fixture.update(exp)
         self.assertEqual(exp['name'], self.fixture.get_name(), "name not the same")
         self.assertEqual(exp['description'], self.fixture.get_description(), "desc not the same")
         self.assertEqual(exp['location'], self.fixture.get_location(), "loc not the same")
@@ -200,8 +202,7 @@ class DeviceTest(BaseTest):
             "description": "description",
             "location": "location"
         }
-        json = jsonify(exp).get_json()
-        self.fixture = Device(json)
+        self.fixture = Device(exp)
         self.assertEqual(exp['name'], self.fixture.get_name(), "name not the same")
         self.assertEqual(exp['description'], self.fixture.get_description(), "desc not the same")
         self.assertEqual(exp['location'], self.fixture.get_location(), "loc not the same")

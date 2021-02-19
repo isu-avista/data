@@ -1,7 +1,5 @@
 import unittest
-from flask import jsonify
 from tests.base_test import BaseTest
-from avista_data import db
 from avista_data.issue import Issue
 from avista_data.issue_type import IssueType
 from avista_data.device import Device
@@ -15,15 +13,15 @@ class IssueTest(BaseTest):
         self.fixture.set_name("Test")
         self.fixture.set_description("Test")
         self.fixture.set_type(IssueType.EQUIP_DAMAGED)
-        db.session.add(self.fixture)
-        db.session.commit()
+        self.db.add(self.fixture)
+        self.db.commit()
 
     def test_id(self):
         self.assertEqual(1, self.fixture.get_id(), "id's do not match")
 
     def test_name(self):
-        db.session.add(self.fixture)
-        db.session.commit()
+        self.db.add(self.fixture)
+        self.db.commit()
         self.assertEqual("Test", self.fixture.get_name(), "names do not match")
 
     def test_null_name(self):
@@ -55,7 +53,7 @@ class IssueTest(BaseTest):
 
     def test_device(self):
         dev = Device(name="Test Device", description="Description")
-        db.session.add(dev)
+        self.db.add(dev)
         dev.add_issue(self.fixture)
         self.assertIn(self.fixture, dev.issues, "issue not added")
         self.assertEqual(dev.get_id(), self.fixture.device_id, "id mismatch")
@@ -76,8 +74,7 @@ class IssueTest(BaseTest):
             "description": "Test2",
             "type": str(IssueType.MAINT_REQD)
         }
-        json = jsonify(exp).get_json()
-        self.fixture.update(json)
+        self.fixture.update(exp)
         self.assertEqual(exp['name'], self.fixture.get_name(), "name not same")
         self.assertEqual(exp['description'], self.fixture.get_description(), "desc not same")
         self.assertEqual(exp['type'], str(self.fixture.get_type()), "type not same")
@@ -89,8 +86,7 @@ class IssueTest(BaseTest):
             "description": "Test2",
             "type": str(IssueType.MAINT_REQD)
         }
-        json = jsonify(exp).get_json()
-        self.fixture = Issue(json)
+        self.fixture = Issue(exp)
         self.assertEqual(exp['name'], self.fixture.get_name(), "name not same")
         self.assertEqual(exp['description'], self.fixture.get_description(), "desc not same")
         self.assertEqual(exp['type'], str(self.fixture.get_type()), "type not same")

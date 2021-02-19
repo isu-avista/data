@@ -1,7 +1,8 @@
-from avista_data import db
+from .database import Base
+from sqlalchemy import Column, Integer, String, ForeignKey
 
 
-class Status(db.Model):
+class Status(Base):
     """Representation of items representing the current status of the device/service
 
     Attributes:
@@ -13,10 +14,11 @@ class Status(db.Model):
 
     """
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), nullable=False)
-    value = db.Column(db.Integer, nullable=False)
-    device_id = db.Column(db.Integer, db.ForeignKey('device.id'))
+    __tablename__ = "Status"
+    id = Column(Integer, primary_key=True)
+    name = Column(String(128), nullable=False)
+    value = Column(Integer, nullable=False)
+    device_id = Column(Integer, ForeignKey('Devices.id'))
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -42,7 +44,6 @@ class Status(db.Model):
         if json is not None:
             self.set_name(json.get('name'))
             self.set_value(json.get('value'))
-            db.session.commit()
 
     def get_id(self):
         """Primary key of this instance
@@ -74,7 +75,6 @@ class Status(db.Model):
         if name is None or name == "":
             raise Exception('name cannot be None or Empty')
         self.name = name
-        db.session.commit()
 
     def get_value(self):
         """Value associated with this instance
@@ -98,7 +98,6 @@ class Status(db.Model):
         if value is None or value < 0 or value > 3:
             raise Exception('value cannot be None or less than 0 or greater than 3')
         self.value = value
-        db.session.commit()
 
     def __repr__(self):
         """An unambiguous representation of Server"""

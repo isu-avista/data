@@ -1,6 +1,3 @@
-import unittest
-from flask import jsonify
-from avista_data import db
 from avista_data.parameter import Parameter
 from tests.base_test import BaseTest
 
@@ -12,8 +9,8 @@ class ParameterTest(BaseTest):
         self.fixture = Parameter()
         self.fixture.set_key("TestKey")
         self.fixture.set_value("TestValue")
-        db.session.add(self.fixture)
-        db.session.commit()
+        self.db.add(self.fixture)
+        self.db.commit()
 
     def test_id(self):
         self.assertEqual(self.fixture.get_id(), 1, "ids do not match")
@@ -54,8 +51,7 @@ class ParameterTest(BaseTest):
             "key": "TestKey2",
             "value": "TestValue2",
         }
-        json = jsonify(expected).get_json()
-        self.fixture.update(json)
+        self.fixture.update(expected)
         self.assertEqual(expected['key'], self.fixture.get_key(), "key not the same")
         self.assertEqual(expected['value'], self.fixture.get_value(), "value not the same")
 
@@ -65,7 +61,6 @@ class ParameterTest(BaseTest):
             "key": "TestKey",
             "value": "TestValue",
         }
-        json = jsonify(expected).get_json()
-        self.fixture = Parameter(json)
+        self.fixture = Parameter(expected)
         self.assertEqual(expected['key'], self.fixture.get_key(), "key not the same")
         self.assertEqual(expected['value'], self.fixture.get_value(), "value not the same")

@@ -1,7 +1,9 @@
-from avista_data import db
+from .database import Base
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 
 
-class ServerConfig(db.Model):
+class ServerConfig(Base):
     """A representation of a configuration for a given Server
 
     Attributes:
@@ -14,10 +16,11 @@ class ServerConfig(db.Model):
         **items (list)**: List of configuration items associated with this configuration
     """
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True, nullable=False)
-    device_id = db.Column(db.Integer, db.ForeignKey("device.id"))
-    items = db.relationship('ConfigItem', backref='serv_conf', lazy='dynamic')
+    __tablename__ = "ServerConfigs"
+    id = Column(Integer, primary_key=True)
+    name = Column(String(120), unique=True, nullable=False)
+    device_id = Column(Integer, ForeignKey("Devices.id"))
+    items = relationship('ConfigItem', backref='serv_conf', lazy='dynamic')
 
     def __init__(self, json=None, *args, **kwargs):
         """Creates a new instance of this class
@@ -42,7 +45,6 @@ class ServerConfig(db.Model):
         """
         if json is not None:
             self.name = json.get('name')
-            db.session.commit()
 
     def get_id(self):
         """Primary key of this instance
@@ -74,7 +76,6 @@ class ServerConfig(db.Model):
         if name is None or name == "":
             raise Exception("name cannot be None or empty")
         self.name = name
-        db.session.commit()
 
     def add_item(self, item):
         """Adds the provided config item to this configuration
@@ -85,7 +86,6 @@ class ServerConfig(db.Model):
         if item is None or item in self.items:
             return
         self.items.append(item)
-        db.session.commit()
 
     def __repr__(self):
         """An unambiguous representation of Configuration"""
