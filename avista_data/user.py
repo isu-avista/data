@@ -44,6 +44,7 @@ class User(db.Model):
 
         """
         super().__init__(*args, **kwargs)
+        db.session.add(self)
         self.update(json)
 
     def update(self, json):
