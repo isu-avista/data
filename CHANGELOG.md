@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0](https://github.com/isu-avista/data/releases/tag/v2.0.0) - 2021-02-19
 ### Added
+
+### Changed
+* engine creation line
+
+### Deleted
+
+## [2.0.1](https://github.com/isu-avista/data/releases/tag/v2.0.1) - 2021-02-19
+### Added
 * initial database management class
 
 ### Changed
